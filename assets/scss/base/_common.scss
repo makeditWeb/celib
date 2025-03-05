@@ -1,0 +1,16 @@
+// Color Variables
+$text-black: #000;
+$text-lightblack: #0A0A0A;
+$color-darkgray: #242424;
+$color-orange: #FF8400;
+$color-lightgray: #797979;
+$color-bage: #F6E8D6;
+
+// Font Import
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+// Set default font family globally
+body {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+}

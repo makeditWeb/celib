@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+body {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+}
+
 html,
 body,
 div,
@@ -127,8 +133,4 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-p {
-  background-color: red;
 }/*# sourceMappingURL=main.css.map */
