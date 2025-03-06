@@ -1,11 +1,713 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Celib</title>
+
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.css" />
 </head>
+
 <body>
-    
+
+    <header>
+        <div class="header__inner basic__container">
+            <div class="logo">
+                <img src="/assets/images/logo.svg" alt="Celib">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./locations.html">Locations</a></li>
+                    <li><a href="./sign_in.html">Sign in</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+
+    <!-- main banner -->
+    <section class="main-banner">
+        <div class="main-banner__inner ">
+            <div class="fixed__banner">
+                20% promotion now
+            </div>
+            <div class="banner__content basic__container">
+                <h1>STAY SMART.</h1>
+                <h1>WORK BETTER.</h1>
+                <p>Célib Life & Stay</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- book now -->
+    <section class="book-now">
+        <div class="book-now__inner basic__container">
+            <p class="book-now__title">Find your Room.</p>
+            <div class="find__content">
+                <div class="select__box">
+                    <div class="custom__dropdown">
+                        <div class="dropdown__header">
+                            <span class="selected__option">Location</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16"
+                                fill="none" class="dropdown__arrow">
+                                <path d="M9.83777 16L0.636684 0.25L19.0389 0.250002L9.83777 16Z" fill="black" />
+                            </svg>
+                        </div>
+                        <div class="dropdown__options">
+                            <div class="dropdown__option" data-value="seoul">Seoul</div>
+                            <div class="dropdown__option" data-value="busan">Busan</div>
+                            <div class="dropdown__option" data-value="jeju">Jeju</div>
+                        </div>
+                    </div>
+
+                    <div class="custom__dropdown">
+                        <div class="dropdown__header">
+                            <span class="selected__option">Check in / out</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16"
+                                fill="none" class="dropdown__arrow">
+                                <path d="M9.83777 16L0.636684 0.25L19.0389 0.250002L9.83777 16Z" fill="black" />
+                            </svg>
+                        </div>
+                        <div class="dropdown__options">
+                            <div class="dropdown__option" data-value="today">Today</div>
+                            <div class="dropdown__option" data-value="tomorrow">Tomorrow</div>
+                            <div class="dropdown__option" data-value="custom">Custom Date</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn black-btn">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- middle banner -->
+    <section class="middle-banner">
+        <div class="middle-banner__inner">
+            Looking for a place that feels like home, no matter where you are?
+            <br>Célib provides fully furnished co-living spaces in Seoul’s prime locations,
+            <br>offering both style and convenience for your long-term stay.
+        </div>
+    </section>
+
+    <!-- live the clib way -->
+
+
+    <section class="way--inner">
+
+        <div class="basic__container">
+            <div class="inner__title">
+                <p>01</p>
+                <h2>
+                    Live the <br>Célib way
+                </h2>
+            </div>
+            <!-- ROOMS -->
+            <div class="rooms__inner">
+                <h2 class="room__left">
+                    Rooms
+                </h2>
+                <div class="room__right">
+                    <p class="inner__descript">
+                        Stay in the heart of Seoul and enjoy a thoughtfully curated living experience
+                        <br>with modern interiors, plush bedding, and premium amenities—designed for effortless comfort.
+                    </p>
+                    <div class="inner__slide">
+                        <div class="swiper roomSwiper">
+                            <div class="swiper-wrapper">
+                                <!-- Slide 1: Single full-width image -->
+                                <div class="swiper-slide ">
+                                    <div class="slide-content single-image">
+                                        <img src="../assets/images/room01.png" alt="Hotel room desk area"
+                                            class="slide-img">
+                                    </div>
+                                </div>
+
+                                <!-- Slide 2: Two half-width images -->
+                                <div class="swiper-slide dual-slide">
+                                    <div class="slide-content dual-image">
+                                        <img src="../assets/images/room02.png" alt="Hotel room bed" class="slide-img">
+                                        <img src="../assets/images/room03.png" alt="Hotel room bathroom sink"
+                                            class="slide-img">
+                                    </div>
+                                </div>
+
+                                <!-- Slide 3: Single full-width image -->
+                                <div class="swiper-slide">
+                                    <div class="slide-content single-image">
+                                        <img src="../assets/images/room01.png" alt="Hotel room full view"
+                                            class="slide-img">
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide dual-slide">
+                                    <div class="slide-content dual-image">
+                                        <img src="../assets/images/room02.png" alt="Hotel room bed" class="slide-img">
+                                        <img src="../assets/images/room03.png" alt="Hotel room bathroom sink"
+                                            class="slide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Progress bar -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- shared spaces -->
+            <div class="rooms__inner space__inner">
+                <h2 class="room__left">
+                    Shared<br>Spaces
+                </h2>
+                <div class="room__right">
+                    <p class="inner__descript">
+                        More than a stay—A space to live, work, and connect. From a cozy lounge and shared kitchen
+                        <br>to a fitness center and sky deck, experience a living space designed around you.
+                    </p>
+                    <div class="inner__slide">
+                        <div class="swiper spaceSwiper">
+                            <div class="swiper-wrapper">
+                                <!-- Slide 1: Single full-width image -->
+                                <div class="swiper-slide ">
+                                    <div class="slide-content single-image">
+                                        <img src="../assets/images/space.png" alt="Hotel room desk area"
+                                            class="slide-img">
+                                    </div>
+                                </div>
+
+                                <!-- Slide 2: Two half-width images -->
+                                <div class="swiper-slide dual-slide">
+                                    <div class="slide-content dual-image">
+                                        <img src="../assets/images/space01.png" alt="Hotel room bed" class="slide-img">
+                                        <img src="../assets/images/space02.png" alt="Hotel room bathroom sink"
+                                            class="slide-img">
+                                    </div>
+                                </div>
+
+                                <!-- Slide 3: Single full-width image -->
+                                <div class="swiper-slide">
+                                    <div class="slide-content single-image">
+                                        <img src="../assets/images/space.png" alt="Hotel room full view"
+                                            class="slide-img">
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide dual-slide">
+                                    <div class="slide-content dual-image">
+                                        <img src="../assets/images/space01.png" alt="Hotel room bed" class="slide-img">
+                                        <img src="../assets/images/space02.png" alt="Hotel room bathroom sink"
+                                            class="slide-img">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Progress bar -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- our locations -->
+    <section class="locations">
+        <div class="locations__inner basic__container">
+
+            <div class="inner__title">
+                <p>02</p>
+                <h2>
+                    Our Locations
+                </h2>
+                <p class="location_descript">
+                    Find your place in Seoul’s thriving business districts—where work, life,
+                    <br>and comfort come together. More Célib locations opening soon.
+                </p>
+            </div>
+            <div class="location__content">
+                <div class="location__card seoul__location">
+
+                    <div class="location__info">
+                        <h3>Célib Gadi</h3>
+                        <p class="info__location">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <mask id="mask0_2_421" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="24" height="24">
+                                    <rect width="23.6" height="23.6" fill="#797979" />
+                                </mask>
+                                <g mask="url(#mask0_2_421)">
+                                    <path
+                                        d="M11.7996 11.7996C12.3405 11.7996 12.8035 11.6071 13.1886 11.2219C13.5737 10.8368 13.7663 10.3738 13.7663 9.83297C13.7663 9.29214 13.5737 8.82915 13.1886 8.44402C12.8035 8.05888 12.3405 7.86631 11.7996 7.86631C11.2588 7.86631 10.7958 8.05888 10.4107 8.44402C10.0256 8.82915 9.83298 9.29214 9.83298 9.83297C9.83298 10.3738 10.0256 10.8368 10.4107 11.2219C10.7958 11.6071 11.2588 11.7996 11.7996 11.7996ZM11.7996 19.0271C13.7991 17.1916 15.2823 15.524 16.2492 14.0244C17.2162 12.5248 17.6996 11.1933 17.6996 10.0296C17.6996 8.24325 17.1301 6.78054 15.9911 5.64152C14.8521 4.50249 13.4549 3.93297 11.7996 3.93297C10.1444 3.93297 8.74722 4.50249 7.60819 5.64152C6.46916 6.78054 5.89965 8.24325 5.89965 10.0296C5.89965 11.1933 6.38312 12.5248 7.35007 14.0244C8.31701 15.524 9.8002 17.1916 11.7996 19.0271ZM11.7996 21.633C9.16104 19.3877 7.19027 17.3022 5.88736 15.3765C4.58444 13.4508 3.93298 11.6685 3.93298 10.0296C3.93298 7.57131 4.72375 5.61284 6.30527 4.15423C7.8868 2.69561 9.71826 1.96631 11.7996 1.96631C13.881 1.96631 15.7125 2.69561 17.294 4.15423C18.8756 5.61284 19.6663 7.57131 19.6663 10.0296C19.6663 11.6685 19.0149 13.4508 17.7119 15.3765C16.409 17.3022 14.4383 19.3877 11.7996 21.633Z"
+                                        fill="#ECECEC" />
+                                </g>
+                            </svg>
+                            Geumcheon-gu, Seoul
+                        </p>
+                        <a href="#none" class="btn basic-btn">Learn more</a>
+                    </div>
+                </div>
+                <div class="location__card comming--soon">
+
+                    <div class="location__info">
+                        <p class="opacity--text">Célib Yeoui</p>
+
+                        <p class="comming-text">Comming soon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perks -->
+    <section class="perks">
+        <div class="perkserks__inner basic__container">
+
+            <div class="inner__title">
+                <p>03</p>
+                <h2>
+                    The Perks of Living at Célib
+                </h2>
+                <p class="location_descript">
+                    Let’s see some reason for choose Célib.
+                    <br>We provide the things that meets your needs
+                </p>
+            </div>
+            <div class="perks__content">
+                <div class="list__descript">
+                    <div class="list__item">
+                        <div class="list__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="76" height="76" viewBox="0 0 76 76"
+                                fill="none">
+                                <path
+                                    d="M16.1749 68.3579C14.551 68.3579 13.1765 67.7954 12.0513 66.6703C10.9262 65.5451 10.3636 64.1706 10.3636 62.5467V19.5202C10.3636 17.8963 10.9262 16.5218 12.0513 15.3966C13.1765 14.2715 14.551 13.709 16.1749 13.709H20.6256V6.90918H25.5713V13.709H49.9287V6.90918H54.7507V13.709H59.2014C60.8253 13.709 62.1998 14.2715 63.325 15.3966C64.4501 16.5218 65.0126 17.8963 65.0126 19.5202V62.5467C65.0126 64.1706 64.4501 65.5451 63.325 66.6703C62.1998 67.7954 60.8253 68.3579 59.2014 68.3579H16.1749ZM16.1749 63.536H59.2014C59.4489 63.536 59.6755 63.4328 59.8813 63.2266C60.0875 63.0208 60.1907 62.7942 60.1907 62.5467V32.3788H15.1856V62.5467C15.1856 62.7942 15.2888 63.0208 15.495 63.2266C15.7008 63.4328 15.9274 63.536 16.1749 63.536ZM15.1856 27.5569H60.1907V19.5202C60.1907 19.2727 60.0875 19.0461 59.8813 18.8403C59.6755 18.6341 59.4489 18.5309 59.2014 18.5309H16.1749C15.9274 18.5309 15.7008 18.6341 15.495 18.8403C15.2888 19.0461 15.1856 19.2727 15.1856 19.5202V27.5569ZM37.6881 44.4956C36.9011 44.4956 36.2303 44.2184 35.6758 43.6638C35.1218 43.1098 34.8448 42.4391 34.8448 41.6515C34.8448 40.8644 35.1218 40.1936 35.6758 39.6391C36.2303 39.0851 36.9011 38.8081 37.6881 38.8081C38.4752 38.8081 39.146 39.0851 39.7005 39.6391C40.2545 40.1936 40.5315 40.8644 40.5315 41.6515C40.5315 42.4391 40.2545 43.1098 39.7005 43.6638C39.146 44.2184 38.4752 44.4956 37.6881 44.4956ZM24.8296 44.4956C24.0425 44.4956 23.3717 44.2184 22.8172 43.6638C22.2632 43.1098 21.9862 42.4391 21.9862 41.6515C21.9862 40.8644 22.2632 40.1936 22.8172 39.6391C23.3717 39.0851 24.0425 38.8081 24.8296 38.8081C25.6166 38.8081 26.2874 39.0851 26.8419 39.6391C27.3959 40.1936 27.6729 40.8644 27.6729 41.6515C27.6729 42.4391 27.3959 43.1098 26.8419 43.6638C26.2874 44.2184 25.6166 44.4956 24.8296 44.4956ZM50.5467 44.4956C49.7597 44.4956 49.0889 44.2184 48.5344 43.6638C47.9804 43.1098 47.7034 42.4391 47.7034 41.6515C47.7034 40.8644 47.9804 40.1936 48.5344 39.6391C49.0889 39.0851 49.7597 38.8081 50.5467 38.8081C51.3338 38.8081 52.0046 39.0851 52.5591 39.6391C53.1131 40.1936 53.3901 40.8644 53.3901 41.6515C53.3901 42.4391 53.1131 43.1098 52.5591 43.6638C52.0046 44.2184 51.3338 44.4956 50.5467 44.4956ZM37.6881 57.1067C36.9011 57.1067 36.2303 56.8294 35.6758 56.2749C35.1218 55.7209 34.8448 55.0504 34.8448 54.2633C34.8448 53.4757 35.1218 52.805 35.6758 52.251C36.2303 51.6964 36.9011 51.4192 37.6881 51.4192C38.4752 51.4192 39.146 51.6964 39.7005 52.251C40.2545 52.805 40.5315 53.4757 40.5315 54.2633C40.5315 55.0504 40.2545 55.7209 39.7005 56.2749C39.146 56.8294 38.4752 57.1067 37.6881 57.1067ZM24.8296 57.1067C24.0425 57.1067 23.3717 56.8294 22.8172 56.2749C22.2632 55.7209 21.9862 55.0504 21.9862 54.2633C21.9862 53.4757 22.2632 52.805 22.8172 52.251C23.3717 51.6964 24.0425 51.4192 24.8296 51.4192C25.6166 51.4192 26.2874 51.6964 26.8419 52.251C27.3959 52.805 27.6729 53.4757 27.6729 54.2633C27.6729 55.0504 27.3959 55.7209 26.8419 56.2749C26.2874 56.8294 25.6166 57.1067 24.8296 57.1067ZM50.5467 57.1067C49.7597 57.1067 49.0889 56.8294 48.5344 56.2749C47.9804 55.7209 47.7034 55.0504 47.7034 54.2633C47.7034 53.4757 47.9804 52.805 48.5344 52.251C49.0889 51.6964 49.7597 51.4192 50.5467 51.4192C51.3338 51.4192 52.0046 51.6964 52.5591 52.251C53.1131 52.805 53.3901 53.4757 53.3901 54.2633C53.3901 55.0504 53.1131 55.7209 52.5591 56.2749C52.0046 56.8294 51.3338 57.1067 50.5467 57.1067Z"
+                                    fill="#1C1B1F" />
+                            </svg>
+                        </div>
+                        <h3>Monthly Stays</h3>
+                        <p>
+                            Flexible, hassle-free
+                            <br>monthly stays—move
+                            <br>easily when work calls
+                        </p>
+                    </div>
+                    <div class="list__item">
+                        <div class="list__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="76" height="77" viewBox="0 0 76 77"
+                                fill="none">
+                                <path
+                                    d="M35.9026 58.9016H40.438V55.8779H44.2176C44.8612 55.8779 45.4001 55.6607 45.8345 55.2263C46.2684 54.7924 46.4854 54.2537 46.4854 53.6102V44.5392C46.4854 43.8957 46.2684 43.3569 45.8345 42.923C45.4001 42.4887 44.8612 42.2715 44.2176 42.2715H34.3907V37.736H46.4854V33.2005H40.438V30.1768H35.9026V33.2005H32.123C31.4794 33.2005 30.9407 33.4177 30.5068 33.8521C30.0724 34.286 29.8552 34.8247 29.8552 35.4682V44.5392C29.8552 45.1827 30.0724 45.7215 30.5068 46.1553C30.9407 46.5897 31.4794 46.8069 32.123 46.8069H41.9499V51.3424H29.8552V55.8779H35.9026V58.9016ZM20.4358 67.5946C18.9083 67.5946 17.6154 67.0655 16.5572 66.0072C15.4989 64.9489 14.9697 63.6561 14.9697 62.1286V15.611C14.9697 14.0836 15.4989 12.7907 16.5572 11.7324C17.6154 10.6742 18.9083 10.145 20.4358 10.145H44.4505L60.3247 26.0193V62.1286C60.3247 63.6561 59.7956 64.9489 58.7373 66.0072C57.679 67.0655 56.3861 67.5946 54.8587 67.5946H20.4358ZM42.1827 26.4259V14.6805H20.4358C20.2029 14.6805 19.9898 14.7775 19.7963 14.9715C19.6022 15.1651 19.5052 15.3782 19.5052 15.611V62.1286C19.5052 62.3614 19.6022 62.5746 19.7963 62.7681C19.9898 62.9621 20.2029 63.0591 20.4358 63.0591H54.8587C55.0915 63.0591 55.3047 62.9621 55.4982 62.7681C55.6922 62.5746 55.7892 62.3614 55.7892 62.1286V26.4259H42.1827Z"
+                                    fill="#1C1B1F" />
+                            </svg>
+                        </div>
+                        <h3>Bills Included</h3>
+                        <p>
+                            One price, no surprise— <br> rent covers utilities, highspeed <br> Wi-Fi, and cleaning
+                        </p>
+                    </div>
+
+                    <div class="list__item">
+                        <div class="list__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="76" height="76" viewBox="0 0 76 76"
+                                fill="none">
+                                <path
+                                    d="M15.2356 65.8558C13.5524 65.8558 12.1277 65.2727 10.9615 64.1065C9.79526 62.9403 9.21216 61.5156 9.21216 59.8324V47.9788H14.2102V59.8324C14.2102 60.089 14.3171 60.3239 14.5309 60.5371C14.7441 60.7509 14.979 60.8578 15.2356 60.8578H59.8327C60.0892 60.8578 60.3241 60.7509 60.5374 60.5371C60.7512 60.3239 60.8581 60.089 60.8581 59.8324V15.2353C60.8581 14.9788 60.7512 14.7439 60.5374 14.5306C60.3241 14.3168 60.0892 14.2099 59.8327 14.2099H15.2356C14.979 14.2099 14.7441 14.3168 14.5309 14.5306C14.3171 14.7439 14.2102 14.9788 14.2102 15.2353V27.0889H9.21216V15.2353C9.21216 13.5521 9.79526 12.1274 10.9615 10.9612C12.1277 9.79501 13.5524 9.21191 15.2356 9.21191H59.8327C61.5159 9.21191 62.9406 9.79501 64.1068 10.9612C65.273 12.1274 65.8561 13.5521 65.8561 15.2353V59.8324C65.8561 61.5156 65.273 62.9403 64.1068 64.1065C62.9406 65.2727 61.5159 65.8558 59.8327 65.8558H15.2356ZM33.1126 52.3996L29.6015 48.786L38.3546 40.0329H9.21216V35.0349H38.3546L29.6015 26.2817L33.1126 22.6682L47.9783 37.5339L33.1126 52.3996Z"
+                                    fill="#1C1B1F" />
+                            </svg>
+                        </div>
+                        <h3>Easy Move-In</h3>
+                        <p>
+                            Ready when you are— <br>just unpack and<br>
+                            start living
+                        </p>
+                    </div>
+                    <div class="list__item">
+                        <div class="list__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="76" height="76" viewBox="0 0 76 76"
+                                fill="none">
+                                <path
+                                    d="M16.7322 62.7839C16.069 62.7839 15.5136 62.5599 15.0661 62.1118C14.618 61.6632 14.394 61.1076 14.394 60.4449V57.3262H13.5543C11.3754 57.3262 9.53118 56.5715 8.02174 55.062C6.51229 53.5531 5.75757 51.7089 5.75757 49.5295V33.936C5.75757 31.637 6.54218 29.763 8.1114 28.3138C9.68114 26.8641 11.4954 26.1393 13.5543 26.1393V20.5023C13.5543 18.3228 14.309 16.4787 15.8185 14.9697C17.3279 13.4603 19.1721 12.7056 21.351 12.7056H55.6566C57.8355 12.7056 59.6797 13.4603 61.1891 14.9697C62.6986 16.4787 63.4533 18.3228 63.4533 20.5023V26.1393C65.5922 26.1393 67.4265 26.8792 68.9562 28.359C70.4854 29.8383 71.25 31.6973 71.25 33.936V49.5295C71.25 51.7089 70.4953 53.5531 68.9858 55.062C67.4764 56.5715 65.6322 57.3262 63.4533 57.3262H62.6136V60.4449C62.6136 61.1076 62.3997 61.6632 61.9719 62.1118C61.5441 62.5599 60.9986 62.7839 60.3354 62.7839C59.6726 62.7839 59.117 62.5599 58.6684 62.1118C58.2199 61.6632 57.9956 61.1076 57.9956 60.4449V57.3262H19.072V60.4449C19.072 61.1086 18.8477 61.6645 18.3992 62.1126C17.9506 62.5601 17.3949 62.7839 16.7322 62.7839ZM13.5543 52.6482H63.4533C64.3369 52.6482 65.0776 52.3493 65.6753 51.7515C66.2731 51.1538 66.572 50.4131 66.572 49.5295V33.936C66.572 33.0524 66.2731 32.3117 65.6753 31.714C65.0776 31.1162 64.3369 30.8173 63.4533 30.8173C62.5696 30.8173 61.829 31.1162 61.2312 31.714C60.6335 32.3117 60.3346 33.0524 60.3346 33.936V45.6311H16.673V33.936C16.673 33.0524 16.3741 32.3117 15.7764 31.714C15.1786 31.1162 14.4379 30.8173 13.5543 30.8173C12.6707 30.8173 11.93 31.1162 11.3322 31.714C10.7345 32.3117 10.4356 33.0524 10.4356 33.936V49.5295C10.4356 50.4131 10.7345 51.1538 11.3322 51.7515C11.93 52.3493 12.6707 52.6482 13.5543 52.6482ZM21.351 40.9531H55.6566V33.936C55.6566 32.673 55.9424 31.5196 56.5142 30.4758C57.086 29.4321 57.8396 28.5584 58.7752 27.8546V20.5023C58.7752 19.6187 58.4764 18.878 57.8786 18.2802C57.2809 17.6825 56.5402 17.3836 55.6566 17.3836H21.351C20.4674 17.3836 19.7267 17.6825 19.1289 18.2802C18.5312 18.878 18.2323 19.6187 18.2323 20.5023V27.8546C19.1679 28.5584 19.9216 29.4321 20.4934 30.4758C21.0651 31.5196 21.351 32.673 21.351 33.936V40.9531Z"
+                                    fill="#1C1B1F" />
+                            </svg>
+                        </div>
+                        <h3>Full Furnished</h3>
+                        <p>
+                            From furniture to
+                            <br>essentials, everything
+                            <br>is provided
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- stay slide -->
+    <section class="stay__slide">
+        <div class="stay__inner basic__container">
+            <div class="inner__title">
+                <p>04</p>
+                <h2>
+                    Your Stay, Your Célib
+                </h2>
+            </div>
+
+            <div class="stay__slide">
+                <div class="swiper staySwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide ">
+                            <div class="slide__items">
+                                <div class="slide__header">
+                                    <p class="content--text">
+                                        The only thing we wished for was that we stayed longer! Will definitely be
+                                        booking with Célib when we come back.
+                                        <span class="people">Annie Rose</span>
+                                    </p>
+
+                                    <div class="icon__city">
+                                        <img src="../assets/images/icon01.png">
+                                    </div>
+                                </div>
+                                <div class="slide__footer">
+                                    <p>At Célib Yeoui</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide ">
+                            <div class="slide__items">
+                                <div class="slide__header">
+                                    <p class="content--text">
+                                        The only thing we wished for was that we stayed longer! Will definitely be
+                                        booking with Célib when we come back.
+                                        <span class="people">Annie Rose</span>
+                                    </p>
+
+                                    <div class="icon__city">
+                                        <img src="../assets/images/icon01.png">
+                                    </div>
+                                </div>
+                                <div class="slide__footer">
+                                    <p>At Célib Yeoui</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide ">
+                            <div class="slide__items">
+                                <div class="slide__header">
+                                    <p class="content--text">
+                                        The only thing we wished for was that we stayed longer! Will definitely be
+                                        booking with Célib when we come back.
+                                        <span class="people">Annie Rose</span>
+                                    </p>
+
+                                    <div class="icon__city">
+                                        <img src="../assets/images/icon01.png">
+                                    </div>
+                                </div>
+                                <div class="slide__footer">
+                                    <p>At Célib Yeoui</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide ">
+                            <div class="slide__items">
+                                <div class="slide__header">
+                                    <p class="content--text">
+                                        The only thing we wished for was that we stayed longer! Will definitely be
+                                        booking with Célib when we come back.
+                                        <span class="people">Annie Rose</span>
+                                    </p>
+
+                                    <div class="icon__city">
+                                        <img src="../assets/images/icon01.png">
+                                    </div>
+                                </div>
+                                <div class="slide__footer">
+                                    <p>At Célib Yeoui</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide ">
+                            <div class="slide__items">
+                                <div class="slide__header">
+                                    <p class="content--text">
+                                        The only thing we wished for was that we stayed longer! Will definitely be
+                                        booking with Célib when we come back.
+                                        <span class="people">Annie Rose</span>
+                                    </p>
+
+                                    <div class="icon__city">
+                                        <img src="../assets/images/icon01.png">
+                                    </div>
+                                </div>
+                                <div class="slide__footer">
+                                    <p>At Célib Yeoui</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide ">
+                            <div class="slide__items">
+                                <div class="slide__header">
+                                    <p class="content--text">
+                                        The only thing we wished for was that we stayed longer! Will definitely be
+                                        booking with Célib when we come back.
+                                        <span class="people">Annie Rose</span>
+                                    </p>
+
+                                    <div class="icon__city">
+                                        <img src="../assets/images/icon01.png">
+                                    </div>
+                                </div>
+                                <div class="slide__footer">
+                                    <p>At Célib Yeoui</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Progress bar -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- limited rooms -->
+
+    <section class="limited__rooms">
+        <div class="limited__inner basic__container">
+            <div class="limited__left">
+                <p>Limited rooms left—</p>
+                <h3>Book now!</h3>
+                <a href="#none" class="btn black-btn">Go for booking</a>
+            </div>
+
+            <div class="limited__right">
+                <img src="../assets/images/etc.png">
+            </div>
+        </div>
+    </section>
+
+    <!-- faq -->
+
+    <section class="faq">
+        <div class="faq__inner basic__container">
+            <div class="inner__title">
+                <h2>
+                    FAQ
+                </h2>
+                <p class="location_descript">
+            </div>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <h3 class="title">
+                        <span>Lorem ipsum dolor sit amet, consectetur?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="27" viewBox="0 0 49 27" fill="none">
+                            <path d="M2 2L24.5 24L47 2" stroke="#797979" stroke-width="4" />
+                        </svg>
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="title">
+                        <span>Lorem ipsum dolor sit amet, consectetur?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="27" viewBox="0 0 49 27" fill="none">
+                            <path d="M2 2L24.5 24L47 2" stroke="#797979" stroke-width="4" />
+                        </svg>
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="title">
+                        <span>Lorem ipsum dolor sit amet, consectetur?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="27" viewBox="0 0 49 27" fill="none">
+                            <path d="M2 2L24.5 24L47 2" stroke="#797979" stroke-width="4" />
+                        </svg>
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="title">
+                        <span>Lorem ipsum dolor sit amet, consectetur?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="27" viewBox="0 0 49 27" fill="none">
+                            <path d="M2 2L24.5 24L47 2" stroke="#797979" stroke-width="4" />
+                        </svg>
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="title">
+                        <span>Lorem ipsum dolor sit amet, consectetur?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="27" viewBox="0 0 49 27" fill="none">
+                            <path d="M2 2L24.5 24L47 2" stroke="#797979" stroke-width="4" />
+                        </svg>
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="title">
+                        <span>Lorem ipsum dolor sit amet, consectetur?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="27" viewBox="0 0 49 27" fill="none">
+                            <path d="M2 2L24.5 24L47 2" stroke="#797979" stroke-width="4" />
+                        </svg>
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="title">
+                        <span>Lorem ipsum dolor sit amet, consectetur?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="27" viewBox="0 0 49 27" fill="none">
+                            <path d="M2 2L24.5 24L47 2" stroke="#797979" stroke-width="4" />
+                        </svg>
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="title">
+                        <span>Lorem ipsum dolor sit amet, consectetur?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="27" viewBox="0 0 49 27" fill="none">
+                            <path d="M2 2L24.5 24L47 2" stroke="#797979" stroke-width="4" />
+                        </svg>
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="title">
+                        <span>Lorem ipsum dolor sit amet, consectetur?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="27" viewBox="0 0 49 27" fill="none">
+                            <path d="M2 2L24.5 24L47 2" stroke="#797979" stroke-width="4" />
+                        </svg>
+                    </h3>
+                    <p class="paragraph">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis vel leo sed facilisis.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+            </div>
+
+            <div class="view__more">
+                <a href="#none">View more</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- footer -->
+
+    <footer>
+        <div class="footer__inner">
+            <ul>
+                <li>
+                    <div class="footer__logo">
+                        <img src="../assets/images/footer_logo.svg">
+                    </div>
+                </li>
+                <li>
+                    <ul class="footer__info">
+                        <li>
+                            <p class="info__items">Contact us</p>
+                        </li>
+                        <li>
+                            <p class="info__items">+82 10 1234 5678</p>
+                        </li>
+                        <li>
+                            <p class="info__items">celib@celib.kr</p>
+                        </li>
+
+                    </ul>
+                    <div class="copy__right">
+                        <p>©2025 Célib Life & Stay</p>
+                        <p>by Woozoo Property Management</p>
+                    </div>
+                </li>
+                <li>
+                    <a href="#none" class="link__items">
+                        Privacy Policy
+                    </a>
+                    <a href="#none" class="link__items">
+                        Terms of Use
+                    </a>
+                </li>
+                <li class="sns__list">
+                    <a href="#none" class="sns__items">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" fill="none">
+                            <g clip-path="url(#clip0_2_365)">
+                                <path
+                                    d="M13.2495 0.319308C10.8431 0.432844 9.1998 0.816875 7.76319 1.38139C6.27637 1.96083 5.01617 2.73839 3.7623 3.99678C2.50843 5.25517 1.7363 6.51627 1.16093 8.00536C0.60411 9.44513 0.226864 11.0898 0.120566 13.4976C0.0142672 15.9054 -0.00925413 16.6793 0.00250653 22.8211C0.0142672 28.9629 0.0414072 29.7327 0.158109 32.1455C0.273002 34.5514 0.655676 36.1943 1.22019 37.6314C1.80053 39.1182 2.57719 40.3779 3.83603 41.6323C5.09487 42.8866 6.35508 43.6569 7.84778 44.2332C9.2862 44.7891 10.9313 45.1682 13.3387 45.2736C15.746 45.3789 16.5208 45.4034 22.6608 45.3916C28.8008 45.3798 29.5738 45.3527 31.9861 45.2383C34.3984 45.1238 36.0327 44.7384 37.4702 44.1766C38.957 43.5949 40.2177 42.8196 41.4711 41.5603C42.7245 40.301 43.4962 39.039 44.0711 37.5491C44.6284 36.1106 45.007 34.4655 45.1114 32.06C45.2168 29.6459 45.2417 28.8751 45.23 22.7342C45.2182 16.5934 45.1906 15.8235 45.0762 13.4116C44.9617 10.9998 44.5786 9.3619 44.0145 7.92394C43.4333 6.43712 42.6575 5.17827 41.3991 3.92305C40.1408 2.66782 38.8778 1.89659 37.3883 1.32304C35.949 0.766214 34.3047 0.386706 31.8974 0.282669C29.4901 0.178633 28.7153 0.151945 22.573 0.163706C16.4308 0.175466 15.6618 0.201702 13.2495 0.319308ZM13.5137 41.2048C11.3086 41.1089 10.1113 40.7425 9.31334 40.4358C8.25668 40.0287 7.504 39.5366 6.7088 38.7491C5.9136 37.9616 5.42508 37.2062 5.01255 36.1518C4.7027 35.3539 4.32953 34.1579 4.2264 31.9528C4.11422 29.5694 4.09069 28.8539 4.07758 22.8157C4.06446 16.7775 4.08753 16.0628 4.19202 13.6785C4.2861 11.4752 4.65475 10.2765 4.96098 9.47906C5.36808 8.42105 5.85841 7.66972 6.64774 6.87498C7.43706 6.08023 8.19019 5.5908 9.24549 5.17827C10.0425 4.86707 11.2385 4.49706 13.4427 4.39212C15.8278 4.27903 16.5425 4.25642 22.5798 4.2433C28.6171 4.23018 29.3336 4.2528 31.7197 4.35774C33.923 4.45363 35.1221 4.81867 35.9187 5.12671C36.9758 5.53381 37.728 6.02278 38.5228 6.81346C39.3175 7.60414 39.8074 8.35456 40.2199 9.41211C40.5316 10.2069 40.9016 11.4024 41.0056 13.608C41.1192 15.9931 41.1449 16.7082 41.1558 22.7451C41.1666 28.7819 41.1454 29.4989 41.0409 31.8822C40.9446 34.0873 40.5791 35.2851 40.2719 36.0839C39.8648 37.1401 39.3741 37.8933 38.5843 38.6876C37.7945 39.4819 37.0423 39.9713 35.9865 40.3838C35.1904 40.6946 33.9931 41.0655 31.7907 41.1704C29.4055 41.2826 28.6908 41.3061 22.6513 41.3193C16.6117 41.3324 15.8993 41.3079 13.5142 41.2048M31.9513 10.69C31.9522 11.2268 32.1122 11.7513 32.4112 12.1971C32.7102 12.6429 33.1347 12.9901 33.631 13.1946C34.1274 13.3992 34.6732 13.452 35.1995 13.3463C35.7258 13.2407 36.209 12.9813 36.5879 12.601C36.9667 12.2207 37.2244 11.7366 37.3281 11.2099C37.4318 10.6832 37.3771 10.1376 37.1707 9.64202C36.9643 9.14646 36.6156 8.72324 36.1687 8.42587C35.7217 8.12851 35.1966 7.97036 34.6598 7.97143C33.9402 7.97287 33.2506 8.26006 32.7427 8.76986C32.2347 9.27966 31.9501 9.97031 31.9513 10.69ZM11.0037 22.8003C11.0164 29.2144 16.2254 34.4022 22.6382 34.39C29.0509 34.3777 34.2423 29.1691 34.2301 22.755C34.2179 16.341 29.0075 11.1518 22.5938 11.1645C16.1802 11.1771 10.9915 16.3871 11.0037 22.8003ZM15.0774 22.7921C15.0745 21.3011 15.5137 19.8426 16.3397 18.6012C17.1656 17.3597 18.3412 16.3911 19.7176 15.8178C21.094 15.2444 22.6096 15.0921 24.0726 15.3801C25.5356 15.6681 26.8803 16.3835 27.9368 17.4358C28.9932 18.488 29.7139 19.8299 30.0077 21.2918C30.3015 22.7536 30.1552 24.2698 29.5873 25.6485C29.0194 27.0272 28.0555 28.2065 26.8173 29.0374C25.5792 29.8682 24.1225 30.3133 22.6314 30.3162C21.6413 30.3183 20.6605 30.1253 19.745 29.7483C18.8296 29.3713 17.9973 28.8176 17.2958 28.1189C16.5944 27.4202 16.0374 26.5902 15.6568 25.6762C15.2761 24.7622 15.0793 23.7822 15.0774 22.7921Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_2_365">
+                                    <rect width="45.2333" height="45.2333" fill="white"
+                                        transform="translate(0 0.160156)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </a>
+                    <a href="#none" class="sns__items">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                            <path
+                                d="M0.916667 40.0833V4.83333C0.916667 3.75625 1.30017 2.8342 2.06719 2.06719C2.8342 1.30017 3.75625 0.916667 4.83333 0.916667H36.1667C37.2438 0.916667 38.1658 1.30017 38.9328 2.06719C39.6998 2.8342 40.0833 3.75625 40.0833 4.83333V28.3333C40.0833 29.4104 39.6998 30.3325 38.9328 31.0995C38.1658 31.8665 37.2438 32.25 36.1667 32.25H8.75L0.916667 40.0833ZM7.08542 28.3333H36.1667V4.83333H4.83333V30.5365L7.08542 28.3333Z"
+                                fill="white" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.js"></script>
+    <!-- dropdown js -->
+    <script src="../assets/js/dropdown.js"></script>
+    <script src="../assets/js/slide.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
+
 </html>
