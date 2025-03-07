@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body>
@@ -62,18 +63,13 @@
                         </div>
                     </div>
 
-                    <div class="custom__dropdown">
+                    <div class="custom__dropdown date-dropdown">
                         <div class="dropdown__header">
                             <span class="selected__option">Check in / out</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 20 16"
                                 fill="none" class="dropdown__arrow">
                                 <path d="M9.83777 16L0.636684 0.25L19.0389 0.250002L9.83777 16Z" fill="black" />
                             </svg>
-                        </div>
-                        <div class="dropdown__options">
-                            <div class="dropdown__option" data-value="today">Today</div>
-                            <div class="dropdown__option" data-value="tomorrow">Tomorrow</div>
-                            <div class="dropdown__option" data-value="custom">Custom Date</div>
                         </div>
                     </div>
                 </div>
@@ -348,7 +344,7 @@
     </section>
 
     <!-- stay slide -->
-    <section class="stay__slide">
+    <section class="stay__slide_wrapp">
         <div class="stay__inner basic__container">
             <div class="inner__title">
                 <p>04</p>
@@ -704,6 +700,7 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
     <!-- dropdown js -->
     <script src="../assets/js/dropdown.js"></script>
     <script src="../assets/js/slide.js"></script>

@@ -84,7 +84,7 @@ header {
 
             h1 {
                 color: #FFF;
-                font-size: 108px;
+                font-size: 6.25rem;
                 font-weight: 600;
             }
 
@@ -110,7 +110,7 @@ header {
         background-color: $color-bage;
         padding: 0.938rem 3.125rem;
         box-sizing: border-box;
-        margin-top: -30px;
+        margin-top: -1.875rem;
 
         .book-now__title {
             font-weight: 600;
@@ -123,7 +123,7 @@ header {
             display: flex;
             width: 100%;
             justify-content: space-between;
-            gap: 90px;
+            gap: 5.625rem;
             align-items: flex-end;
 
             .black-btn {
@@ -142,11 +142,11 @@ header {
                 display: flex;
                 gap: 1.25rem;
                 width: calc(100% - 345px);
-
+            
                 .custom__dropdown {
                     position: relative;
                     width: 100%;
-
+            
                     .dropdown__header {
                         display: flex;
                         justify-content: space-between;
@@ -154,18 +154,18 @@ header {
                         padding: 0.875rem 0;
                         border-bottom: 1px solid #000;
                         cursor: pointer;
-
+            
                         .selected__option {
                             color: #000;
                             font-size: 1.5rem;
                             font-weight: 500;
                         }
-
+            
                         .dropdown__arrow {
                             transition: transform 0.3s ease;
                         }
                     }
-
+            
                     .dropdown__options {
                         position: absolute;
                         top: 100%;
@@ -177,23 +177,23 @@ header {
                         overflow: hidden;
                         transition: max-height 0.3s ease;
                         z-index: 10;
-
+            
                         .dropdown__option {
                             padding: 0.625rem;
                             cursor: pointer;
                             font-family: "Outfit", sans-serif;
-
+            
                             &:hover {
                                 background-color: #f5f5f5;
                             }
                         }
                     }
-
+            
                     &.active {
                         .dropdown__arrow {
                             transform: rotate(180deg);
                         }
-
+            
                         .dropdown__options {
                             max-height: 200px;
                             border: 1px solid #ccc;
@@ -201,6 +201,79 @@ header {
                     }
                 }
             }
+            
+            /* Flatpickr customization */
+            .flatpickr-calendar {
+                font-family: "Outfit", sans-serif;
+                box-shadow: 0 0 10px rgba(0,0,0,0.2);
+                border-radius: 5px;
+                width: auto !important;
+                margin-top: 0.5rem !important;
+                z-index: 100 !important;
+            }
+            
+            .flatpickr-day.selected, 
+            .flatpickr-day.startRange, 
+            .flatpickr-day.endRange, 
+            .flatpickr-day.selected.inRange, 
+            .flatpickr-day.startRange.inRange, 
+            .flatpickr-day.endRange.inRange, 
+            .flatpickr-day.selected:focus, 
+            .flatpickr-day.startRange:focus, 
+            .flatpickr-day.endRange:focus, 
+            .flatpickr-day.selected:hover, 
+            .flatpickr-day.startRange:hover, 
+            .flatpickr-day.endRange:hover, 
+            .flatpickr-day.selected.prevMonthDay, 
+            .flatpickr-day.startRange.prevMonthDay, 
+            .flatpickr-day.endRange.prevMonthDay, 
+            .flatpickr-day.selected.nextMonthDay, 
+            .flatpickr-day.startRange.nextMonthDay, 
+            .flatpickr-day.endRange.nextMonthDay {
+                background: #000;
+                border-color: #000;
+            }
+            
+            .flatpickr-day.inRange {
+                background: rgba(0,0,0,0.1);
+            }
+            
+            /* 새로 추가된 스타일 */
+            .date-dropdown {
+                position: relative;
+                
+                .date-picker-input {
+                    position: absolute;
+                    opacity: 0;
+                    height: 0;
+                    pointer-events: none;
+                }
+            }
+
+            .flatpickr-day.selected.startRange, .flatpickr-day.startRange.startRange, .flatpickr-day.endRange.startRange {
+                border-radius: 50%!important;
+            }
+
+            .flatpickr-day.selected.endRange, .flatpickr-day.startRange.endRange, .flatpickr-day.endRange.endRange{
+                border-radius: 50%!important;
+            }
+        }
+        .flatpickr-innerContainer{
+            padding: 0.75rem;
+        }
+
+
+        .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)), .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)), .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)){
+            box-shadow: none;
+        }
+
+        .flatpickr-months .flatpickr-prev-month, .flatpickr-months .flatpickr-next-month{
+            display: flex;
+            align-items: center;
+        }
+
+        .flatpickr-current-month{
+            padding: 14.48px 0 0 0;
         }
     }
 }
@@ -225,7 +298,7 @@ header {
     padding: 7rem 0 11rem;
 
     .inner__title {
-        margin-bottom: 110px;
+        margin-bottom: 6.875rem;
 
         p {
             color: $color-orange;
@@ -257,7 +330,7 @@ header {
 
     .rooms__inner {
         display: flex;
-        gap: 150px;
+        gap: 9.375rem;
 
         .room__left {
             font-size: 3rem;
@@ -269,7 +342,7 @@ header {
             .inner__descript {
                 font-size: 1.25rem;
                 font-weight: 400;
-                margin-bottom: 40px;
+                margin-bottom: 2.5rem;
                 line-height: 1.2;
             }
         }
@@ -314,7 +387,7 @@ header {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                gap: 16px;
+                gap: 1rem;
 
                 .slide-img {
                     width: 100%;
@@ -349,7 +422,7 @@ header {
     // Progress bar styling
     .swiper-pagination {
         position: relative;
-        margin-top: 20px;
+        margin-top: 1.25rem;
 
         &-progressbar {
             background: rgba(0, 0, 0, 0.1);
@@ -372,7 +445,7 @@ header {
     padding: 6.25rem 0 9.375rem;
 
     .inner__title {
-        margin-bottom: 110px;
+        margin-bottom: 6.875rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -417,7 +490,7 @@ header {
 
     .location__content {
         display: flex;
-        gap: 34px;
+        gap: 2.125rem;
 
         .location__card {
             width: 50%;
@@ -426,7 +499,7 @@ header {
             &.seoul__location {
                 background: url('../images/location.png');
                 background-size: cover;
-                padding: 50px;
+                padding: 3.125rem;
                 box-sizing: border-box;
 
                 .location__info {
@@ -439,9 +512,9 @@ header {
                     h3 {
                         color: #FFF;
                         text-align: center;
-                        font-size: 64px;
+                        font-size: 4ren;
                         font-weight: 600;
-                        margin-bottom: 4px;
+                        margin-bottom: 0.25rem;
                         line-height: 1.2;
                     }
 
@@ -449,9 +522,9 @@ header {
                         display: flex;
                         align-items: center;
                         color: #ECECEC;
-                        font-size: 24px;
+                        font-size: 1.5rem;
                         font-weight: 400;
-                        margin-bottom: 20px;
+                        margin-bottom: 1.25rem;
 
                     }
 
@@ -466,7 +539,7 @@ header {
                     background: #F6E8D6;
                     backdrop-filter: blur(15px);
                     color: #0A0A0A;
-                    font-size: 32px;
+                    font-size: 2rem;
                     font-weight: 500;
                     text-decoration: none;
                 }
@@ -475,7 +548,7 @@ header {
             &.comming--soon {
                 background: url('../images/location01.png');
                 background-size: cover;
-                padding: 50px;
+                padding: 3.125rem;
                 box-sizing: border-box;
 
                 .location__info {
@@ -486,13 +559,13 @@ header {
                     justify-content: flex-end;
 
                     .opacity--text {
-                        font-size: 40px;
+                        font-size: 2.5rem;
                         color: #797979;
                         font-weight: 600;
                     }
 
                     .comming-text {
-                        font-size: 48px;
+                        font-size: 3rem;
                         color: #FFF;
                         font-weight: 500;
                         line-height: 1.2;
@@ -508,7 +581,7 @@ header {
     padding: 6.25rem 0 9.375rem;
 
     .inner__title {
-        margin-bottom: 110px;
+        margin-bottom: 6.875rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -558,7 +631,7 @@ header {
         .list__item {
             width: calc(100% / 4);
             background: #fff;
-            padding: 38px 30px;
+            padding: 2.375rem 1.875rem;
             box-sizing: border-box;
             height: 300px;
             display: flex;
@@ -572,14 +645,14 @@ header {
             }
 
             h3 {
-                font-size: 32px;
+                font-size: 2rem;
                 font-weight: 500;
                 color: $text-black;
             }
 
             p {
                 color: #242424;
-                font-size: 18px;
+                font-size: 1.125rem;
                 font-weight: 400;
             }
         }
@@ -587,12 +660,12 @@ header {
 }
 
 
-.stay__slide {
+.stay__slide_wrapp {
     background-color: #242424;
     padding: 6.25rem 0 5.625rem;
 
     .inner__title {
-        margin-bottom: 110px;
+        margin-bottom: 3.375rem;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -637,7 +710,7 @@ header {
         flex-direction: column;
 
         .slide__header {
-            padding: 25px 30px 23px 22px;
+            padding: 1.563rem 1.875rem 1.438rem 1.375rem;
             box-sizing: border-box;
             display: flex;
             justify-content: space-between;
@@ -645,7 +718,7 @@ header {
             height: calc(100% - 44px);
 
             .content--text {
-                font-size: 24px;
+                font-size: 1.5rem;
                 font-weight: 500;
                 color: #0A0A0A;
 
@@ -654,7 +727,7 @@ header {
                     color: #797979;
                     font-weight: 400;
                     font-size: 1rem;
-                    margin-top: 10px;
+                    margin-top: 0.625rem;
                 }
             }
 
@@ -684,7 +757,7 @@ header {
 
     .swiper-pagination {
         position: relative;
-        margin-top: 20px;
+        margin-top: 1.25rem;
 
         &-progressbar {
             background: #797979;
@@ -699,13 +772,13 @@ header {
 
 // limited__rooms
 .limited__rooms {
-    padding: 74px 0 150px;
+    padding: 4.625rem 0 9.375rem;
 
     .limited__inner {
         background: url('../images/background.png') no-repeat;
         height: 400px;
         background-size: cover;
-        padding: 28px 100px 28px 27px;
+        padding: 1.75rem 6.25rem 1.75rem 1.75rem;
         box-sizing: border-box;
         display: flex;
         align-items: center;
@@ -714,17 +787,17 @@ header {
         .limited__left {
             p {
                 color: #242424;
-                font-size: 48px;
+                font-size: 3rem;
                 font-weight: 500;
                 line-height: 1.2;
             }
 
             h3 {
-                font-size: 84px;
+                font-size: 5.25rem;
                 color: #0A0A0A;
                 font-weight: 600;
                 line-height: 1.2;
-                margin-bottom: 45px;
+                margin-bottom: 2.8rem;
             }
 
             .black-btn {
@@ -735,7 +808,7 @@ header {
                 align-items: center;
                 justify-content: center;
                 color: #FFF;
-                font-size: 36px;
+                font-size: 2.25rem;
                 font-weight: 500;
                 text-decoration: none;
                 line-height: 1.2;
@@ -747,10 +820,10 @@ header {
 // faq
 
 .faq {
-    padding: 100px 0 150px;
+    padding: 6.25rem 0 9.375rem;
 
     .inner__title {
-        margin-bottom: 110px;
+        margin-bottom: 6.875rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -785,7 +858,7 @@ header {
     }
 
     .accordion-item {
-        padding: 20px 0;
+        padding: 1.25rem 0;
         margin: 0;
         overflow: hidden;
         border-bottom: 1.3px solid #d4d4d4;
@@ -795,12 +868,12 @@ header {
             justify-content: space-between;
             align-items: center;
             font-weight: 500;
-            font-size: 36px;
+            font-size: 2.25rem;
             cursor: pointer;
             color: #242424;
 
             svg {
-                width: 36px;
+                width: 2.25rem;
                 height: auto;
                 color: #454545;
                 transform: translateX(-50%) rotate(0);
@@ -810,7 +883,7 @@ header {
 
         .paragraph {
             font-weight: 400;
-            font-size: 24px;
+            font-size: 1.5rem;
             color: #797979;
             display: none;
             padding: 1rem 0;
@@ -836,20 +909,20 @@ header {
 
             .paragraph {
                 display: block;
-                padding: 20px 0;
+                padding: 1.25rem 0;
             }
         }
     }
 
     .view__more{
-        margin-top: 50px;
+        margin-top: 3.125rem;
         a{
             display: flex;
             align-items: center;
             justify-content: center;
             color: #242424;
             font-weight: 500;
-            font-size: 36px;
+            font-size: 2.25rem;
         }
     }
 
@@ -859,7 +932,7 @@ header {
 // footer
 footer{
     background-color: #0A0A0A;
-    padding: 60px 0 80px;
+    padding: 3.75rem 0 5rem;
 
     .footer__inner{
         max-width: 1280px;
@@ -869,7 +942,7 @@ footer{
             justify-content: space-between;
 
             .footer__logo{
-                width: 168px;
+                width: 138px;
                 height: auto;
                 img{
                     width: 100%;
@@ -880,11 +953,11 @@ footer{
             .footer__info{
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
-                margin-bottom: 50px;
+                gap: 0.75rem;
+                margin-bottom: 3.125rem;
                 .info__items{
                     color: #fff;
-                    font-size: 24px;
+                    font-size: 1.25rem;
                     font-weight: 400;
                 }
 
@@ -892,7 +965,7 @@ footer{
 
             .copy__right{
                 color: #797979;
-                font-size: 20px;
+                font-size: 1.125rem;
                 font-weight: 400;
                 line-height: 1.2;
             }
@@ -900,22 +973,22 @@ footer{
             .link__items{
                 display: block;
                 color: #fff;
-                font-size: 20px;
+                font-size: 1rem;
                 font-weight: 400;
                 line-height: 1.2;
-                margin-bottom: 6px;
+                margin-bottom: 0.375rem;
             }
         }
 
         .sns__list{
             display: flex;
-            gap:20px;
+            gap:1.25rem;
             .sns__items{
                 display: flex;
 
 
                 svg{
-                    width: 42px;
+                    width: 2rem;
                 }
             }
         }
