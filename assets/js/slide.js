@@ -1,7 +1,6 @@
-
-// main room slide
 document.addEventListener('DOMContentLoaded', function() {
-    const swiper = new Swiper(".roomSwiper", {
+    // Initialize PC Swiper - This will only be visible on desktop
+    const roomSwiper = new Swiper(".roomSwiper", {
         slidesPerView: 2.2,
         spaceBetween: 16,
         // loop: true,
@@ -10,23 +9,32 @@ document.addEventListener('DOMContentLoaded', function() {
         //     disableOnInteraction: false
         // },
         pagination: {
-            el: ".swiper-pagination",
+            el: ".roomSwiper .swiper-pagination",
             type: "progressbar"
         },
     });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    const swiper = new Swiper(".spaceSwiper", {
-        slidesPerView: 2.2,
-        spaceBetween: 16,
+    // Initialize Mobile Swiper - This will only be visible on mobile
+    const roomMobileSwiper = new Swiper(".roomMobileSwiper", {
+        slidesPerView: 1.2,  // Show slightly more than 1 slide on mobile
+        spaceBetween: 10,    // Less space between slides on mobile
         // loop: true,
         // autoplay: {
         //     delay: 3000,
         //     disableOnInteraction: false
         // },
         pagination: {
-            el: ".swiper-pagination",
+            el: ".roomMobileSwiper .swiper-pagination",
+            type: "progressbar"
+        },
+    });
+    
+    // Initialize any other swipers like spaceSwiper if needed
+    const spaceSwiper = new Swiper(".spaceSwiper", {
+        slidesPerView: 2.2,
+        spaceBetween: 16,
+        pagination: {
+            el: ".spaceSwiper .swiper-pagination",
             type: "progressbar"
         },
     });

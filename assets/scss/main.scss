@@ -45,6 +45,113 @@ header {
                 }
             }
         }
+
+        .mobile-menu-icon {
+            display: none;
+            width: 30px;
+            height: 22px;
+            position: relative;
+            cursor: pointer;
+            z-index: 10;
+            
+            span {
+                display: block;
+                position: absolute;
+                height: 3px;
+                width: 100%;
+                background: $text-black;
+                border-radius: 3px;
+                left: 0;
+                transform: rotate(0deg);
+                transition: .25s ease-in-out;
+                
+                &:nth-child(1) {
+                    top: 0px;
+                }
+                
+                &:nth-child(2),
+                &:nth-child(3) {
+                    top: 9px;
+                }
+                
+                &:nth-child(4) {
+                    top: 18px;
+                }
+            }
+            
+            // Hamburger animation when active
+            &.active {
+                span {
+                    &:nth-child(1) {
+                        top: 9px;
+                        width: 0%;
+                        left: 50%;
+                    }
+                    
+                    &:nth-child(2) {
+                        transform: rotate(45deg);
+                    }
+                    
+                    &:nth-child(3) {
+                        transform: rotate(-45deg);
+                    }
+                    
+                    &:nth-child(4) {
+                        top: 9px;
+                        width: 0%;
+                        left: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.mobile-dropdown {
+    display: none;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    z-index: 8;
+    
+    &.open {
+        max-height: 300px;
+    }
+    
+    ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        
+        li {
+            width: 100%;
+            text-align: center;
+            border-bottom: 1px solid #fff;
+            
+            &:last-child {
+                border-bottom: none;
+            }
+            
+            a {
+                color: #fff;
+                display: block;
+                padding: 20px 0;
+                font-size: 1.25rem;
+                text-decoration: none;
+                transition: background-color 0.2s ease;
+                
+                &:hover {
+                    background-color: lighten(#000, 10%);
+                }
+            }
+        }
     }
 }
 
@@ -293,7 +400,7 @@ header {
     }
 }
 
-// ay--inner
+// way--inner
 .way--inner {
     padding: 7rem 0 11rem;
 
@@ -365,6 +472,14 @@ header {
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+
+        &.roomSwiper{
+            display: block;
+        }
+
+        &.roomMobileSwiper{
+            display: none;
+        }
     }
 
     .swiper-slide {
@@ -993,5 +1108,145 @@ footer{
             }
         }
         
+    }
+}
+
+
+
+// mobile
+
+
+
+@media screen and (max-width:768px){
+
+
+    header {
+        width: 100%;
+        padding: 1.25rem 0;
+    
+        .header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+    
+            .logo {
+                width: 72px;
+                height: auto;
+    
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+    
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-icon {
+                display: block; // Show mobile menu icon
+            }
+        }
+    }
+
+    .mobile-dropdown {
+        display: block; // Show mobile dropdown structure (but still hidden until toggled)
+    }
+
+    // main room slide
+
+    .way--inner {
+    
+        .inner__title {
+            margin-bottom: 1.875rem;
+    
+            p {
+                color: $color-orange;
+                font-weight: 600;
+                font-size: 1.25rem;
+                line-height: 1.2;
+            }
+    
+            h2 {
+                font-weight: 600;
+                color: $text-lightblack;
+                font-size: 2.625rem;
+                line-height: 1.2;
+                position: relative;
+                width: fit-content;
+    
+                &::after {
+                    position: absolute;
+                    right: -20px;
+                    content: '';
+                    width: 18px;
+                    height: 18px;
+                    background-color: #FF8400;
+                    border-radius: 50%;
+                    bottom: 68px;
+                }
+            }
+        }
+    
+        .rooms__inner {
+            display: flex;
+            gap: 0.625rem;
+            flex-direction:  column;
+    
+            .room__left {
+                font-size: 3rem;
+                font-weight: 600;
+                color: $text-lightblack;
+            }
+    
+            .room__right {
+                .inner__descript {
+                    font-size: 1.25rem;
+                    font-weight: 400;
+                    margin-bottom: 2.5rem;
+                    line-height: 1.2;
+                }
+            }
+        }
+    
+        .space__inner {
+            margin-top: 7.5rem;
+        }
+    }
+
+
+    .inner__slide {
+        width: 100%;
+        max-width: 100%;
+    
+        .swiper {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+
+            &.roomSwiper{
+                display: none!important;
+            }
+
+            &.roomMobileSwiper{
+                display: block;
+            }
+        }
+    
+    
+        // Progress bar styling
+        .swiper-pagination {
+            position: relative;
+            margin-top: 1.25rem;
+    
+            &-progressbar {
+                background: rgba(0, 0, 0, 0.1);
+                height: 4px;
+    
+                .swiper-pagination-progressbar-fill {
+                    background: #242424;
+                }
+            }
+        }
     }
 }

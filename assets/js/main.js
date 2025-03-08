@@ -1,3 +1,46 @@
+
+// mobile header
+
+// Mobile menu toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Get DOM elements
+    const menuToggle = document.getElementById('mobileMenuToggle');
+    const mobileDropdown = document.getElementById('mobileDropdown');
+    
+    // Toggle mobile menu when hamburger icon is clicked
+    if (menuToggle && mobileDropdown) {
+        menuToggle.addEventListener('click', function() {
+            // Toggle active class for the hamburger icon animation
+            this.classList.toggle('active');
+            
+            // Toggle open class for the dropdown menu
+            mobileDropdown.classList.toggle('open');
+        });
+    }
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideMenu = mobileDropdown.contains(event.target);
+        const isClickOnToggle = menuToggle.contains(event.target);
+        
+        // If the menu is open and click is outside menu and toggle
+        if (mobileDropdown.classList.contains('open') && !isClickInsideMenu && !isClickOnToggle) {
+            menuToggle.classList.remove('active');
+            mobileDropdown.classList.remove('open');
+        }
+    });
+    
+    // Close mobile menu when window is resized above mobile breakpoint
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileDropdown.classList.contains('open')) {
+            menuToggle.classList.remove('active');
+            mobileDropdown.classList.remove('open');
+        }
+    });
+});
+
+
+
 // Initial setup for accordion functionality
 const accordionItems = document.querySelectorAll(".accordion-item");
 const viewMoreBtn = document.querySelector(".view__more a");
@@ -57,3 +100,6 @@ viewMoreBtn.addEventListener("click", function(e) {
 
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", initializeAccordion);
+
+
+

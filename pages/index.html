@@ -16,7 +16,7 @@
     <header>
         <div class="header__inner basic__container">
             <div class="logo">
-                <img src="/assets/images/logo.svg" alt="Celib">
+                <img src="../assets/images/logo.svg" alt="Celib">
             </div>
             <nav>
                 <ul>
@@ -24,9 +24,29 @@
                     <li><a href="./sign_in.html">Sign in</a></li>
                 </ul>
             </nav>
+
+            <!-- Mobile Menu Icon -->
+            <div class="mobile-menu-icon" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
 
+        
+
     </header>
+
+
+    <div class="mobile-dropdown" id="mobileDropdown">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Célib Gadi</a></li>
+            <li><a href="./sign_in.html">Login</a></li>
+            <li><a href="./sign_up.html">Sign up</a></li>
+        </ul>
+    </div>
 
     <!-- main banner -->
     <section class="main-banner">
@@ -147,6 +167,31 @@
                             </div>
 
                             <!-- Progress bar -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+
+                        <div class="swiper roomMobileSwiper">
+                            <div class="swiper-wrapper">
+                                <!-- Mobile Slide 1 -->
+                                <div class="swiper-slide">
+                                    <img src="../assets/images/room01.png" alt="Hotel room desk area" class="slide-img">
+                                    <div class="room__list--dual">
+                                        <img src="../assets/images/room02.png" alt="Hotel room bed" class="slide-img">
+                                        <img src="../assets/images/room03.png" alt="Hotel room bathroom sink" class="slide-img">
+                                    </div>
+                                </div>
+                
+                                <!-- Mobile Slide 2 -->
+                                <div class="swiper-slide">
+                                    <div class="room__list--dual">
+                                        <img src="../assets/images/room03.png" alt="Hotel room bathroom sink" class="slide-img">
+                                        <img src="../assets/images/room01.png" alt="Hotel room full view" class="slide-img">
+                                    </div>
+                                    <img src="../assets/images/room02.png" alt="Hotel room bed" class="slide-img">
+                                </div>
+                            </div>
+                
+                            <!-- Progress bar for mobile -->
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
