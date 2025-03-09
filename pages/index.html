@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
 </head>
 
 <body>
@@ -54,6 +54,7 @@
             <div class="fixed__banner">
                 20% promotion now
             </div>
+
             <div class="banner__content basic__container">
                 <h1>STAY SMART.</h1>
                 <h1>WORK BETTER.</h1>
@@ -157,13 +158,7 @@
                                     </div>
                                 </div>
 
-                                <div class="swiper-slide dual-slide">
-                                    <div class="slide-content dual-image">
-                                        <img src="../assets/images/room02.png" alt="Hotel room bed" class="slide-img">
-                                        <img src="../assets/images/room03.png" alt="Hotel room bathroom sink"
-                                            class="slide-img">
-                                    </div>
-                                </div>
+                               
                             </div>
 
                             <!-- Progress bar -->
@@ -189,6 +184,14 @@
                                     </div>
                                     <img src="../assets/images/room02.png" alt="Hotel room bed" class="slide-img">
                                 </div>
+
+                                <div class="swiper-slide">
+                                    <img src="../assets/images/room01.png" alt="Hotel room desk area" class="slide-img">
+                                    <div class="room__list--dual">
+                                        <img src="../assets/images/room02.png" alt="Hotel room bed" class="slide-img">
+                                        <img src="../assets/images/room03.png" alt="Hotel room bathroom sink" class="slide-img">
+                                    </div>
+                                </div>
                             </div>
                 
                             <!-- Progress bar for mobile -->
@@ -211,36 +214,49 @@
                     <div class="inner__slide">
                         <div class="swiper spaceSwiper">
                             <div class="swiper-wrapper">
-                                <!-- Slide 1: Single full-width image -->
-                                <div class="swiper-slide ">
-                                    <div class="slide-content single-image">
-                                        <img src="../assets/images/space.png" alt="Hotel room desk area"
-                                            class="slide-img">
-                                    </div>
-                                </div>
-
-                                <!-- Slide 2: Two half-width images -->
-                                <div class="swiper-slide dual-slide">
-                                    <div class="slide-content dual-image">
-                                        <img src="../assets/images/space01.png" alt="Hotel room bed" class="slide-img">
-                                        <img src="../assets/images/space02.png" alt="Hotel room bathroom sink"
-                                            class="slide-img">
-                                    </div>
-                                </div>
-
-                                <!-- Slide 3: Single full-width image -->
+                                <!-- 슬라이드 1: 좌측 큰 이미지와 우측 두 개의 작은 이미지 -->
                                 <div class="swiper-slide">
-                                    <div class="slide-content single-image">
-                                        <img src="../assets/images/space.png" alt="Hotel room full view"
-                                            class="slide-img">
+                                    <!-- 왼쪽 열 - 큰 이미지 -->
+                                    <div class="left-column">
+                                        <img src="../assets/images/space.png" alt="Living Room" class="slide-img">
+                                        <div class="space-caption">Living Room | Celib Yeoul</div>
+                                    </div>
+                                    
+                                    <!-- 오른쪽 열 - 두 개의 작은 이미지 -->
+                                    <div class="right-column">
+                                        <div class="right-column-wrap">
+                                            <img src="../assets/images/space01.png" alt="Study Room" class="slide-img">
+                                            <div class="space-caption">Study Room | Celib Gogi</div>
+                                        </div>
+                                        
+                                        <div class="right-column-wrap">
+                                            <img src="../assets/images/space02.png" alt="Rooftop Garden" class="slide-img">
+                                            <div class="space-caption">Rooftop Garden | Celib Gogi</div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
-
-                                <div class="swiper-slide dual-slide">
-                                    <div class="slide-content dual-image">
-                                        <img src="../assets/images/space01.png" alt="Hotel room bed" class="slide-img">
-                                        <img src="../assets/images/space02.png" alt="Hotel room bathroom sink"
-                                            class="slide-img">
+                                
+                                <!-- 슬라이드 2: 같은 형식의 다른 이미지 세트 -->
+                                <div class="swiper-slide">
+                                    <!-- 왼쪽 열 - 큰 이미지 -->
+                                    <div class="left-column">
+                                        <img src="../assets/images/space.png" alt="Living Room" class="slide-img">
+                                        <div class="space-caption">Living Room | Celib Yeoul</div>
+                                    </div>
+                                    
+                                    <!-- 오른쪽 열 - 두 개의 작은 이미지 -->
+                                    <div class="right-column">
+                                        <div class="right-column-wrap">
+                                            <img src="../assets/images/space01.png" alt="Study Room" class="slide-img">
+                                            <div class="space-caption">Study Room | Celib Gogi</div>
+                                        </div>
+                                        
+                                        <div class="right-column-wrap">
+                                            <img src="../assets/images/space02.png" alt="Rooftop Garden" class="slide-img">
+                                            <div class="space-caption">Rooftop Garden | Celib Gogi</div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +286,7 @@
                     <br>and comfort come together. More Célib locations opening soon.
                 </p>
             </div>
-            <div class="location__content">
+            <div class="location__content desktop-view">
                 <div class="location__card seoul__location">
 
                     <div class="location__info">
@@ -301,6 +317,51 @@
                         <p class="comming-text">Comming soon</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="location__mobile-swiper mobile-view">
+                <div class="swiper-container location-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- First slide - Seoul Location -->
+                        <div class="swiper-slide">
+                            <div class="location__card seoul__location">
+                                <div class="location__info">
+                                    <h3>Célib Gadi</h3>
+                                    <p class="info__location">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <mask id="mask0_2_421" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                                                <rect width="23.6" height="23.6" fill="#797979" />
+                                            </mask>
+                                            <g mask="url(#mask0_2_421)">
+                                                <path d="M11.7996 11.7996C12.3405 11.7996 12.8035 11.6071 13.1886 11.2219C13.5737 10.8368 13.7663 10.3738 13.7663 9.83297C13.7663 9.29214 13.5737 8.82915 13.1886 8.44402C12.8035 8.05888 12.3405 7.86631 11.7996 7.86631C11.2588 7.86631 10.7958 8.05888 10.4107 8.44402C10.0256 8.82915 9.83298 9.29214 9.83298 9.83297C9.83298 10.3738 10.0256 10.8368 10.4107 11.2219C10.7958 11.6071 11.2588 11.7996 11.7996 11.7996ZM11.7996 19.0271C13.7991 17.1916 15.2823 15.524 16.2492 14.0244C17.2162 12.5248 17.6996 11.1933 17.6996 10.0296C17.6996 8.24325 17.1301 6.78054 15.9911 5.64152C14.8521 4.50249 13.4549 3.93297 11.7996 3.93297C10.1444 3.93297 8.74722 4.50249 7.60819 5.64152C6.46916 6.78054 5.89965 8.24325 5.89965 10.0296C5.89965 11.1933 6.38312 12.5248 7.35007 14.0244C8.31701 15.524 9.8002 17.1916 11.7996 19.0271ZM11.7996 21.633C9.16104 19.3877 7.19027 17.3022 5.88736 15.3765C4.58444 13.4508 3.93298 11.6685 3.93298 10.0296C3.93298 7.57131 4.72375 5.61284 6.30527 4.15423C7.8868 2.69561 9.71826 1.96631 11.7996 1.96631C13.881 1.96631 15.7125 2.69561 17.294 4.15423C18.8756 5.61284 19.6663 7.57131 19.6663 10.0296C19.6663 11.6685 19.0149 13.4508 17.7119 15.3765C16.409 17.3022 14.4383 19.3877 11.7996 21.633Z" fill="#ECECEC" />
+                                            </g>
+                                        </svg>
+                                        Geumcheon-gu, Seoul
+                                    </p>
+                                    <a href="#none" class="btn basic-btn">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Second slide - Coming Soon -->
+                        <div class="swiper-slide">
+                            <div class="location__card comming--soon">
+                                <div class="location__info">
+                                    <p class="opacity--text">Célib Yeoui</p>
+                                    <p class="comming-text">Comming soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!-- Add Pagination Dots -->
+                    <div class="swiper-pagination location-pagination"></div>
+                </div>
+                <!-- Add Navigation Arrows -->
+                <div class="swiper-button-next location-button-next"></div>
+                <div class="swiper-button-prev location-button-prev"></div>
             </div>
         </div>
     </section>
@@ -530,16 +591,22 @@
 
     <section class="limited__rooms">
         <div class="limited__inner basic__container">
-            <div class="limited__left">
-                <p>Limited rooms left—</p>
-                <h3>Book now!</h3>
-                <a href="#none" class="btn black-btn">Go for booking</a>
+            <div class="limited__Wrapp">
+                <div class="limited__left">
+                    <p>Limited rooms left—</p>
+                    <h3>Book now!</h3>
+                    <a href="#none" class="btn black-btn pc-btn">Go for booking</a>
+                </div>
+    
+                <div class="limited__right">
+                    <img src="../assets/images/etc.png">
+                </div>
             </div>
 
-            <div class="limited__right">
-                <img src="../assets/images/etc.png">
-            </div>
+
+            <a href="#none" class="btn black-btn mobile-btn">Go for booking</a>
         </div>
+
     </section>
 
     <!-- faq -->
@@ -702,7 +769,7 @@
                         </li>
 
                     </ul>
-                    <div class="copy__right">
+                    <div class="copy__right pc-view">
                         <p>©2025 Célib Life & Stay</p>
                         <p>by Woozoo Property Management</p>
                     </div>
@@ -715,37 +782,46 @@
                         Terms of Use
                     </a>
                 </li>
-                <li class="sns__list">
-                    <a href="#none" class="sns__items">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" fill="none">
-                            <g clip-path="url(#clip0_2_365)">
-                                <path
-                                    d="M13.2495 0.319308C10.8431 0.432844 9.1998 0.816875 7.76319 1.38139C6.27637 1.96083 5.01617 2.73839 3.7623 3.99678C2.50843 5.25517 1.7363 6.51627 1.16093 8.00536C0.60411 9.44513 0.226864 11.0898 0.120566 13.4976C0.0142672 15.9054 -0.00925413 16.6793 0.00250653 22.8211C0.0142672 28.9629 0.0414072 29.7327 0.158109 32.1455C0.273002 34.5514 0.655676 36.1943 1.22019 37.6314C1.80053 39.1182 2.57719 40.3779 3.83603 41.6323C5.09487 42.8866 6.35508 43.6569 7.84778 44.2332C9.2862 44.7891 10.9313 45.1682 13.3387 45.2736C15.746 45.3789 16.5208 45.4034 22.6608 45.3916C28.8008 45.3798 29.5738 45.3527 31.9861 45.2383C34.3984 45.1238 36.0327 44.7384 37.4702 44.1766C38.957 43.5949 40.2177 42.8196 41.4711 41.5603C42.7245 40.301 43.4962 39.039 44.0711 37.5491C44.6284 36.1106 45.007 34.4655 45.1114 32.06C45.2168 29.6459 45.2417 28.8751 45.23 22.7342C45.2182 16.5934 45.1906 15.8235 45.0762 13.4116C44.9617 10.9998 44.5786 9.3619 44.0145 7.92394C43.4333 6.43712 42.6575 5.17827 41.3991 3.92305C40.1408 2.66782 38.8778 1.89659 37.3883 1.32304C35.949 0.766214 34.3047 0.386706 31.8974 0.282669C29.4901 0.178633 28.7153 0.151945 22.573 0.163706C16.4308 0.175466 15.6618 0.201702 13.2495 0.319308ZM13.5137 41.2048C11.3086 41.1089 10.1113 40.7425 9.31334 40.4358C8.25668 40.0287 7.504 39.5366 6.7088 38.7491C5.9136 37.9616 5.42508 37.2062 5.01255 36.1518C4.7027 35.3539 4.32953 34.1579 4.2264 31.9528C4.11422 29.5694 4.09069 28.8539 4.07758 22.8157C4.06446 16.7775 4.08753 16.0628 4.19202 13.6785C4.2861 11.4752 4.65475 10.2765 4.96098 9.47906C5.36808 8.42105 5.85841 7.66972 6.64774 6.87498C7.43706 6.08023 8.19019 5.5908 9.24549 5.17827C10.0425 4.86707 11.2385 4.49706 13.4427 4.39212C15.8278 4.27903 16.5425 4.25642 22.5798 4.2433C28.6171 4.23018 29.3336 4.2528 31.7197 4.35774C33.923 4.45363 35.1221 4.81867 35.9187 5.12671C36.9758 5.53381 37.728 6.02278 38.5228 6.81346C39.3175 7.60414 39.8074 8.35456 40.2199 9.41211C40.5316 10.2069 40.9016 11.4024 41.0056 13.608C41.1192 15.9931 41.1449 16.7082 41.1558 22.7451C41.1666 28.7819 41.1454 29.4989 41.0409 31.8822C40.9446 34.0873 40.5791 35.2851 40.2719 36.0839C39.8648 37.1401 39.3741 37.8933 38.5843 38.6876C37.7945 39.4819 37.0423 39.9713 35.9865 40.3838C35.1904 40.6946 33.9931 41.0655 31.7907 41.1704C29.4055 41.2826 28.6908 41.3061 22.6513 41.3193C16.6117 41.3324 15.8993 41.3079 13.5142 41.2048M31.9513 10.69C31.9522 11.2268 32.1122 11.7513 32.4112 12.1971C32.7102 12.6429 33.1347 12.9901 33.631 13.1946C34.1274 13.3992 34.6732 13.452 35.1995 13.3463C35.7258 13.2407 36.209 12.9813 36.5879 12.601C36.9667 12.2207 37.2244 11.7366 37.3281 11.2099C37.4318 10.6832 37.3771 10.1376 37.1707 9.64202C36.9643 9.14646 36.6156 8.72324 36.1687 8.42587C35.7217 8.12851 35.1966 7.97036 34.6598 7.97143C33.9402 7.97287 33.2506 8.26006 32.7427 8.76986C32.2347 9.27966 31.9501 9.97031 31.9513 10.69ZM11.0037 22.8003C11.0164 29.2144 16.2254 34.4022 22.6382 34.39C29.0509 34.3777 34.2423 29.1691 34.2301 22.755C34.2179 16.341 29.0075 11.1518 22.5938 11.1645C16.1802 11.1771 10.9915 16.3871 11.0037 22.8003ZM15.0774 22.7921C15.0745 21.3011 15.5137 19.8426 16.3397 18.6012C17.1656 17.3597 18.3412 16.3911 19.7176 15.8178C21.094 15.2444 22.6096 15.0921 24.0726 15.3801C25.5356 15.6681 26.8803 16.3835 27.9368 17.4358C28.9932 18.488 29.7139 19.8299 30.0077 21.2918C30.3015 22.7536 30.1552 24.2698 29.5873 25.6485C29.0194 27.0272 28.0555 28.2065 26.8173 29.0374C25.5792 29.8682 24.1225 30.3133 22.6314 30.3162C21.6413 30.3183 20.6605 30.1253 19.745 29.7483C18.8296 29.3713 17.9973 28.8176 17.2958 28.1189C16.5944 27.4202 16.0374 26.5902 15.6568 25.6762C15.2761 24.7622 15.0793 23.7822 15.0774 22.7921Z"
-                                    fill="white" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_2_365">
-                                    <rect width="45.2333" height="45.2333" fill="white"
-                                        transform="translate(0 0.160156)" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </a>
-                    <a href="#none" class="sns__items">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
-                            <path
-                                d="M0.916667 40.0833V4.83333C0.916667 3.75625 1.30017 2.8342 2.06719 2.06719C2.8342 1.30017 3.75625 0.916667 4.83333 0.916667H36.1667C37.2438 0.916667 38.1658 1.30017 38.9328 2.06719C39.6998 2.8342 40.0833 3.75625 40.0833 4.83333V28.3333C40.0833 29.4104 39.6998 30.3325 38.9328 31.0995C38.1658 31.8665 37.2438 32.25 36.1667 32.25H8.75L0.916667 40.0833ZM7.08542 28.3333H36.1667V4.83333H4.83333V30.5365L7.08542 28.3333Z"
-                                fill="white" />
-                        </svg>
-                    </a>
+                <li>
+                    <div class="copy__right mo-view">
+                        <p>©2025 Célib Life & Stay</p>
+                        <p>by Woozoo Property Management</p>
+                    </div>
                 </li>
             </ul>
+            <div class="sns__list">
+                <a href="#none" class="sns__items">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 46 46" fill="none">
+                        <g clip-path="url(#clip0_2_365)">
+                            <path
+                                d="M13.2495 0.319308C10.8431 0.432844 9.1998 0.816875 7.76319 1.38139C6.27637 1.96083 5.01617 2.73839 3.7623 3.99678C2.50843 5.25517 1.7363 6.51627 1.16093 8.00536C0.60411 9.44513 0.226864 11.0898 0.120566 13.4976C0.0142672 15.9054 -0.00925413 16.6793 0.00250653 22.8211C0.0142672 28.9629 0.0414072 29.7327 0.158109 32.1455C0.273002 34.5514 0.655676 36.1943 1.22019 37.6314C1.80053 39.1182 2.57719 40.3779 3.83603 41.6323C5.09487 42.8866 6.35508 43.6569 7.84778 44.2332C9.2862 44.7891 10.9313 45.1682 13.3387 45.2736C15.746 45.3789 16.5208 45.4034 22.6608 45.3916C28.8008 45.3798 29.5738 45.3527 31.9861 45.2383C34.3984 45.1238 36.0327 44.7384 37.4702 44.1766C38.957 43.5949 40.2177 42.8196 41.4711 41.5603C42.7245 40.301 43.4962 39.039 44.0711 37.5491C44.6284 36.1106 45.007 34.4655 45.1114 32.06C45.2168 29.6459 45.2417 28.8751 45.23 22.7342C45.2182 16.5934 45.1906 15.8235 45.0762 13.4116C44.9617 10.9998 44.5786 9.3619 44.0145 7.92394C43.4333 6.43712 42.6575 5.17827 41.3991 3.92305C40.1408 2.66782 38.8778 1.89659 37.3883 1.32304C35.949 0.766214 34.3047 0.386706 31.8974 0.282669C29.4901 0.178633 28.7153 0.151945 22.573 0.163706C16.4308 0.175466 15.6618 0.201702 13.2495 0.319308ZM13.5137 41.2048C11.3086 41.1089 10.1113 40.7425 9.31334 40.4358C8.25668 40.0287 7.504 39.5366 6.7088 38.7491C5.9136 37.9616 5.42508 37.2062 5.01255 36.1518C4.7027 35.3539 4.32953 34.1579 4.2264 31.9528C4.11422 29.5694 4.09069 28.8539 4.07758 22.8157C4.06446 16.7775 4.08753 16.0628 4.19202 13.6785C4.2861 11.4752 4.65475 10.2765 4.96098 9.47906C5.36808 8.42105 5.85841 7.66972 6.64774 6.87498C7.43706 6.08023 8.19019 5.5908 9.24549 5.17827C10.0425 4.86707 11.2385 4.49706 13.4427 4.39212C15.8278 4.27903 16.5425 4.25642 22.5798 4.2433C28.6171 4.23018 29.3336 4.2528 31.7197 4.35774C33.923 4.45363 35.1221 4.81867 35.9187 5.12671C36.9758 5.53381 37.728 6.02278 38.5228 6.81346C39.3175 7.60414 39.8074 8.35456 40.2199 9.41211C40.5316 10.2069 40.9016 11.4024 41.0056 13.608C41.1192 15.9931 41.1449 16.7082 41.1558 22.7451C41.1666 28.7819 41.1454 29.4989 41.0409 31.8822C40.9446 34.0873 40.5791 35.2851 40.2719 36.0839C39.8648 37.1401 39.3741 37.8933 38.5843 38.6876C37.7945 39.4819 37.0423 39.9713 35.9865 40.3838C35.1904 40.6946 33.9931 41.0655 31.7907 41.1704C29.4055 41.2826 28.6908 41.3061 22.6513 41.3193C16.6117 41.3324 15.8993 41.3079 13.5142 41.2048M31.9513 10.69C31.9522 11.2268 32.1122 11.7513 32.4112 12.1971C32.7102 12.6429 33.1347 12.9901 33.631 13.1946C34.1274 13.3992 34.6732 13.452 35.1995 13.3463C35.7258 13.2407 36.209 12.9813 36.5879 12.601C36.9667 12.2207 37.2244 11.7366 37.3281 11.2099C37.4318 10.6832 37.3771 10.1376 37.1707 9.64202C36.9643 9.14646 36.6156 8.72324 36.1687 8.42587C35.7217 8.12851 35.1966 7.97036 34.6598 7.97143C33.9402 7.97287 33.2506 8.26006 32.7427 8.76986C32.2347 9.27966 31.9501 9.97031 31.9513 10.69ZM11.0037 22.8003C11.0164 29.2144 16.2254 34.4022 22.6382 34.39C29.0509 34.3777 34.2423 29.1691 34.2301 22.755C34.2179 16.341 29.0075 11.1518 22.5938 11.1645C16.1802 11.1771 10.9915 16.3871 11.0037 22.8003ZM15.0774 22.7921C15.0745 21.3011 15.5137 19.8426 16.3397 18.6012C17.1656 17.3597 18.3412 16.3911 19.7176 15.8178C21.094 15.2444 22.6096 15.0921 24.0726 15.3801C25.5356 15.6681 26.8803 16.3835 27.9368 17.4358C28.9932 18.488 29.7139 19.8299 30.0077 21.2918C30.3015 22.7536 30.1552 24.2698 29.5873 25.6485C29.0194 27.0272 28.0555 28.2065 26.8173 29.0374C25.5792 29.8682 24.1225 30.3133 22.6314 30.3162C21.6413 30.3183 20.6605 30.1253 19.745 29.7483C18.8296 29.3713 17.9973 28.8176 17.2958 28.1189C16.5944 27.4202 16.0374 26.5902 15.6568 25.6762C15.2761 24.7622 15.0793 23.7822 15.0774 22.7921Z"
+                                fill="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_2_365">
+                                <rect width="45.2333" height="45.2333" fill="white"
+                                    transform="translate(0 0.160156)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </a>
+                <a href="#none" class="sns__items">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                        <path
+                            d="M0.916667 40.0833V4.83333C0.916667 3.75625 1.30017 2.8342 2.06719 2.06719C2.8342 1.30017 3.75625 0.916667 4.83333 0.916667H36.1667C37.2438 0.916667 38.1658 1.30017 38.9328 2.06719C39.6998 2.8342 40.0833 3.75625 40.0833 4.83333V28.3333C40.0833 29.4104 39.6998 30.3325 38.9328 31.0995C38.1658 31.8665 37.2438 32.25 36.1667 32.25H8.75L0.916667 40.0833ZM7.08542 28.3333H36.1667V4.83333H4.83333V30.5365L7.08542 28.3333Z"
+                            fill="white" />
+                    </svg>
+                </a>
+            </div>
         </div>
     </footer>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    
     <!-- dropdown js -->
     <script src="../assets/js/dropdown.js"></script>
     <script src="../assets/js/slide.js"></script>

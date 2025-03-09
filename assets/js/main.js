@@ -103,3 +103,61 @@ document.addEventListener("DOMContentLoaded", initializeAccordion);
 
 
 
+// Banner text flow script
+document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.querySelector('.fixed__banner');
+    
+    if (!banner) return;
+    
+    const originalText = banner.textContent.trim();
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    
+    if (isMobile) {
+      banner.style.overflow = 'hidden';
+      
+      // 원본 텍스트 저장 및 배너 비우기
+      banner.innerHTML = '';
+      
+      // 흐르는 텍스트를 위한 컨테이너 생성
+      const marqueeContainer = document.createElement('div');
+      marqueeContainer.className = 'marquee-container';
+      marqueeContainer.style.cssText = `
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+      `;
+      
+      // 실제 흐르는 텍스트 요소 생성
+      const marqueeContent = document.createElement('div');
+      marqueeContent.className = 'marquee-content';
+      marqueeContent.style.cssText = `
+        display: flex;
+        white-space: nowrap;
+        animation: marquee 60s linear infinite;
+      `;
+      
+      // 충분한 텍스트 추가 (2번 이상 화면을 채울만큼)
+      for (let i = 0; i < 20; i++) {
+        const span = document.createElement('span');
+        span.textContent = originalText + ' ';
+        span.style.cssText = `
+          padding-right: 20px;
+        `;
+        marqueeContent.appendChild(span);
+      }
+      
+      // 애니메이션 키프레임 추가
+      const styleSheet = document.createElement('style');
+      styleSheet.innerHTML = `
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `;
+      document.head.appendChild(styleSheet);
+      
+      // DOM에 추가
+      marqueeContainer.appendChild(marqueeContent);
+      banner.appendChild(marqueeContainer);
+    }
+  });
