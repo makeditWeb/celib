@@ -356,6 +356,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   width: 345px;
   height: 60px;
   cursor: pointer;
+  font-family: Outfit;
 }
 .book-now .book-now__inner .find__content .select__box {
   display: flex;
@@ -412,7 +413,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 
 .middle-banner .middle-banner__inner {
   font-size: 1.75rem;
-  font-weight: 400;
+  font-weight: 300;
   color: #fff;
   letter-spacing: 0.28px;
   background: #000;
@@ -669,7 +670,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 .locations .location__content .location__card.seoul__location .location__info h3 {
   color: #FFF;
   text-align: center;
-  font-size: 4ren;
+  font-size: 4rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
   line-height: 1.2;
@@ -988,7 +989,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 }
 .stay__slide_wrapp .slide__items .slide__header .content--text {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 400;
   color: #0A0A0A;
 }
 .stay__slide_wrapp .slide__items .slide__header .content--text span {
@@ -1069,6 +1070,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   font-weight: 500;
   text-decoration: none;
   line-height: 1.2;
+  font-family: Outfit;
 }
 .limited__rooms .limited__inner .limited__right img {
   border-radius: 8px;
@@ -1736,6 +1738,63 @@ body.popup-open {
   font-weight: 500;
 }
 
+@media (min-width: 769px) and (max-width: 1400px) {
+  .basic__container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 50px;
+  }
+  .list__descript {
+    flex-wrap: wrap;
+  }
+  .inner__title h2 {
+    font-size: 3.5rem !important;
+  }
+  .inner__slide {
+    max-width: 720px;
+  }
+  .inner__slide .swiper.spaceSwiper .swiper-slide .left-column {
+    width: 60%;
+    height: 280px;
+  }
+  .book-now .book-now__inner .find__content .select__box .custom__dropdown .dropdown__header .selected__option {
+    font-size: 1.2rem;
+  }
+  .book-now .book-now__inner .find__content .select__box .custom__dropdown .dropdown__header .dropdown__arrow {
+    width: 14px;
+  }
+  .locations .inner__title .location_descript {
+    font-size: 1.5rem;
+  }
+  .locations .location__content .location__card {
+    height: 520px;
+  }
+  .locations .location__content .location__card.seoul__location {
+    background-size: cover;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .locations .location__content .location__card.seoul__location .location__info h3 {
+    font-size: 3rem;
+  }
+  .locations .location__content .location__card.comming--soon {
+    padding: 1.125rem;
+  }
+  .inner__title h2::after {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .limited__rooms .limited__inner .limited__Wrapp {
+    padding: 1.75rem 1.25rem 1.75rem 1.25rem;
+  }
+  footer .footer__inner {
+    max-width: 100%;
+    padding: 0 50px;
+  }
+  footer .footer__inner ul {
+    gap: 5.5rem;
+  }
+}
 @media screen and (max-width: 768px) {
   header {
     width: 100%;

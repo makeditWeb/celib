@@ -252,6 +252,7 @@ header {
                 width: 345px;
                 height: 60px;
                 cursor: pointer;
+                font-family: Outfit;
             }
 
             .select__box {
@@ -330,7 +331,7 @@ header {
 .middle-banner {
     .middle-banner__inner {
         font-size: 1.75rem;
-        font-weight: 400;
+        font-weight: 300;
         color: #fff;
         letter-spacing: 0.28px;
         background: #000;
@@ -644,7 +645,7 @@ header {
                     h3 {
                         color: #FFF;
                         text-align: center;
-                        font-size: 4ren;
+                        font-size: 4rem;
                         font-weight: 600;
                         margin-bottom: 0.25rem;
                         line-height: 1.2;
@@ -1019,7 +1020,7 @@ header {
 
             .content--text {
                 font-size: 1.5rem;
-                font-weight: 500;
+                font-weight: 400;
                 color: #0A0A0A;
 
                 span {
@@ -1116,6 +1117,7 @@ header {
                     font-weight: 500;
                     text-decoration: none;
                     line-height: 1.2;
+                    font-family: Outfit;
                 }
 
             }
@@ -1564,7 +1566,8 @@ body.popup-open {
                 box-sizing: border-box;
                 background: #F9F9F9;
                 border: none;
-                ::placeholder{
+
+                ::placeholder {
                     color: #797979;
                 }
             }
@@ -1745,7 +1748,7 @@ body.popup-open {
                 background-color: #0A0A0A;
                 opacity: 1;
             }
-            
+
 
             input[type=checkbox]:before {
                 content: '';
@@ -1763,22 +1766,22 @@ body.popup-open {
 
         }
 
-        .form-group{
+        .form-group {
             &.error {
                 input {
 
-                    &:focus{
+                    &:focus {
                         outline: 1px solid #EA4335;
                     }
                 }
 
-                .error-message{
+                .error-message {
                     display: block;
                 }
             }
         }
-            
-        
+
+
         .error-message {
             color: #EA4335;
             font-size: 13px;
@@ -1791,24 +1794,24 @@ body.popup-open {
             display: flex;
             gap: 5px;
         }
-        
+
         .custom-dropdown {
             position: relative;
 
-            &:nth-child(1){
+            &:nth-child(1) {
                 width: 50%;
             }
 
-            &:nth-child(2){
+            &:nth-child(2) {
                 width: 30%;
             }
 
-            &:nth-child(3){
+            &:nth-child(3) {
                 width: 20%;
             }
 
         }
-        
+
         .selected-option {
             background-color: #F9F9F9;
             padding: 10px 12px;
@@ -1819,17 +1822,17 @@ body.popup-open {
             color: #797979;
             font-size: 14px;
         }
-        
+
         .selected-option.active {
             color: #333;
         }
-        
+
         .dropdown-arrow {
             font-size: 10px;
             color: #888;
             margin-left: 5px;
         }
-        
+
         .dropdown-options {
             position: absolute;
             top: 100%;
@@ -1844,33 +1847,34 @@ body.popup-open {
             z-index: 10;
             display: none;
         }
-        
+
         .dropdown-options.visible {
             display: block;
         }
-        
+
         .dropdown-option {
             padding: 8px 12px;
             cursor: pointer;
         }
-        
+
         .dropdown-option:hover {
             background-color: #f5f5f5;
         }
-        
 
-        .header__complete{
+
+        .header__complete {
             color: #0A0A0A;
             text-align: center;
             font-family: Outfit;
             font-size: 24px;
             font-weight: 600;
-            span{
+
+            span {
                 color: #FF8400;
             }
         }
 
-        .complete{
+        .complete {
             color: #797979;
             text-align: center;
             font-size: 16px;
@@ -1878,16 +1882,17 @@ body.popup-open {
             margin-bottom: 30px;
         }
 
-        .complete-img{
+        .complete-img {
             width: 80px;
             height: 80px;
             margin: 30px auto 10px;
-            img{
+
+            img {
                 width: 100%;
             }
         }
 
-        .forgot__text{
+        .forgot__text {
             color: #000;
             font-family: Outfit;
             font-size: 14px;
@@ -1897,7 +1902,7 @@ body.popup-open {
             line-height: 1.2;
         }
 
-        .back-btn{
+        .back-btn {
             text-align: center;
             margin: 0 auto;
             color: #0A0A0A;
@@ -1909,7 +1914,7 @@ body.popup-open {
         }
 
 
-        .descript{
+        .descript {
             color: #797979;
             text-align: center;
             font-family: Outfit;
@@ -1917,22 +1922,139 @@ body.popup-open {
             font-weight: 400;
             margin-top: 30px;
 
-            span{
+            span {
                 display: block;
             }
 
-            .sign-link{
+            .sign-link {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 gap: 4px;
                 margin-top: 4px;
 
-                .link{
+                .link {
                     color: #FF8400;
                     font-weight: 500;
 
                 }
+            }
+        }
+    }
+}
+
+
+// tablet
+@media (min-width:769px) and (max-width:1400px) {
+    .basic__container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 50px;
+    }
+
+   
+    .list__descript {
+        flex-wrap: wrap;
+
+        .list__item {
+            // width: 48%!important;
+        }
+    }
+
+    .inner__title {
+        h2 {
+            font-size: 3.5rem!important;
+        }
+    }
+
+
+    .inner__slide {
+        max-width: 720px;
+
+        .swiper.spaceSwiper {
+            .swiper-slide {
+                .left-column {
+                    width: 60%;
+                    height: 280px;
+                }
+            }
+        }
+    }
+
+    .book-now {
+        .book-now__inner {
+            .find__content {
+                .select__box {
+                    .custom__dropdown {
+                        .dropdown__header {
+                            .selected__option {
+                                font-size: 1.2rem;
+                            }
+
+                            .dropdown__arrow {
+                                width: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .locations {
+        .inner__title {
+            .location_descript {
+                font-size: 1.5rem;
+            }
+        }
+
+        .location__content {
+            .location__card {
+                height: 520px;
+
+                &.seoul__location {
+                    background-size: cover;
+                    padding: 1rem;
+                    box-sizing: border-box;
+
+                    .location__info {
+                        h3 {
+                            font-size: 3rem;
+                        }
+                    }
+                }
+
+                &.comming--soon {
+                    padding: 1.125rem;
+                }
+            }
+        }
+    }
+
+    .inner__title {
+        h2 {
+            &::after {
+                width: 14px !important;
+                height: 14px !important;
+            }
+        }
+    }
+
+    .limited__rooms {
+        .limited__inner {
+            .limited__Wrapp {
+                padding: 1.75rem 1.25rem 1.75rem 1.25rem;
+            }
+        }
+    }
+
+    footer {
+        .footer__inner {
+            max-width: 100%;
+            padding: 0 50px;
+
+            ul {
+                gap: 5.5rem;
             }
         }
     }
