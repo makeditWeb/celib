@@ -1554,6 +1554,8 @@ body.popup-open {
   font-size: 11px;
   font-weight: 400;
   margin-top: 4px;
+  text-indent: -5px;
+  margin-left: 8px;
 }
 .sign-popup .popup-content .terms-agree {
   color: #797979;
@@ -1622,13 +1624,13 @@ body.popup-open {
   position: relative;
 }
 .sign-popup .popup-content .custom-dropdown:nth-child(1) {
-  width: 50%;
+  width: 45%;
 }
 .sign-popup .popup-content .custom-dropdown:nth-child(2) {
   width: 30%;
 }
 .sign-popup .popup-content .custom-dropdown:nth-child(3) {
-  width: 20%;
+  width: 25%;
 }
 .sign-popup .popup-content .selected-option {
   background-color: #F9F9F9;

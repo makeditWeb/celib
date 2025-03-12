@@ -276,6 +276,28 @@ function loadSignPage(popupType) {
                     }
                 }
                 
+                // Fix for "Already have an account? Log In" link
+                if (popupType === 'signup') {
+                    const loginLink = popup.querySelector('.signup-btn a');
+                    if (loginLink) {
+                        loginLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            showPopup('login');
+                        });
+                    }
+                }
+                
+                // Fix for login popup "Sign Up" link
+                if (popupType === 'login') {
+                    const signupLink = popup.querySelector('.signup-btn a');
+                    if (signupLink) {
+                        signupLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            showPopup('signup');
+                        });
+                    }
+                }
+                
                 // Add event listeners to terms links
                 const termsLinks = popup.querySelectorAll('.checkbox-group .link');
                 termsLinks.forEach(link => {
@@ -284,6 +306,20 @@ function loadSignPage(popupType) {
                         const type = this.getAttribute('data-type') || this.textContent.trim().toLowerCase().replace(/\s+/g, '_');
                         if (type) {
                             showTerms(type);
+                        }
+                    });
+                });
+                
+                // Fix for Terms of Use and Privacy Policy links
+                const allTermsLinks = popup.querySelectorAll('a[onclick*="showTerms"]');
+                allTermsLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const onclickAttr = this.getAttribute('onclick') || '';
+                        const match = onclickAttr.match(/showTerms\(['"]([^'"]+)['"]\)/);
+                        if (match && match[1]) {
+                            const termType = match[1];
+                            showTermsFixed(termType);
                         }
                     });
                 });
@@ -374,6 +410,28 @@ function showPopup(popupType) {
                     button.addEventListener('click', closePopup);
                 });
                 
+                // Fix for "Already have an account? Log In" link
+                if (popupType === 'signup') {
+                    const loginLink = popup.querySelector('.signup-btn a');
+                    if (loginLink) {
+                        loginLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            showPopup('login');
+                        });
+                    }
+                }
+                
+                // Fix for login popup "Sign Up" link
+                if (popupType === 'login') {
+                    const signupLink = popup.querySelector('.signup-btn a');
+                    if (signupLink) {
+                        signupLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            showPopup('signup');
+                        });
+                    }
+                }
+                
                 // Transfer email value if moving to step 2
                 if (popupType === 'signup-step2') {
                     const signupEmailInput = document.getElementById('signup-email');
@@ -429,6 +487,20 @@ function showPopup(popupType) {
                     });
                 });
                 
+                // Fix for Terms of Use and Privacy Policy links
+                const allTermsLinks = popup.querySelectorAll('a[onclick*="showTerms"]');
+                allTermsLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const onclickAttr = this.getAttribute('onclick') || '';
+                        const match = onclickAttr.match(/showTerms\(['"]([^'"]+)['"]\)/);
+                        if (match && match[1]) {
+                            const termType = match[1];
+                            showTermsFixed(termType);
+                        }
+                    });
+                });
+                
                 // Execute scripts
                 executeScripts(doc);
             } else {
@@ -446,6 +518,12 @@ function closePopup() {
     if (overlay) {
         document.body.removeChild(overlay);
         document.body.classList.remove('popup-open');
+    }
+    
+    // Also close any terms overlays
+    const termsOverlay = document.querySelector('.terms-overlay');
+    if (termsOverlay) {
+        document.body.removeChild(termsOverlay);
     }
 }
 
@@ -588,12 +666,19 @@ function executeScripts(doc) {
     });
 }
 
-// Show terms and conditions popup
+// Original showTerms function (keeping for compatibility)
 function showTerms(type) {
-    // Save current overlay state
-    const currentOverlay = document.querySelector('.popup-overlay');
-    const currentPopup = currentOverlay ? currentOverlay.querySelector('.sign-popup[style*="display: block"]') : null;
-    const currentPopupId = currentPopup ? currentPopup.id : null;
+    // 원래 코드는 유지하되 실제로는 showTermsFixed를 호출합니다
+    showTermsFixed(type);
+}
+
+// Fixed showTerms function with correct file paths and duplicate prevention
+function showTermsFixed(type) {
+    // Remove any existing terms overlay to prevent duplicates
+    const existingTermsOverlay = document.querySelector('.terms-overlay');
+    if (existingTermsOverlay) {
+        document.body.removeChild(existingTermsOverlay);
+    }
     
     // Create new overlay
     const termsOverlay = document.createElement('div');
@@ -605,10 +690,20 @@ function showTerms(type) {
     termsPopup.style.backgroundColor = '#fff';
     termsPopup.style.width = '600px';
     termsPopup.style.maxWidth = '90%';
-    termsPopup.style.maxHeight = '80vh';
-    termsPopup.style.overflowY = 'auto';
     
-    // Set popup content
+    // Determine correct file path based on type
+    let filePath;
+    
+    if (type === 'terms_use') {
+        filePath = '../pages/terms_use.html';
+    } else if (type === 'privacy_policy') {
+        filePath = '../pages/privacy_policy.html';
+    } else {
+        console.error('Unknown terms type:', type);
+        return;
+    }
+    
+    // Set popup content with correct path
     termsPopup.innerHTML = `
         <div class="popup-header">
             <div class="popup-header__inner">
@@ -617,7 +712,7 @@ function showTerms(type) {
                 </svg>
             </div>
         </div>
-        <iframe src="./${type}.html" style="width:100%; height:80vh; border:none;"></iframe>
+        <iframe src="${filePath}" style="width:100%; height:80vh; border:none;"></iframe>
     `;
     
     // Add popup to overlay
@@ -625,7 +720,7 @@ function showTerms(type) {
     document.body.appendChild(termsOverlay);
     
     // Prevent background scrolling
-    document.body.classList.add('popup-open');
+    document.body.classList.add('terms-open');
     
     // Close terms popup when clicking overlay
     termsOverlay.addEventListener('click', function(e) {
@@ -642,11 +737,9 @@ function showTerms(type) {
     
     // Close terms popup function
     function closeTermsPopup() {
-        document.body.removeChild(termsOverlay);
-        
-        // Keep original signup popup displayed
-        if (currentPopup) {
-            currentPopup.style.display = 'block';
+        if (termsOverlay && termsOverlay.parentNode) {
+            document.body.removeChild(termsOverlay);
+            document.body.classList.remove('terms-open');
         }
     }
 }
