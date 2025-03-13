@@ -1946,6 +1946,638 @@ body.popup-open {
 }
 
 
+// mypage
+
+.mypage__inner {
+    max-width: 976px;
+    margin: 0 auto;
+    padding: 2.8125rem 0;
+
+    .mypage__profile {
+        display: flex;
+        gap: 0.875rem;
+        align-items: center;
+        margin-bottom: 2.125rem;
+
+        .profile__image {
+            width: 4.375rem;
+            height: 4.375rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .profile__info {
+            .name {
+                font-size: 2rem;
+                font-weight: 500;
+                color: $text-lightblack;
+                line-height: 1.2;
+            }
+
+            .link {
+                color: #797979;
+                font-size: 1.25rem;
+                font-weight: 400;
+                line-height: 1.2;
+            }
+        }
+    }
+
+
+    .tabs {
+
+        display: flex;
+        border-bottom: 0.0625rem solid #D9D9D9;
+
+        li {
+
+            color: #797979;
+            display: inline-block;
+            padding: 0 5rem 0.5rem;
+            cursor: pointer;
+
+
+            &.current {
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: -0.125rem;
+                    width: 100%;
+                    height: 0.1875rem;
+                    background-color: $color-orange;
+                }
+
+                color: $color-orange;
+            }
+        }
+    }
+
+    .tab-content {
+        display: none;
+        padding: 6.875rem 0;
+
+        &.current {
+            display: inherit;
+        }
+    }
+
+    .booking__list {
+        .booking__items {
+            background: #FFF;
+            box-shadow: 0px 0px 0.9375rem 0.125rem rgba(0, 0, 0, 0.10);
+            max-width: 27.5rem;
+            margin: 0 auto;
+            margin-bottom: 1.25rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .booking__list__header {
+                padding: 0.3125rem 0.5rem;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 0.0625rem solid #ECECEC;
+
+                .booking__no {
+                    color: $color-lightgray;
+                    font-size: 0.8125rem;
+                    font-weight: 500;
+                }
+
+
+                .booking__state {
+                    width: 5rem;
+                    padding: 0.125rem 0.75rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 500;
+                    font-size: 0.75rem;
+
+                    &.scheduled__state {
+                        color: #FF8400;
+                        background: #FFF2E5;
+                    }
+
+                    &.completed__state {
+                        background: #DFFFDD;
+                        color: #0E8B05;
+                    }
+
+                    &.cancelled__state {
+                        background: #FFDCD9;
+                        color: #EA4335;
+                    }
+                }
+            }
+
+            .booking__list-body {
+                display: flex;
+                gap: 0.625rem;
+                padding: 0.625rem;
+                box-sizing: border-box;
+
+                .booking__image {
+                    width: 6.25rem;
+
+                    img {
+                        width: 100%;
+                        aspect-ratio: 1/1;
+                        object-fit: cover
+                    }
+                }
+
+                .booking__list-content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .content__info {
+
+                        .state__title {
+                            color: $text-lightblack;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            line-height: 1.2;
+
+                            span {
+                                color: $color-lightgray;
+                                font-size: 0.75rem;
+                                font-weight: 400;
+                            }
+                        }
+
+                        .state__date {
+                            color: $text-lightblack;
+                            font-size: 0.875rem;
+                            font-weight: 400;
+                            line-height: 1.2;
+                        }
+                    }
+
+                    .content__price {
+                        .price__total {
+                            color: $color-orange;
+                            font-weight: 500;
+                            font-size: 0.75rem;
+                            line-height: 1.2;
+                        }
+
+                        .price__num {
+                            color: $text-lightblack;
+                            font-size: 1rem;
+                            font-weight: 500;
+                            line-height: 1.2;
+
+                            span {
+                                font-size: 0.75rem;
+                                color: #797979;
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .account__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: $text-lightblack;
+            margin-bottom: 2.375rem;
+            text-align: center;
+        }
+
+        input {
+            width: 17.8125rem;
+            height: 2.875rem;
+            padding: 0.875rem 0.625rem;
+            box-sizing: border-box;
+            background: #F9F9F9;
+            border: none;
+
+            ::placeholder {
+                color: #797979;
+            }
+        }
+
+        .submit-btn {
+            cursor: pointer;
+            width: 17.8125rem;
+            height: 2.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            font-size: 1rem;
+            font-family: Outfit;
+            background: #1E1E1E;
+            margin-top: 0.625rem;
+        }
+    }
+
+    .booking__no-list {
+        .calendar__img {
+            margin-bottom: 1.5625rem;
+            display: flex;
+            justify-content: center;
+
+            svg {
+                width: 4.25rem;
+                height: 4.25rem;
+            }
+
+        }
+
+        .list--text {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: $text-lightblack;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .link__journey {
+            color: $color-orange;
+            font-weight: 500;
+            font-size: 1.25rem;
+            text-align: center;
+            display: block;
+        }
+
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+        cursor: pointer;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        input {
+            width: 100%;
+            height: 46px;
+            padding: 14px 10px;
+            box-sizing: border-box;
+            background: #F9F9F9;
+            border: none;
+
+            ::placeholder {
+                color: #797979;
+            }
+        }
+
+        .forget__password {
+            text-align: center;
+            margin: 10px 0 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #797979;
+            display: block;
+        }
+    }
+
+    .help-text {
+        color: #797979;
+        font-size: 11px;
+        font-weight: 400;
+        margin-top: 4px;
+        text-indent: -5px;
+        margin-left: 8px;
+    }
+
+    .terms-agree {
+        color: #797979;
+        font-size: 12px;
+        font-weight: 400;
+        width: calc(100% - 30px);
+
+    }
+
+    .terms-agree {
+        .link {
+            font-size: 12px;
+            color: #0A0A0A;
+            font-weight: 400;
+        }
+    }
+
+    .checkbox-group {
+        margin-bottom: 24px;
+        margin-top: 10px;
+        display: flex;
+
+        input[type=checkbox] {
+            position: relative;
+            border: 1px solid #000;
+            background: none;
+            cursor: pointer;
+            line-height: 0;
+            margin: 0 .6em 0 0;
+            outline: 0;
+            padding: 0 !important;
+            vertical-align: text-top;
+            height: 14px;
+            width: 14px;
+            -webkit-appearance: none;
+        }
+
+        input[type=checkbox]:checked {
+            background-color: #0A0A0A;
+            opacity: 1;
+        }
+
+
+        input[type=checkbox]:before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            top: 50%;
+            width: 3px;
+            height: 7px;
+            border: solid #FFF;
+            border-width: 0 2px 2px 0;
+            margin: -1px -1px 0 -1px;
+            transform: rotate(45deg) translate(-50%, -50%);
+            z-index: 2;
+        }
+
+
+    }
+
+    .account--title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .account__edit {
+        width: 285px;
+        margin: 0 auto;
+    }
+
+    .birth-dropdowns {
+        display: flex;
+        gap: 5px;
+    }
+
+    .custom-dropdown {
+        position: relative;
+
+        &:nth-child(1) {
+            width: 45%;
+        }
+
+        &:nth-child(2) {
+            width: 30%;
+        }
+
+        &:nth-child(3) {
+            width: 25%;
+        }
+
+    }
+
+    .selected-option {
+        background-color: #F9F9F9;
+        padding: 10px 12px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #797979;
+        font-size: 14px;
+    }
+
+    .selected-option.active {
+        color: #333;
+    }
+
+    .dropdown-arrow {
+        font-size: 10px;
+        color: #888;
+        margin-left: 5px;
+    }
+
+    .dropdown-options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: 5px;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 10;
+        display: none;
+    }
+
+    .dropdown-options.visible {
+        display: block;
+    }
+
+    .dropdown-option {
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+    .dropdown-option:hover {
+        background-color: #f5f5f5;
+    }
+
+    .passport-label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 10px;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    .passport-upload-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+
+    .file-input-wrapper {
+        position: relative;
+        flex: 1;
+        margin-right: 8px;
+        background: #F9F9F9;
+        height: 46px;
+        
+        #file-name-display {
+            width: 90%;
+            padding: 14px 10px;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #797979;
+            cursor: default;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+        }
+
+        .clear-file-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0 4px;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            svg {
+                display: block;
+            }
+        }
+        
+
+    }
+
+    .upload-btn {
+        display: inline-block;
+        background-color: #0A0A0A;
+        color: white;
+        padding: 12px 22px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        white-space: nowrap;
+        height: 46px;
+        box-sizing: border-box;
+        &:hover {
+            background-color: #222;
+        }
+    }
+
+    .hidden-file-input {
+        display: none;
+    }
+
+    .help-text {
+        margin-top: 8px;
+        font-size: 10px;
+        color: #797979;
+    }
+
+    .link__delete{
+        font-size: 12px;
+        color: $text-lightblack;
+        font-weight: 500;
+        display: block;
+        text-align: center;
+        margin-top: 32px;
+    }
+
+    .account__delete{
+        .check__img{
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+    
+    
+        }
+    
+        .delete__info{
+            font-size: 14px;
+            font-weight: 400;
+            color: $text-black;
+            text-align: center;
+            line-height: 1.2;
+            span{
+                color: $color-orange;
+            }
+
+
+        }
+
+        .checkbox-group{
+            margin: 17px auto 30px;
+            justify-content: center;
+            label{
+                width: auto;
+            }
+        }
+
+        .btn{
+            width: 285px;
+            margin: 0 auto;
+        }
+
+        .back__btn{
+            cursor: pointer;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1E1E1E;
+            font-size: 16px;
+            font-family: Outfit;
+            background: #fff;
+            border: 1px solid #0A0A0A;
+            margin-top: 10px;
+        }
+    }
+
+}
+
+.content__alert{
+    height: 100vh;
+    .content__middle{
+        height: calc(100% - 100px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        img{
+            width: 80px;
+        }
+
+        p{
+            font-size: 14px;
+            font-weight: 400;
+            color: #000;
+            margin: 12px 0 27px;
+            text-align: center;
+        }
+
+        button{
+            width: 285px;
+        }
+    }
+}
+
 // tablet
 @media (min-width:769px) and (max-width:1400px) {
     .basic__container {
@@ -1954,7 +2586,7 @@ body.popup-open {
         padding: 0 50px;
     }
 
-   
+
     .list__descript {
         flex-wrap: wrap;
 
@@ -1965,7 +2597,7 @@ body.popup-open {
 
     .inner__title {
         h2 {
-            font-size: 3.5rem!important;
+            font-size: 3.5rem !important;
         }
     }
 
@@ -2970,6 +3602,9 @@ body.popup-open {
             margin: 0 auto;
             padding: 0 1.25rem;
             box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            height: 100%;
 
             .page__title {
                 font-size: 1.875rem;
@@ -3040,6 +3675,212 @@ body.popup-open {
             text-indent: 10;
             margin-left: 7px;
         }
+
+    }
+
+
+    .mypage__inner {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 24px 0;
+
+        .mypage__profile {
+            padding: 0 20px;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 44px;
+
+            .profile__image {
+                width: 50px;
+                height: 50px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .profile__info {
+                .name {
+                    font-size: 24px;
+                }
+
+                .link {
+                    font-size: 16px;
+                }
+            }
+        }
+
+
+        .tabs {
+
+            display: flex;
+            border-bottom: 1px solid #D9D9D9;
+
+            li {
+
+                color: #797979;
+                padding: 5px 20px;
+                margin-left: 20px;
+
+                &:nth-child(2) {
+                    margin-left: 0;
+                }
+
+                &.current {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: -0.125rem;
+
+                    }
+                }
+            }
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px 20px;
+            box-sizing: border-box;
+
+            &.current {
+                display: inherit;
+            }
+        }
+
+        .booking__list {
+            .booking__items {
+                background: #FFF;
+                box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.10);
+                ;
+                max-width: 100%;
+                margin: 0 auto;
+                margin-bottom: 20px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .booking__list__header {
+                    padding: 7px 8px;
+                    box-sizing: border-box;
+
+                    .booking__no {
+                        font-size: 13px;
+                    }
+
+
+                    .booking__state {
+                        width: 5rem;
+                        padding: 2px 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 500;
+                        font-size: 12px;
+                    }
+                }
+
+                .booking__list-body {
+                    display: flex;
+                    gap: 10px;
+                    padding: 10px;
+                    box-sizing: border-box;
+
+                    .booking__image {
+                        width: 100px;
+                    }
+
+                    .booking__list-content {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        .content__info {}
+                    }
+                }
+
+            }
+        }
+
+        .account__content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            p {
+                font-weight: 600;
+                font-size: 1.25rem;
+                color: $text-lightblack;
+                margin-bottom: 2.375rem;
+                text-align: center;
+            }
+
+            input {
+                width: 17.8125rem;
+                height: 2.875rem;
+                padding: 0.875rem 0.625rem;
+                box-sizing: border-box;
+                background: #F9F9F9;
+                border: none;
+
+                ::placeholder {
+                    color: #797979;
+                }
+            }
+
+            .submit-btn {
+                cursor: pointer;
+                width: 17.8125rem;
+                height: 2.875rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #FFF;
+                font-size: 1rem;
+                font-family: Outfit;
+                background: #1E1E1E;
+                margin-top: 0.625rem;
+            }
+        }
+
+        .booking__no-list {
+            .calendar__img {
+                margin-bottom: 1.5625rem;
+                display: flex;
+                justify-content: center;
+
+                svg {
+                    width: 68px;
+                    height: 68px;
+                }
+
+            }
+
+            .list--text {
+                font-size: 18px;
+                margin-bottom: 12px;
+            }
+
+            .link__journey {
+                font-size: 20px;
+            }
+
+        }
+
+        .account__edit {
+            padding: 0 45px;
+        }
+
+        .account__delete{
+            .checkbox-group{
+                justify-content: center;
+                label{
+                    width: auto;
+                }
+            }
+        } 
 
     }
 }

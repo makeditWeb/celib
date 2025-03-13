@@ -145,6 +145,19 @@ body {
   background: none;
 }
 
+.submit-btn {
+  cursor: pointer;
+  width: 100%;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 16px;
+  font-family: Outfit;
+  background: #1E1E1E;
+}
+
 @media screen and (max-width: 768px) {
   .basic__container {
     max-width: 100%;
@@ -1740,6 +1753,524 @@ body.popup-open {
   font-weight: 500;
 }
 
+.mypage__inner {
+  max-width: 976px;
+  margin: 0 auto;
+  padding: 2.8125rem 0;
+}
+.mypage__inner .mypage__profile {
+  display: flex;
+  gap: 0.875rem;
+  align-items: center;
+  margin-bottom: 2.125rem;
+}
+.mypage__inner .mypage__profile .profile__image {
+  width: 4.375rem;
+  height: 4.375rem;
+}
+.mypage__inner .mypage__profile .profile__image img {
+  width: 100%;
+  height: 100%;
+}
+.mypage__inner .mypage__profile .profile__info .name {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #0A0A0A;
+  line-height: 1.2;
+}
+.mypage__inner .mypage__profile .profile__info .link {
+  color: #797979;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.mypage__inner .tabs {
+  display: flex;
+  border-bottom: 0.0625rem solid #D9D9D9;
+}
+.mypage__inner .tabs li {
+  color: #797979;
+  display: inline-block;
+  padding: 0 5rem 0.5rem;
+  cursor: pointer;
+}
+.mypage__inner .tabs li.current {
+  position: relative;
+  color: #FF8400;
+}
+.mypage__inner .tabs li.current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.125rem;
+  width: 100%;
+  height: 0.1875rem;
+  background-color: #FF8400;
+}
+.mypage__inner .tab-content {
+  display: none;
+  padding: 6.875rem 0;
+}
+.mypage__inner .tab-content.current {
+  display: inherit;
+}
+.mypage__inner .booking__list .booking__items {
+  background: #FFF;
+  box-shadow: 0px 0px 0.9375rem 0.125rem rgba(0, 0, 0, 0.1);
+  max-width: 27.5rem;
+  margin: 0 auto;
+  margin-bottom: 1.25rem;
+}
+.mypage__inner .booking__list .booking__items:last-child {
+  margin-bottom: 0;
+}
+.mypage__inner .booking__list .booking__items .booking__list__header {
+  padding: 0.3125rem 0.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.0625rem solid #ECECEC;
+}
+.mypage__inner .booking__list .booking__items .booking__list__header .booking__no {
+  color: #797979;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+.mypage__inner .booking__list .booking__items .booking__list__header .booking__state {
+  width: 5rem;
+  padding: 0.125rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+.mypage__inner .booking__list .booking__items .booking__list__header .booking__state.scheduled__state {
+  color: #FF8400;
+  background: #FFF2E5;
+}
+.mypage__inner .booking__list .booking__items .booking__list__header .booking__state.completed__state {
+  background: #DFFFDD;
+  color: #0E8B05;
+}
+.mypage__inner .booking__list .booking__items .booking__list__header .booking__state.cancelled__state {
+  background: #FFDCD9;
+  color: #EA4335;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body {
+  display: flex;
+  gap: 0.625rem;
+  padding: 0.625rem;
+  box-sizing: border-box;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body .booking__image {
+  width: 6.25rem;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body .booking__image img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body .booking__list-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body .booking__list-content .content__info .state__title {
+  color: #0A0A0A;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body .booking__list-content .content__info .state__title span {
+  color: #797979;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body .booking__list-content .content__info .state__date {
+  color: #0A0A0A;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body .booking__list-content .content__price .price__total {
+  color: #FF8400;
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body .booking__list-content .content__price .price__num {
+  color: #0A0A0A;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.mypage__inner .booking__list .booking__items .booking__list-body .booking__list-content .content__price .price__num span {
+  font-size: 0.75rem;
+  color: #797979;
+  font-weight: 400;
+}
+.mypage__inner .account__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mypage__inner .account__content p {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #0A0A0A;
+  margin-bottom: 2.375rem;
+  text-align: center;
+}
+.mypage__inner .account__content input {
+  width: 17.8125rem;
+  height: 2.875rem;
+  padding: 0.875rem 0.625rem;
+  box-sizing: border-box;
+  background: #F9F9F9;
+  border: none;
+}
+.mypage__inner .account__content input ::-moz-placeholder {
+  color: #797979;
+}
+.mypage__inner .account__content input ::placeholder {
+  color: #797979;
+}
+.mypage__inner .account__content .submit-btn {
+  cursor: pointer;
+  width: 17.8125rem;
+  height: 2.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 1rem;
+  font-family: Outfit;
+  background: #1E1E1E;
+  margin-top: 0.625rem;
+}
+.mypage__inner .booking__no-list .calendar__img {
+  margin-bottom: 1.5625rem;
+  display: flex;
+  justify-content: center;
+}
+.mypage__inner .booking__no-list .calendar__img svg {
+  width: 4.25rem;
+  height: 4.25rem;
+}
+.mypage__inner .booking__no-list .list--text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #0A0A0A;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+.mypage__inner .booking__no-list .link__journey {
+  color: #FF8400;
+  font-weight: 500;
+  font-size: 1.25rem;
+  text-align: center;
+  display: block;
+}
+.mypage__inner .form-group {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.mypage__inner .form-group:last-child {
+  margin-bottom: 0;
+}
+.mypage__inner .form-group input {
+  width: 100%;
+  height: 46px;
+  padding: 14px 10px;
+  box-sizing: border-box;
+  background: #F9F9F9;
+  border: none;
+}
+.mypage__inner .form-group input ::-moz-placeholder {
+  color: #797979;
+}
+.mypage__inner .form-group input ::placeholder {
+  color: #797979;
+}
+.mypage__inner .form-group .forget__password {
+  text-align: center;
+  margin: 10px 0 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #797979;
+  display: block;
+}
+.mypage__inner .help-text {
+  color: #797979;
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 4px;
+  text-indent: -5px;
+  margin-left: 8px;
+}
+.mypage__inner .terms-agree {
+  color: #797979;
+  font-size: 12px;
+  font-weight: 400;
+  width: calc(100% - 30px);
+}
+.mypage__inner .terms-agree .link {
+  font-size: 12px;
+  color: #0A0A0A;
+  font-weight: 400;
+}
+.mypage__inner .checkbox-group {
+  margin-bottom: 24px;
+  margin-top: 10px;
+  display: flex;
+}
+.mypage__inner .checkbox-group input[type=checkbox] {
+  position: relative;
+  border: 1px solid #000;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  margin: 0 0.6em 0 0;
+  outline: 0;
+  padding: 0 !important;
+  vertical-align: text-top;
+  height: 14px;
+  width: 14px;
+  -webkit-appearance: none;
+}
+.mypage__inner .checkbox-group input[type=checkbox]:checked {
+  background-color: #0A0A0A;
+  opacity: 1;
+}
+.mypage__inner .checkbox-group input[type=checkbox]:before {
+  content: "";
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: 3px;
+  height: 7px;
+  border: solid #FFF;
+  border-width: 0 2px 2px 0;
+  margin: -1px -1px 0 -1px;
+  transform: rotate(45deg) translate(-50%, -50%);
+  z-index: 2;
+}
+.mypage__inner .account--title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.mypage__inner .account__edit {
+  width: 285px;
+  margin: 0 auto;
+}
+.mypage__inner .birth-dropdowns {
+  display: flex;
+  gap: 5px;
+}
+.mypage__inner .custom-dropdown {
+  position: relative;
+}
+.mypage__inner .custom-dropdown:nth-child(1) {
+  width: 45%;
+}
+.mypage__inner .custom-dropdown:nth-child(2) {
+  width: 30%;
+}
+.mypage__inner .custom-dropdown:nth-child(3) {
+  width: 25%;
+}
+.mypage__inner .selected-option {
+  background-color: #F9F9F9;
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #797979;
+  font-size: 14px;
+}
+.mypage__inner .selected-option.active {
+  color: #333;
+}
+.mypage__inner .dropdown-arrow {
+  font-size: 10px;
+  color: #888;
+  margin-left: 5px;
+}
+.mypage__inner .dropdown-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  display: none;
+}
+.mypage__inner .dropdown-options.visible {
+  display: block;
+}
+.mypage__inner .dropdown-option {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.mypage__inner .dropdown-option:hover {
+  background-color: #f5f5f5;
+}
+.mypage__inner .passport-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 14px;
+  margin-top: 20px;
+}
+.mypage__inner .passport-upload-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.mypage__inner .file-input-wrapper {
+  position: relative;
+  flex: 1;
+  margin-right: 8px;
+  background: #F9F9F9;
+  height: 46px;
+}
+.mypage__inner .file-input-wrapper #file-name-display {
+  width: 90%;
+  padding: 14px 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #797979;
+  cursor: default;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.mypage__inner .file-input-wrapper .clear-file-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 4px;
+}
+.mypage__inner .file-input-wrapper .clear-file-btn:hover {
+  opacity: 0.8;
+}
+.mypage__inner .file-input-wrapper .clear-file-btn svg {
+  display: block;
+}
+.mypage__inner .upload-btn {
+  display: inline-block;
+  background-color: #0A0A0A;
+  color: white;
+  padding: 12px 22px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  height: 46px;
+  box-sizing: border-box;
+}
+.mypage__inner .upload-btn:hover {
+  background-color: #222;
+}
+.mypage__inner .hidden-file-input {
+  display: none;
+}
+.mypage__inner .help-text {
+  margin-top: 8px;
+  font-size: 10px;
+  color: #797979;
+}
+.mypage__inner .link__delete {
+  font-size: 12px;
+  color: #0A0A0A;
+  font-weight: 500;
+  display: block;
+  text-align: center;
+  margin-top: 32px;
+}
+.mypage__inner .account__delete .check__img {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+}
+.mypage__inner .account__delete .check__img img {
+  width: 100%;
+  height: 100%;
+}
+.mypage__inner .account__delete .delete__info {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  line-height: 1.2;
+}
+.mypage__inner .account__delete .delete__info span {
+  color: #FF8400;
+}
+.mypage__inner .account__delete .checkbox-group {
+  margin: 17px auto 30px;
+  justify-content: center;
+}
+.mypage__inner .account__delete .checkbox-group label {
+  width: auto;
+}
+.mypage__inner .account__delete .btn {
+  width: 285px;
+  margin: 0 auto;
+}
+.mypage__inner .account__delete .back__btn {
+  cursor: pointer;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1E1E1E;
+  font-size: 16px;
+  font-family: Outfit;
+  background: #fff;
+  border: 1px solid #0A0A0A;
+  margin-top: 10px;
+}
+
+.content__alert {
+  height: 100vh;
+}
+.content__alert .content__middle {
+  height: calc(100% - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.content__alert .content__middle img {
+  width: 80px;
+}
+.content__alert .content__middle p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  margin: 12px 0 27px;
+  text-align: center;
+}
+.content__alert .content__middle button {
+  width: 285px;
+}
+
 @media (min-width: 769px) and (max-width: 1400px) {
   .basic__container {
     max-width: 100%;
@@ -2500,6 +3031,9 @@ body.popup-open {
     margin: 0 auto;
     padding: 0 1.25rem;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
   .top__banner .banner__inner .page__title {
     font-size: 1.875rem;
@@ -2552,5 +3086,160 @@ body.popup-open {
   .section__content .text-indent {
     text-indent: 10;
     margin-left: 7px;
+  }
+  .mypage__inner {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 24px 0;
+  }
+  .mypage__inner .mypage__profile {
+    padding: 0 20px;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 44px;
+  }
+  .mypage__inner .mypage__profile .profile__image {
+    width: 50px;
+    height: 50px;
+  }
+  .mypage__inner .mypage__profile .profile__image img {
+    width: 100%;
+    height: 100%;
+  }
+  .mypage__inner .mypage__profile .profile__info .name {
+    font-size: 24px;
+  }
+  .mypage__inner .mypage__profile .profile__info .link {
+    font-size: 16px;
+  }
+  .mypage__inner .tabs {
+    display: flex;
+    border-bottom: 1px solid #D9D9D9;
+  }
+  .mypage__inner .tabs li {
+    color: #797979;
+    padding: 5px 20px;
+    margin-left: 20px;
+  }
+  .mypage__inner .tabs li:nth-child(2) {
+    margin-left: 0;
+  }
+  .mypage__inner .tabs li.current::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.125rem;
+  }
+  .mypage__inner .tab-content {
+    display: none;
+    padding: 30px 20px;
+    box-sizing: border-box;
+  }
+  .mypage__inner .tab-content.current {
+    display: inherit;
+  }
+  .mypage__inner .booking__list .booking__items {
+    background: #FFF;
+    box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .mypage__inner .booking__list .booking__items:last-child {
+    margin-bottom: 0;
+  }
+  .mypage__inner .booking__list .booking__items .booking__list__header {
+    padding: 7px 8px;
+    box-sizing: border-box;
+  }
+  .mypage__inner .booking__list .booking__items .booking__list__header .booking__no {
+    font-size: 13px;
+  }
+  .mypage__inner .booking__list .booking__items .booking__list__header .booking__state {
+    width: 5rem;
+    padding: 2px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 12px;
+  }
+  .mypage__inner .booking__list .booking__items .booking__list-body {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .mypage__inner .booking__list .booking__items .booking__list-body .booking__image {
+    width: 100px;
+  }
+  .mypage__inner .booking__list .booking__items .booking__list-body .booking__list-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .mypage__inner .account__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mypage__inner .account__content p {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #0A0A0A;
+    margin-bottom: 2.375rem;
+    text-align: center;
+  }
+  .mypage__inner .account__content input {
+    width: 17.8125rem;
+    height: 2.875rem;
+    padding: 0.875rem 0.625rem;
+    box-sizing: border-box;
+    background: #F9F9F9;
+    border: none;
+  }
+  .mypage__inner .account__content input ::-moz-placeholder {
+    color: #797979;
+  }
+  .mypage__inner .account__content input ::placeholder {
+    color: #797979;
+  }
+  .mypage__inner .account__content .submit-btn {
+    cursor: pointer;
+    width: 17.8125rem;
+    height: 2.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-size: 1rem;
+    font-family: Outfit;
+    background: #1E1E1E;
+    margin-top: 0.625rem;
+  }
+  .mypage__inner .booking__no-list .calendar__img {
+    margin-bottom: 1.5625rem;
+    display: flex;
+    justify-content: center;
+  }
+  .mypage__inner .booking__no-list .calendar__img svg {
+    width: 68px;
+    height: 68px;
+  }
+  .mypage__inner .booking__no-list .list--text {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .mypage__inner .booking__no-list .link__journey {
+    font-size: 20px;
+  }
+  .mypage__inner .account__edit {
+    padding: 0 45px;
+  }
+  .mypage__inner .account__delete .checkbox-group {
+    justify-content: center;
+  }
+  .mypage__inner .account__delete .checkbox-group label {
+    width: auto;
   }
 }/*# sourceMappingURL=main.css.map */

@@ -26,6 +26,20 @@ body {
   background: none;
 }
 
+.submit-btn {
+  cursor: pointer;
+  width: 100%;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 16px;
+  font-family: Outfit;
+  background: #1E1E1E;
+}
+
+
 @media screen and (max-width:768px){
   .basic__container{
     max-width: 100%;
