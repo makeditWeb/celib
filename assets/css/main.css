@@ -287,7 +287,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   transition: background-color 0.2s ease;
 }
 .mobile-dropdown ul li a:hover {
-  background-color: #1a1a1a;
+  background-color: #000, 10%;
 }
 
 .main-banner {
@@ -452,7 +452,6 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   font-size: 5.5rem;
   line-height: 1.2;
   position: relative;
-  width: -moz-fit-content;
   width: fit-content;
 }
 .way--inner .inner__title h2::after {
@@ -512,8 +511,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 .inner__slide .swiper-slide .slide-content.single-image .slide-img {
   aspect-ratio: 1/1;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .inner__slide .swiper-slide .slide-content.dual-image {
   position: relative;
@@ -525,8 +523,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 .inner__slide .swiper-slide .slide-content.dual-image .slide-img {
   width: 100%;
   aspect-ratio: 1/1;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .inner__slide .swiper-slide.dual-slide {
   width: 290px !important;
@@ -538,8 +535,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 .inner__slide .swiper-slide.dual-slide .slide-content.dual-image .slide-img {
   aspect-ratio: 1.03/1;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .inner__slide .swiper-pagination {
   position: relative;
@@ -576,8 +572,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 .inner__slide .swiper.spaceSwiper .swiper-slide .left-column .slide-img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .inner__slide .swiper.spaceSwiper .swiper-slide .right-column {
   width: 40%;
@@ -588,8 +583,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 .inner__slide .swiper.spaceSwiper .swiper-slide .right-column .slide-img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .inner__slide .swiper.spaceSwiper .swiper-slide .right-column .right-column-wrap {
   height: calc(50% - 5px);
@@ -703,8 +697,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   align-items: center;
   justify-content: center;
   background: #F6E8D6;
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
   color: #0A0A0A;
   font-size: 2rem;
   font-weight: 500;
@@ -806,8 +799,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   align-items: center;
   justify-content: center;
   background: #F6E8D6;
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
   color: #0A0A0A;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1442,9 +1434,6 @@ body.popup-open {
   background: #F9F9F9;
   border: none;
 }
-.sign-popup .popup-content .form-group input ::-moz-placeholder {
-  color: #797979;
-}
 .sign-popup .popup-content .form-group input ::placeholder {
   color: #797979;
 }
@@ -1870,8 +1859,7 @@ body.popup-open {
 .mypage__inner .booking__list .booking__items .booking__list-body .booking__image img {
   width: 100%;
   aspect-ratio: 1/1;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .mypage__inner .booking__list .booking__items .booking__list-body .booking__list-content {
   display: flex;
@@ -1932,9 +1920,6 @@ body.popup-open {
   background: #F9F9F9;
   border: none;
 }
-.mypage__inner .account__content input ::-moz-placeholder {
-  color: #797979;
-}
 .mypage__inner .account__content input ::placeholder {
   color: #797979;
 }
@@ -1988,9 +1973,6 @@ body.popup-open {
   box-sizing: border-box;
   background: #F9F9F9;
   border: none;
-}
-.mypage__inner .form-group input ::-moz-placeholder {
-  color: #797979;
 }
 .mypage__inner .form-group input ::placeholder {
   color: #797979;
@@ -2459,17 +2441,6 @@ body.popup-open {
   .book-now .book-now__inner .select__box .custom__dropdown .dropdown__header .selected__option {
     font-size: 1.25rem;
   }
-  .book-now .book-now__inner .daterangepicker {
-    position: fixed !important;
-    top: 10% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 90% !important;
-    min-width: 300px !important;
-    max-width: 400px !important;
-    max-height: 80vh !important;
-    overflow-y: auto !important;
-  }
   .book-now .book-now__inner .daterangepicker .calendars {
     flex-direction: column !important;
   }
@@ -2562,8 +2533,7 @@ body.popup-open {
   .way--inner .inner__slide .swiper.roomMobileSwiper .slide-img {
     width: 100%;
     height: 315px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .way--inner .inner__slide .swiper.roomMobileSwiper .room__list--dual {
     display: flex;
@@ -2573,8 +2543,7 @@ body.popup-open {
   .way--inner .inner__slide .swiper.roomMobileSwiper .room__list--dual .slide-img {
     width: calc(50% - 0.3125rem);
     height: 125px;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .way--inner .inner__slide .swiper.roomMobileSwiper .swiper-pagination {
     width: 100%;
@@ -2604,8 +2573,7 @@ body.popup-open {
   .way--inner .inner__slide .swiper.spaceSwiper .swiper-slide .left-column .slide-img {
     width: 100%;
     height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .way--inner .inner__slide .swiper.spaceSwiper .swiper-slide .right-column {
     width: 35%;
@@ -2621,8 +2589,7 @@ body.popup-open {
   .way--inner .inner__slide .swiper.spaceSwiper .swiper-slide .right-column .slide-img {
     width: 100%;
     height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .way--inner .inner__slide .swiper.spaceSwiper .swiper-slide .right-column-wrap {
     position: relative;
@@ -3198,9 +3165,6 @@ body.popup-open {
     background: #F9F9F9;
     border: none;
   }
-  .mypage__inner .account__content input ::-moz-placeholder {
-    color: #797979;
-  }
   .mypage__inner .account__content input ::placeholder {
     color: #797979;
   }
@@ -3242,4 +3206,6 @@ body.popup-open {
   .mypage__inner .account__delete .checkbox-group label {
     width: auto;
   }
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -156,7 +156,7 @@ header {
                 transition: background-color 0.2s ease;
 
                 &:hover {
-                    background-color: lighten(#000, 10%);
+                    background-color:#000, 10%;
                 }
             }
         }
@@ -2871,15 +2871,15 @@ body.popup-open {
             }
 
             .daterangepicker {
-                position: fixed !important;
-                top: 10% !important;
-                left: 50% !important;
-                transform: translateX(-50%) !important;
-                width: 90% !important;
-                min-width: 300px !important;
-                max-width: 400px !important;
-                max-height: 80vh !important;
-                overflow-y: auto !important;
+                // position: fixed !important;
+                // top: 10% !important;
+                // left: 50% !important;
+                // transform: translateX(-50%) !important;
+                // width: 90% !important;
+                // min-width: 300px !important;
+                // max-width: 400px !important;
+                // max-height: 80vh !important;
+                // overflow-y: auto !important;
 
                 .calendars {
                     flex-direction: column !important;

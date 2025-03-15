@@ -433,7 +433,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 지연 후 버튼 다시 추가
                     setTimeout(function() {
                         addSvgNavButtons();
-                        addMobileCloseButton(); // 모바일 닫기 버튼도 다시 추가
+                        addMobileHeader(); // addMobileCloseButton() 대신
+                        addConfirmButton(); // 이 줄 추가
                     }, 0);
                 });
                 
@@ -474,7 +475,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 지연 후 버튼 다시 추가
                     setTimeout(function() {
                         addSvgNavButtons();
-                        addMobileCloseButton(); // 모바일 닫기 버튼도 다시 추가
+                        addMobileHeader(); // addMobileCloseButton() 대신 이렇게 수정
+                        addConfirmButton(); // 이 줄 추가
                     }, 0);
                 });
             });
@@ -530,7 +532,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(function() {
                     applyDatePickerStyles();
                     addSvgNavButtons();
-                    addMobileCloseButton(); // 모바일 닫기 버튼도 다시 추가
+                    addMobileHeader(); // addMobileCloseButton() 대신 이렇게 수정
+                    addConfirmButton(); // 이 줄 추가
                 }, 10);
             }
         });
@@ -538,23 +541,39 @@ document.addEventListener('DOMContentLoaded', function() {
         // 데이트픽커 표시 함수
         function showDatePicker() {
             try {
+                const dateDropdown = document.querySelector('.date-dropdown');
                 const dropdownRect = dateDropdown.getBoundingClientRect();
                 
-                // 위치 설정
-                if (isMobile()) {
+                // Get datePickerInstance
+                const datePickerInput = dateDropdown.querySelector('input[type="text"]');
+                const datePickerInstance = $(datePickerInput).data('daterangepicker');
+                
+                // Check if we're on mobile
+                const isMobile = window.innerWidth < 768;
+                
+                // Set position based on device type
+                if (isMobile) {
+                    // Mobile: Full screen styling
                     $('.daterangepicker').css({
                         'position': 'fixed',
-                        'top': '10%',
-                        'left': '50%',
-                        'transform': 'translateX(-50%)',
-                        'width': '90%',
-                        'max-width': '400px',
-                        'margin': '0 auto',
-                        'max-height': '80vh',
+                        'top': '0',
+                        'left': '0',
+                        'right': '0',
+                        'bottom': '0',
+                        'width': '100%',
+                        'height': '100%',
+                        'max-width': '100%',
+                        'max-height': '100%',
+                        'margin': '0',
+                        'transform': 'none',
                         'overflow-y': 'auto',
-                        'z-index': '9999999'
+                        'z-index': '9999999',
+                        'border-radius': '0',
+                        'padding': '0',
+                        'box-shadow': 'none'
                     });
                 } else {
+                    // Desktop: Position below dropdown
                     $('.daterangepicker').css({
                         'position': 'absolute',
                         'top': (dropdownRect.bottom + window.scrollY) + 'px',
@@ -565,19 +584,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
                 
-                // DateRangePicker 표시
+                // Show the daterangepicker
                 datePickerInstance.show();
                 
-                // 추가 스타일링
+                // Apply styles
                 applyDatePickerStyles();
                 
-                // SVG 네비게이션 버튼 추가
+                // Add SVG navigation buttons
                 addSvgNavButtons();
                 
-                // 모바일 닫기 버튼 추가
-                addMobileCloseButton();
+                // On mobile, add the header and confirm button
+                if (isMobile) {
+                    // First ensure header is properly added
+                    addMobileHeader();
+                    
+                    // Then add confirm button
+                    addConfirmButton();
+                } else {
+                    // Just add confirm button for desktop
+                    addConfirmButton();
+                }
                 
-                // 선택되지 않았으면 선택 스타일 제거
+                // If no date selected, clear selection styles
                 if (!dateSelected) {
                     clearDateRangeStyles();
                 }
@@ -588,19 +616,107 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // daterangepicker에 스타일 적용
         function applyDatePickerStyles() {
-            $('.daterangepicker').css({
-                'border': '1px solid #eee',
-                'border-radius': '5px',
-                'background-color': '#fff',
-                'box-shadow': '0 4px 15px rgba(0,0,0,0.15)',
-                'font-family': "'Outfit', sans-serif",
-                'padding': '20px',
-                'z-index': '9999999',
-                'display': 'block',
-                'visibility': 'visible',
-                'opacity': '1',
-                'position': isMobile() ? 'fixed' : 'absolute'
-            });
+            if (isMobile()) {
+                // 모바일 전체 화면 스타일
+                $('.daterangepicker').css({
+                    'border': 'none',
+                    'border-radius': '0',
+                    'background-color': '#fff',
+                    'box-shadow': 'none',
+                    'font-family': "'Outfit', sans-serif",
+                    'padding': '0',
+                    'z-index': '9999999',
+                    'display': 'block',
+                    'visibility': 'visible',
+                    'opacity': '1',
+                    'position': 'fixed',
+                    'top': '0',
+                    'left': '0',
+                    'right': '0',
+                    'bottom': '0',
+                    'width': '100%',
+                    'height': '100%',
+                    'max-width': '100%',
+                    'max-height': '100%',
+                    'margin': '0',
+                    'transform': 'none',
+                    'overflow-y': 'auto'
+                });
+                
+                // 모바일 캘린더 컨테이너 스타일
+                $('.daterangepicker .drp-calendars').css({
+                    'padding': '0 20px 80px',
+                    'box-sizing': 'border-box',
+                    'flex-direction': 'column',
+                    'width': '100%',
+                    'overflow-y': 'auto',
+                    'height': 'calc(100% - 60px)'
+                });
+                
+                // 모바일 개별 캘린더 스타일
+                $('.daterangepicker .drp-calendar').css({
+                    'max-width': '100%',
+                    'width': '100%',
+                    'margin': '0',
+                    'padding': '0'
+                });
+                
+                // 첫 번째 캘린더 아래 여백 추가
+                $('.daterangepicker .drp-calendar:first-child').css({
+                    'margin-bottom': '20px',
+                    'border-bottom': '1px solid #eee',
+                    'padding-bottom': '20px'
+                });
+                
+                // 확인 버튼 위치 (모바일)
+                $('.daterangepicker-confirm-btn').css({
+                    'position': 'fixed',
+                    'bottom': '0',
+                    'left': '0',
+                    'right': '0',
+                    'margin': '0',
+                    'width': '100%',
+                    'border-radius': '0',
+                    'padding': '15px',
+                    'font-size': '18px',
+                    'z-index': '999999'
+                });
+                
+                // 모바일 캘린더 내용물 여백 조정
+                $('.daterangepicker .calendar-table').css({
+                    'padding': '0'
+                });
+            } else {
+                // 데스크탑 스타일
+                $('.daterangepicker').css({
+                    'border': '1px solid #eee',
+                    'border-radius': '5px',
+                    'background-color': '#fff',
+                    'box-shadow': '0 4px 15px rgba(0,0,0,0.15)',
+                    'font-family': "'Outfit', sans-serif",
+                    'padding': '20px',
+                    'z-index': '9999999',
+                    'display': 'block',
+                    'visibility': 'visible',
+                    'opacity': '1',
+                    'position': 'absolute'
+                });
+                
+                // 캘린더 가로 배치
+                $('.daterangepicker .drp-calendar').css({
+                    'max-width': '50%',
+                    'padding': '0',
+                    'margin': '0'
+                });
+                
+                // 확인 버튼 스타일 (데스크탑)
+                $('.daterangepicker-confirm-btn').css({
+                    'width': '100%',
+                    'margin-top': '15px',
+                    'padding': '12px',
+                    'font-size': '16px'
+                });
+            }
             
             // 버튼 영역 숨기기
             $('.daterangepicker .drp-buttons').hide();
@@ -627,32 +743,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 'color': '#333'
             });
             
-            // 모바일에서는 캘린더 세로 배치
-            if (isMobile()) {
-                $('.daterangepicker .drp-calendars').css({
-                    'flex-direction': 'column'
-                });
-                
-                $('.daterangepicker .drp-calendar').css({
-                    'max-width': '100%',
-                    'width': '100%'
-                });
-                
-                // 첫 번째 캘린더 아래 여백 추가
-                $('.daterangepicker .drp-calendar:first-child').css({
-                    'margin-bottom': '20px',
-                    'border-bottom': '1px solid #eee',
-                    'padding-bottom': '20px'
-                });
-            } else {
-                // 데스크탑에서는 가로 배치
-                $('.daterangepicker .drp-calendar').css({
-                    'max-width': '50%',
-                    'padding': '0',
-                    'margin': '0'
-                });
-            }
-            
             // 더 나은 가시성을 위한 추가 스타일
             $('.daterangepicker .month').css({
                 'font-weight': 'bold',
@@ -668,6 +758,48 @@ document.addEventListener('DOMContentLoaded', function() {
             // 기존 화살표 숨기기
             $('.daterangepicker .prev, .daterangepicker .next').hide();
         }
+
+
+        const additionalStyles = `
+            .mobile-daterangepicker-header {
+                display: flex !important;
+                position: sticky !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 1000000 !important;
+                background-color: #fff !important;
+                border-bottom: 1px solid #eee !important;
+                padding: 15px 16px 15px !important;
+                margin-bottom: 15px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .mobile-close-btn {
+                display: block !important;
+                position: absolute !important;
+                right: 15px !important;
+                top: 50% !important;
+                z-index: 1000001 !important;
+                padding: 8px !important;
+            }
+
+            @media (max-width: 767px) {
+                .daterangepicker {
+                    padding-top: 0 !important;
+                }
+                
+                .daterangepicker .drp-calendars {
+                    padding-top: 60px !important;
+                }
+            }
+            `;
+
+            // Add these styles to the document
+            const styleEl = document.createElement('style');
+            styleEl.textContent += additionalStyles;
+            document.head.appendChild(styleEl);
         
         // 드롭다운 토글 함수
         function toggleDropdown(dropdown) {
@@ -696,6 +828,76 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        function addConfirmButton() {
+            // 이미 있는 확인 버튼 제거
+            $('.daterangepicker-confirm-btn').remove();
+            
+            // 확인 버튼 생성
+            const confirmBtn = $(`<button type="button" class="daterangepicker-confirm-btn">Confirm</button>`);
+            
+            if (isMobile()) {
+                // 모바일 스타일
+                confirmBtn.css({
+                    'position': 'fixed',
+                    'bottom': '0',
+                    'left': '0',
+                    'right': '0',
+                    'width': '100%',
+                    'padding': '15px',
+                    'background-color': '#000',
+                    'color': '#fff',
+                    'border': 'none',
+                    'cursor': 'pointer',
+                    'font-size': '18px',
+                    'font-weight': '500',
+                    'font-family': "'Outfit', sans-serif",
+                    'z-index': '999999',
+                    'border-radius': '0',
+                    'margin': '0',
+                    'text-transform': 'none'
+                });
+            } else {
+                // 데스크탑 스타일
+                confirmBtn.css({
+                    'width': '100%',
+                    'padding': '12px',
+                    'background-color': '#000',
+                    'color': '#fff',
+                    'border': 'none',
+                    'cursor': 'pointer',
+                    'margin-top': '15px',
+                    'font-size': '16px',
+                    'font-weight': '500',
+                    'font-family': "'Outfit', sans-serif",
+                    'text-transform': 'none'
+                });
+            }
+            
+            // daterangepicker에 버튼 추가
+            $('.daterangepicker').append(confirmBtn);
+            
+            // 확인 버튼 클릭 이벤트
+            confirmBtn.on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 날짜가 선택된 경우에만 처리
+                if (datePickerInstance.startDate && datePickerInstance.endDate) {
+                    // 헤더 텍스트 업데이트
+                    updateHeaderText(datePickerInstance);
+                    
+                    // 드롭다운과 데이트픽커 닫기
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                    
+                    datePickerInstance.hide();
+                    isDateDropdownActive = false;
+                }
+            });
+        }
+
+
         // 날짜 드롭다운 헤더 클릭 이벤트
         const dateDropdownHeader = dateDropdown.querySelector('.dropdown__header');
         if (dateDropdownHeader) {
@@ -711,7 +913,6 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             e.stopPropagation();
             
-            // 날짜 클릭 후 인스턴스 유지
             setTimeout(function() {
                 // 달력이 계속 표시되도록 상태 유지
                 isDateDropdownActive = true;
@@ -721,7 +922,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 스타일 재적용
                 applyDatePickerStyles();
                 addSvgNavButtons(); // SVG 네비게이션 버튼 다시 추가
-                addMobileCloseButton(); // 모바일 닫기 버튼도 다시 추가
+                addMobileHeader(); // 모바일 헤더 추가 (닫기 버튼 대신)
+                addConfirmButton(); // 확인 버튼 추가
             }, 100);
             
             return false;
@@ -750,12 +952,96 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 applyDatePickerStyles();
-                addSvgNavButtons(); // SVG 네비게이션 버튼 다시 추가
-                addMobileCloseButton(); // 모바일 닫기 버튼도 다시 추가
+                addSvgNavButtons();
+                addMobileHeader(); // addMobileCloseButton() 대신
+                addConfirmButton(); // 이 줄 추가
             }
         });
         
         console.log("날짜 드롭다운 초기화 완료");
+    }
+
+    function addMobileHeader() {
+        // First, remove any existing mobile header to prevent duplicates
+        $('.mobile-daterangepicker-header').remove();
+        
+        // Force the function to run for mobile devices
+        if (window.innerWidth < 768) {
+            console.log("Adding mobile header for datepicker");
+            
+            // Create header container with improved styling
+            const headerContainer = $(`<div class="mobile-daterangepicker-header"></div>`);
+            headerContainer.css({
+                'display': 'flex',
+                'justify-content': 'center',
+                'align-items': 'center',
+                'width': '100%',
+                'padding': '15px 20px',
+                'font-size': '18px',
+                'font-weight': 'bold',
+                'position': 'sticky',
+                'top': '0',
+                'left': '0',
+                'right': '0',
+                'border-bottom': '1px solid #eee',
+                'margin-bottom': '15px',
+                'background-color': '#fff',
+                'z-index': '1000000'
+            });
+            
+            // Title with improved styling
+            const headerTitle = $(`<div>Check In - Check Out</div>`);
+            
+            // X button SVG icon
+            const closeSvgIcon = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>`;
+            
+            // Close button with improved styling
+            const closeBtn = $(`<button type="button" class="mobile-close-btn">${closeSvgIcon}</button>`);
+            closeBtn.css({
+                'position': 'absolute',
+                'right': '15px',
+                'top': '50%',
+                'transform': 'translateY(-50%)',
+                'background': 'none',
+                'border': 'none',
+                'cursor': 'pointer',
+                'z-index': '1000001',
+                'padding': '8px',
+                'color': '#000',
+                'display': 'block'
+            });
+            
+            // Add elements to header
+            headerContainer.append(headerTitle);
+            headerContainer.append(closeBtn);
+            
+            // Add header to daterangepicker as the first element
+            // Use a slight delay to ensure daterangepicker is in the DOM
+            setTimeout(function() {
+                // Make sure the daterangepicker exists before adding header
+                if ($('.daterangepicker').length > 0) {
+                    $('.daterangepicker').prepend(headerContainer);
+                    
+                    // Make sure the header is visible
+                    $('.mobile-daterangepicker-header').show();
+                    
+                    // Add click event for close button
+                    closeBtn.on('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close all dropdowns
+                        $('.custom__dropdown').removeClass('active');
+                        
+                        // Hide datepicker
+                        const datePickerInstance = $('.daterangepicker').data('daterangepicker');
+                        if (datePickerInstance) {
+                            datePickerInstance.hide();
+                        }
+                    });
+                }
+            }, 50);
+        }
     }
     
     // ===== 외부 클릭 이벤트 공통 처리 =====
@@ -794,6 +1080,8 @@ document.addEventListener('DOMContentLoaded', function() {
             padding: 20px !important;
             z-index: 9999999 !important;
             transition: none !important;
+            max-width: 660px!important;
+            box-sizing: border-box;
         }
         
         .daterangepicker .drp-calendar {
@@ -840,10 +1128,12 @@ document.addEventListener('DOMContentLoaded', function() {
             clear: none !important;
             border-right: 1px solid #ccc;
             padding-right: 10px !important;
+
         }
         
         .daterangepicker .drp-calendar.right {
-            padding-left: 10px !important;
+            padding:0 20px!important;
+            box-sizing: border-box;
         }
         
         /* 기존 화살표 숨기기 */
@@ -882,7 +1172,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cursor: pointer !important;
             position: absolute !important;
             right: 10px !important;
-            top: 10px !important;
+            top: 50% !important;
             z-index: 999999 !important;
             color: #333 !important;
             padding: 5px !important;
@@ -926,17 +1216,26 @@ document.addEventListener('DOMContentLoaded', function() {
             text-decoration: unset;
             color: #e7e7e7;
         }
+
+        
         
         @media (max-width: 767px) {
             .daterangepicker {
-                width: 80% !important;
-                max-width: 400px !important;
-                transform: translate(-50%, 0)!important;
-                top: 100px !important;
-                left: 50% !important;
-                padding-top: 40px !important; /* 닫기 버튼 공간 확보 */
+                width: 100% !important;
+                top: 0 !important;
+                left: 0 !important;
+                padding: 0px !important; /* 닫기 버튼 공간 확보 */
+                box-sizing: border-box;
             }
             
+            .daterangepicker .drp-calendar.left {
+            clear: none !important;
+            border-right: none;
+            padding:0 20px !important;
+            margin-bottom: 20px !important;
+            box-sizing: border-box;
+            }
+
             .mobile-close-btn {
                 display: block !important; /* 모바일에서만 표시 */
             }
