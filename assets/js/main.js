@@ -148,44 +148,52 @@ function elementExists(selector) {
       if (!banner) return;
       
       const originalText = banner.textContent.trim();
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
       
-      if (isMobile) {
-        banner.style.overflow = 'hidden';
-        
-        // 원본 텍스트 저장 및 배너 비우기
-        banner.innerHTML = '';
-        
-        // 흐르는 텍스트를 위한 컨테이너 생성
-        const marqueeContainer = document.createElement('div');
-        marqueeContainer.className = 'marquee-container';
-        marqueeContainer.style.cssText = `
-          display: flex;
-          width: 100%;
-          overflow: hidden;
+      // PC와 모바일 모두 같은 흐르는 텍스트 적용
+      banner.style.overflow = 'hidden';
+      
+      // 원본 텍스트 저장 및 배너 비우기
+      banner.innerHTML = '';
+      
+      // 흐르는 텍스트를 위한 컨테이너 생성
+      const marqueeContainer = document.createElement('div');
+      marqueeContainer.className = 'marquee-container';
+      marqueeContainer.style.cssText = `
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+      `;
+      
+      // 실제 흐르는 텍스트 요소 생성
+      const marqueeContent = document.createElement('div');
+      marqueeContent.className = 'marquee-content';
+      marqueeContent.style.cssText = `
+        display: flex;
+        white-space: nowrap;
+        animation: marquee 60s linear infinite;
+      `;
+      
+      // 충분한 텍스트 추가 (2번 이상 화면을 채울만큼)
+      for (let i = 0; i < 20; i++) {
+        const span = document.createElement('span');
+        span.textContent = originalText + ' ';
+        span.style.cssText = `
+          padding-right: 20px;
         `;
-        
-        // 실제 흐르는 텍스트 요소 생성
-        const marqueeContent = document.createElement('div');
-        marqueeContent.className = 'marquee-content';
-        marqueeContent.style.cssText = `
-          display: flex;
-          white-space: nowrap;
-          animation: marquee 60s linear infinite;
-        `;
-        
-        // 충분한 텍스트 추가 (2번 이상 화면을 채울만큼)
-        for (let i = 0; i < 20; i++) {
-          const span = document.createElement('span');
-          span.textContent = originalText + ' ';
-          span.style.cssText = `
-            padding-right: 20px;
-          `;
-          marqueeContent.appendChild(span);
-        }
-        
-        // 애니메이션 키프레임 추가
+        marqueeContent.appendChild(span);
+      }
+      
+      // 애니메이션 속도 조정 (PC는 좀 더 느리게, 모바일은 빠르게)
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const animationDuration = isMobile ? '60s' : '80s'; // PC는 80초, 모바일은 60초
+      
+      marqueeContent.style.animation = `marquee ${animationDuration} linear infinite`;
+      
+      // 애니메이션 키프레임 추가
+      const styleSheetId = 'marquee-animation-style';
+      if (!document.getElementById(styleSheetId)) {
         const styleSheet = document.createElement('style');
+        styleSheet.id = styleSheetId;
         styleSheet.innerHTML = `
           @keyframes marquee {
             0% { transform: translateX(0); }
@@ -193,12 +201,26 @@ function elementExists(selector) {
           }
         `;
         document.head.appendChild(styleSheet);
-        
-        // DOM에 추가
-        marqueeContainer.appendChild(marqueeContent);
-        banner.appendChild(marqueeContainer);
       }
+      
+      // DOM에 추가
+      marqueeContainer.appendChild(marqueeContent);
+      banner.appendChild(marqueeContainer);
     }
+    
+    // 페이지 로드 시 실행
+    document.addEventListener('DOMContentLoaded', initializeBannerTextFlow);
+    
+    // 화면 크기 변경 시 재실행 (반응형 대응)
+    window.addEventListener('resize', function() {
+      // 기존 요소 제거 후 다시 생성
+      const banner = document.querySelector('.fixed__banner');
+      if (banner) {
+        const originalText = banner.querySelector('.marquee-content span')?.textContent.trim() || '20% promotion now';
+        banner.innerHTML = originalText;
+        initializeBannerTextFlow();
+      }
+    });
     
     // 탭 초기화 (마이페이지 전용)
     function initializeTabs() {
