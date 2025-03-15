@@ -553,6 +553,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Set position based on device type
                 if (isMobile) {
+                    $('body').addClass('no-scroll');
                     // Mobile: Full screen styling
                     $('.daterangepicker').css({
                         'position': 'fixed',
@@ -571,6 +572,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         'border-radius': '0',
                         'padding': '0',
                         'box-shadow': 'none'
+                    });
+
+                    $('.daterangepicker .drp-calendars').css({
+                        'padding': '0 20px 80px',
+                        'box-sizing': 'border-box',
+                        'flex-direction': 'column',
+                        'width': '100%',
+                        'overflow-y': 'auto', // 여기서만 스크롤 허용
+                        'height': 'calc(100% - 60px)',
+                        '-webkit-overflow-scrolling': 'touch' // iOS 스크롤 부드럽게
                     });
                 } else {
                     // Desktop: Position below dropdown
@@ -613,7 +624,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error showing daterangepicker:', error);
             }
         }
+
         
+        $(document).on('hide.daterangepicker', function() {
+            $('body').removeClass('no-scroll');
+        });
+
+
         // daterangepicker에 스타일 적용
         function applyDatePickerStyles() {
             if (isMobile()) {
@@ -893,9 +910,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     datePickerInstance.hide();
                     isDateDropdownActive = false;
+                    
+                    // 스크롤 원상복구
+                    $('body').removeClass('no-scroll');
                 }
             });
         }
+
+        $(document).on('click', '.mobile-close-btn', function() {
+            $('body').removeClass('no-scroll');
+        });
+        
 
 
         // 날짜 드롭다운 헤더 클릭 이벤트
@@ -1071,6 +1096,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== 데이트픽커 스타일 적용 =====
     const styleEl = document.createElement('style');
     styleEl.textContent = `
+            body.no-scroll {
+                overflow: hidden !important;
+                position: fixed !important;
+                width: 100% !important;
+                height: 100% !important;
+            }
+            
+            /* 모바일에서 캘린더 내부만 스크롤 */
+            @media (max-width: 767px) {
+                .daterangepicker {
+                    overflow: hidden !important;
+                }
+                
+                .daterangepicker .drp-calendars {
+                    overflow-y: auto !important;
+                    -webkit-overflow-scrolling: touch !important;
+                    height: calc(100% - 120px) !important; /* 헤더와 버튼 고려 */
+                    padding-bottom: 100px !important; /* 하단 버튼 공간 고려 */
+                }
+                
+            }
+
+
         .daterangepicker {
             border: 1px solid #eee !important;
             border-radius: 5px !important;
