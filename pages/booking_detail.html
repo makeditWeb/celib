@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celib</title>
+
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+</head>
+
+<body>
+    
+    <header>
+        <div class="header__inner basic__container">
+            <a href="./index.html" class="logo">
+                <img src="../assets/images/logo.svg" alt="Celib">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="./locations.html">Locations</a></li>
+                    <li><a href="./sign_in.html">Sign in</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Icon -->
+            <div class="mobile-menu-icon" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        
+
+    </header>
+
+
+    <div class="mobile-dropdown" id="mobileDropdown">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Célib Gadi</a></li>
+            <li><a href="./sign_in.html">Login</a></li>
+            <li><a href="./sign_up.html">Sign up</a></li>
+        </ul>
+    </div>
+
+    <section class="top__banner">
+        <div class="banner__inner">
+            <h1 class="page__title">Booking Details</h1>
+        </div>
+    </section>
+
+    <section class="booking__detail">
+        <div class="detail__inner">
+            <div class="detail__left">
+                <div class="detail__list--items">
+                    <p class="check--title">Double-check your stay details before proceeding.</p>
+                    <div class="detaill__header">
+                        <div class="detail__image">
+                            <img src="../assets/images/room04.png">
+                        </div>
+                        <div class="detail__infomation">
+                            <div class="deteail__info--header">
+                                <div class="detail__info-title">Célib Gadi <p>Duplex Unit A</p></div>
+                                <div class="detail__info--location">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="9" viewBox="0 0 7 9" fill="none">
+                                        <path d="M3.5 4.5C3.74062 4.5 3.94661 4.41187 4.11797 4.23562C4.28932 4.05937 4.375 3.8475 4.375 3.6C4.375 3.3525 4.28932 3.14062 4.11797 2.96438C3.94661 2.78813 3.74062 2.7 3.5 2.7C3.25937 2.7 3.05339 2.78813 2.88203 2.96438C2.71068 3.14062 2.625 3.3525 2.625 3.6C2.625 3.8475 2.71068 4.05937 2.88203 4.23562C3.05339 4.41187 3.25937 4.5 3.5 4.5ZM3.5 7.8075C4.38958 6.9675 5.04948 6.20437 5.47969 5.51812C5.9099 4.83187 6.125 4.2225 6.125 3.69C6.125 2.8725 5.87161 2.20312 5.36484 1.68187C4.85807 1.16062 4.23646 0.9 3.5 0.9C2.76354 0.9 2.14193 1.16062 1.63516 1.68187C1.12839 2.20312 0.875 2.8725 0.875 3.69C0.875 4.2225 1.0901 4.83187 1.52031 5.51812C1.95052 6.20437 2.61042 6.9675 3.5 7.8075ZM3.5 9C2.32604 7.9725 1.44922 7.01813 0.869531 6.13688C0.289844 5.25562 0 4.44 0 3.69C0 2.565 0.351823 1.66875 1.05547 1.00125C1.75911 0.33375 2.57396 0 3.5 0C4.42604 0 5.24088 0.33375 5.94453 1.00125C6.64818 1.66875 7 2.565 7 3.69C7 4.44 6.71016 5.25562 6.13047 6.13688C5.55078 7.01813 4.67396 7.9725 3.5 9Z" fill="#797979"/>
+                                    </svg>
+                                    <p>Geumcheon-gu, Seoul</p>
+                                </div>
+                            </div>
+                            <div class="detail__info--price">
+                                <p class="price--title">Total</p>
+                                <div class="price--num">
+                                    $ 1,050<span>/30 nights</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkinout">
+                        <div class="checkin--info">
+                            <p>Check in</p>
+                            <h3>2025.03.01</h3>
+                        </div>
+                        <p class="day">30<span>nights</span></p>
+                        <div class="checkin--info">
+                            <p>Check out</p>
+                            <h3>2025.03.31</h3>
+                        </div>
+                    </div>
+                    <div class="stay--guideline">
+                        <h4 class="section--title">Stay Guidelines</h4>
+                        <ul>
+                            <li>· Amenities are not provided as part of the stay.</li>
+                            <li>· Smoking and contamination may result in fines.</li>
+                            <li>· Lost cards will incure a replacement fee.</li>
+                            <li>· Furniture must remain as arranged and cannot be added or removed.</li>
+                            <li>· Pets are not permitted within the residence.</li>
+                        </ul>
+                        
+                    </div>
+                </div>
+                
+
+                <div class="detail__list--items01">
+                    <h4 class="section--title">Guest Details</h4>
+                    <div class="guest--detail">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" placeholder="Full Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Email Address">
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <div class="birth-dropdowns">
+                                        <div class="custom-dropdown">
+                                            <div class="selected-option">Year of Birth
+                                                <span class="dropdown-arrow">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"
+                                                        fill="none">
+                                                        <path d="M1 1L6 7L11 1" stroke="#797979" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="dropdown-options">
+                                                <!-- 옵션들은 JavaScript로 추가될 것입니다 -->
+                                            </div>
+                                        </div>
+                
+                                        <div class="custom-dropdown">
+                                            <div class="selected-option">Month 
+                                                <span class="dropdown-arrow">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"
+                                                        fill="none">
+                                                        <path d="M1 1L6 7L11 1" stroke="#797979" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="dropdown-options">
+                                                <!-- 옵션들은 JavaScript로 추가될 것입니다 -->
+                                            </div>
+                                        </div>
+                
+                                        <div class="custom-dropdown">
+                                            <div class="selected-option">Date 
+                                                <span class="dropdown-arrow">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"
+                                                        fill="none">
+                                                        <path d="M1 1L6 7L11 1" stroke="#797979" />
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            <div class="dropdown-options">
+                                                <!-- 옵션들은 JavaScript로 추가될 것입니다 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="detail__list--items02">
+                    <h4 class="section--title">Refund Policy</h4>
+                    <div class="refund--policy">
+                        <p><span>· 100% refund</span>of payment until 23:59 on the <br>day of payment</p>
+                        <p><span>· 90% refund</span>of the payment if cancelled 15 <br>days before the check-in date</p>
+                        <p><span>· 70% refund</span> of the payment if cancelled 14 to 8 <br>days before the check-in date</p>
+                        <p><span>· 50% refund</span>of the payment if cancelled 7 to 1 <br> day before the check-in date</p>
+                        <p><span>· No Refunds</span>available on the check-in date</p>
+    
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms-agree">
+                            <label for="terms-agree" class="terms-agree">
+                                I acknowledge and agree to Célib’s Refund Policy
+                            </label>
+                        </div>
+    
+                        
+                    </div>
+                </div>
+
+                <div class="payment--method">
+                    <h4 class="section--title">Payment Method</h4>
+                    <label for="term-1" class="radio-button">
+                        
+                        <input type="radio" id="term-1" name="terms">
+                        <span class="custom-radio"></span>
+                        <img src="../assets/images/paypal.svg">PayPal
+                    </label>
+                </div>
+            </div>
+            <div class="detail__fixed">
+                <div class="detail__fixed--inner">
+                    <h4>Payment Details</h4>
+                    <div class="detail__content-item">
+                        <div class="pay--detail">
+                            <p class="pay__des">Nightly Rate</p>
+                            <p class="pay__num">$50</p>
+                        </div>
+                        <div class="pay--detail">
+                            <p class="pay__des">X 30 nights</p>
+                            <p class="pay__num">$1,500</p>
+                        </div>
+                        <div class="pay__etc_require">
+                            <p class="pay__des">Security Deposit (No deposit required) </p>
+                            <p class="pay__des">$0 </p>
+                        </div>
+                        <div class="pay__etc">
+                            <p class="pay__des">Service & Community Fee</p>
+                            <p class="pay__des">$0 </p>
+                        </div>
+                        <p class="included__des">*All Included</p>
+                    </div>
+                    <div class="detail__content-pay">
+                        <div class="pay--detail">
+                            <p class="pay__des">Subtotal</p>
+                            <p class="pay__num">$1,350</p>
+                        </div>
+                        <div class="pay--detail-vat">
+                            <p class="pay__des">VAT(10%)</p>
+                            <p class="pay__num">$1,350</p>
+                        </div>
+                    </div>
+                    <div class="detail__total">
+                        <h3>Total Due <span>(USD)</span></h3>
+                        <p class="total">
+                            $1,500
+                        </p>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="terms-agree01">
+                        <label for="terms-agree01" class="terms-agree">
+                            By creating an account, I acknowledge and agree to Célib's <a href="#"
+                                onclick="showTerms('terms_use'); return false;" class="link">Terms of Use</a> and <a
+                                href="#" onclick="showTerms('privacy_policy'); return false;" class="link">Privacy
+                                Policy</a>
+                        </label>
+                    </div>
+
+                    <button type="button" class="btn submit-btn">Proceed to payment</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+<script src="../assets/js/dropdown.js"></script>
+<script src="../assets/js/slide.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/popup.js"></script>
+<script src="../assets/js/signpopup.js"></script>
+</body>
+
+</html>

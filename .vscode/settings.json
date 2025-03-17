@@ -1,0 +1,27 @@
+{
+    "fiveServer.browser": [],
+    "liveServer.settings.ChromeDebuggingAttachment": false,
+    "liveServer.settings.CustomBrowser": "chrome",
+    "security.workspace.trust.untrustedFiles": "open",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "liveServer.settings.donotVerifyTags": true,
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/assets/css"
+        }
+    ],
+    "liveSassCompile.settings.includeItems": [
+        "/assets/scss/main.scss"
+    ],
+    "liveSassCompile.settings.excludeList": [
+        "/**/node_modules/**",
+        "/.vscode/**"
+    ]
+}
