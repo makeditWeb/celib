@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celib</title>
+
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+</head>
+
+<body>
+    
+    <header>
+        <div class="header__inner basic__container">
+            <a href="./index.html" class="logo">
+                <img src="../assets/images/logo.svg" alt="Celib">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="./locations.html">Locations</a></li>
+                    <li><a href="./sign_in.html">Sign in</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Icon -->
+            <div class="mobile-menu-icon" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        
+
+    </header>
+
+
+    <div class="mobile-dropdown" id="mobileDropdown">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Célib Gadi</a></li>
+            <li><a href="./sign_in.html">Login</a></li>
+            <li><a href="./sign_up.html">Sign up</a></li>
+        </ul>
+    </div>
+
+    <section class="top__banner">
+        <div class="banner__inner">
+            <h1 class="page__title">Booking Details</h1>
+        </div>
+    </section>
+
+    <section class="completed__content">
+        <div class="completed__content--inner">
+            <img src="../assets/images/check.png" class="check__image">
+            <h4>Booking Completed</h4>
+            <p class="des">
+                We’re grateful to have you at Celib and
+                <br>look forward to your stay!
+            </p>
+
+            <div class="booking__items">
+                <div class="booking__list__header">
+                    <h4 class="booking__no">Booking No. 12345667890</h4>
+                    <div class="booking__state scheduled__state">Scheduled</div>
+                </div>
+                <div class="booking__list-body">
+                    <div class="booking__image">
+                        <img src="../assets/images/room04.png" alt="rooms__img">
+                    </div>
+                    <div class="booking__list-content">
+                        <div class="content__info">
+                            <h3 class="state__title">Célib Gadi <span>Duplex Unit A</span></h3>
+                            <p class="state__date">2025.03.01 - 03.31 </p>
+                        </div>
+                        <div class="content__price">
+                            <p class="price__total">Total</p>
+                            <p class="price__num">$ 1,050 <span>/30 nights</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copy">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 12C5.67 12 5.3875 11.8825 5.1525 11.6475C4.9175 11.4125 4.8 11.13 4.8 10.8V2.8C4.8 2.47 4.9175 2.1875 5.1525 1.9525C5.3875 1.7175 5.67 1.6 6 1.6H12.4C12.73 1.6 13.0125 1.7175 13.2475 1.9525C13.4825 2.1875 13.6 2.47 13.6 2.8V10.8C13.6 11.13 13.4825 11.4125 13.2475 11.6475C13.0125 11.8825 12.73 12 12.4 12H6ZM6 10.8H12.4V2.8H6V10.8ZM3.6 14.4C3.27 14.4 2.9875 14.2825 2.7525 14.0475C2.5175 13.8125 2.4 13.53 2.4 13.2V4H3.6V13.2H11.2V14.4H3.6Z" fill="#797979"/>
+                </svg>
+                <a href="#none">Copy Booking No.</a>
+            </div>
+
+            <div class="button__area">
+                <button type="button" class="btn submit-btn">
+                    View Booking Details
+                </button>
+                
+                <button type="button" class="btn back-btn">
+                    Back to Home
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.js"></script>
+<script src="../assets/js/slide.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/detail-popup.js"></script>
+</body>
+
+</html>

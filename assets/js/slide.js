@@ -101,4 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         effect: 'slide',
         speed: 600,
     });
+
+    
 });
+
