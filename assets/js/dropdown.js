@@ -1290,8 +1290,6 @@ document.addEventListener('DOMContentLoaded', function() {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px !important;
-            height: 40px !important;
                 margin: 0 auto;
             }
                 
@@ -1299,8 +1297,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 40px !important;
-                height: 40px !important;
             }
             .daterangepicker .drp-calendar.left {
             clear: none !important;
