@@ -3981,34 +3981,34 @@ body.popup-open {
                 }
             }
 
-            .daterangepicker {
-                width: 90%;
-                max-width: 350px;
+            // .daterangepicker {
+            //     width: 90%;
+            //     max-width: 350px;
 
-                .calendar {
-                    width: 100%;
-                    max-width: 100%;
+            //     .calendar {
+            //         width: 100%;
+            //         max-width: 100%;
 
-                    // 첫 번째 캘린더와 두 번째 캘린더 사이 구분선
-                    &:first-child {
-                        border-bottom: 1px solid #eee;
-                        padding-bottom: 15px;
-                        margin-bottom: 15px;
-                    }
+            //         // 첫 번째 캘린더와 두 번째 캘린더 사이 구분선
+            //         &:first-child {
+            //             border-bottom: 1px solid #eee;
+            //             padding-bottom: 15px;
+            //             margin-bottom: 15px;
+            //         }
 
-                    // 테이블 크기 조정
-                    .calendar-table {
-                        width: 100%;
+            //         // 테이블 크기 조정
+            //         .calendar-table {
+            //             width: 100%;
 
-                        // 요일 및 날짜 셀 크기 조정
-                        th,
-                        td {
-                            width: 40px;
-                            height: 40px;
-                        }
-                    }
-                }
-            }
+            //             // 요일 및 날짜 셀 크기 조정
+            //             th,
+            //             td {
+            //                 width: 40px;
+            //                 height: 40px;
+            //             }
+            //         }
+            //     }
+            // }
 
             // 드롭다운 모바일 스타일 조정
             .select__box {

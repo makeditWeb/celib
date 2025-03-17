@@ -744,14 +744,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 'height': '40px',
                 'line-height': '40px',
                 'text-align': 'center',
-                'font-size': '14px'
+                'font-size': '14px',
+                
             });
             
             // 시작일과 종료일 스타일
             $('.daterangepicker td.start-date, .daterangepicker td.end-date').css({
                 'background-color': '#000',
                 'color': '#fff',
-                'border-radius': '50%'
+                'border-radius': '50%',
+                'display': 'flex',              
+                'align-items': 'center',     
+                'justify-content': 'center', 
+                'box-sizing': 'border-box', 
             });
             
             // 범위 내 날짜 스타일
@@ -1106,7 +1111,8 @@ document.addEventListener('DOMContentLoaded', function() {
             /* 모바일에서 캘린더 내부만 스크롤 */
             @media (max-width: 767px) {
                 .daterangepicker {
-                    overflow: hidden !important;
+                    overflow: auto !important;
+                    padding-bottom:60px!important;
                 }
                 
                 .daterangepicker .drp-calendars {
@@ -1130,6 +1136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             transition: none !important;
             max-width: 660px!important;
             box-sizing: border-box;
+            max-height:500px!important
         }
         
         .daterangepicker .drp-calendar {
@@ -1155,6 +1162,8 @@ document.addEventListener('DOMContentLoaded', function() {
             background-color: #f0f0f0 !important;
             border-radius: 50% !important;
         }
+
+        
         
         .daterangepicker td.start-date,
         .daterangepicker td.end-date.in-range {
@@ -1274,8 +1283,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 left: 0 !important;
                 padding: 0px !important; /* 닫기 버튼 공간 확보 */
                 box-sizing: border-box;
+                max-height: 100vh !important;
             }
             
+            .daterangepicker td.start-date{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px !important;
+            height: 40px !important;
+                margin: 0 auto;
+            }
+                
+            .daterangepicker td.end-date{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px !important;
+                height: 40px !important;
+            }
             .daterangepicker .drp-calendar.left {
             clear: none !important;
             border-right: none;

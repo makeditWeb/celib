@@ -3365,27 +3365,6 @@ body.popup-open {
   .book-now .book-now__inner .find__content .select__box .custom__dropdown.date-dropdown {
     flex: 2;
   }
-  .book-now .book-now__inner .daterangepicker {
-    width: 90%;
-    max-width: 350px;
-  }
-  .book-now .book-now__inner .daterangepicker .calendar {
-    width: 100%;
-    max-width: 100%;
-  }
-  .book-now .book-now__inner .daterangepicker .calendar:first-child {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-  }
-  .book-now .book-now__inner .daterangepicker .calendar .calendar-table {
-    width: 100%;
-  }
-  .book-now .book-now__inner .daterangepicker .calendar .calendar-table th,
-  .book-now .book-now__inner .daterangepicker .calendar .calendar-table td {
-    width: 40px;
-    height: 40px;
-  }
   .book-now .book-now__inner .select__box {
     width: 100%;
     gap: 1rem;
