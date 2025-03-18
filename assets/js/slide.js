@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // PC 버전 룸 스와이퍼
     const roomSwiper = new Swiper(".roomSwiper", {
-        slidesPerView: "auto",
+        slidesPerView: 1.1,
         spaceBetween: 16,
         pagination: {
             el: ".roomSwiper .swiper-pagination",
@@ -9,12 +9,23 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         watchSlidesProgress: true,
         observer: true,
-        observeParents: true
+        observeParents: true,
+        breakpoints: {
+            768: {
+                slidesPerView: 1.1,
+                spaceBetween: 16
+            },
+            // 데스크톱
+            1024: {
+                slidesPerView: 1.1,
+                spaceBetween: 16
+            }
+        },
     });
 
     // 모바일 버전 룸 스와이퍼
     const roomMobileSwiper = new Swiper(".roomMobileSwiper", {
-        slidesPerView: 1,
+        slidesPerView: 1.2,
         spaceBetween: 10,
         pagination: {
             el: ".roomMobileSwiper .swiper-pagination",
@@ -50,11 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // 태블릿
             768: {
                 slidesPerView: 1,
-                spaceBetween: 20
+                spaceBetween: 16
             },
             // 데스크톱
             1024: {
-                slidesPerView: 1,
+                slidesPerView: 1.1,
                 spaceBetween: 16
             }
         },

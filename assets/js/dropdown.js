@@ -922,8 +922,29 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        $(document).on('click', '.mobile-close-btn', function() {
+        $(document).on('click', '.mobile-close-btn', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log("모바일 닫기 버튼 클릭됨"); // 디버깅용 로그 추가
+            
+            // 스크롤 원상복구
             $('body').removeClass('no-scroll');
+            
+            // 전역적으로 드롭다운 닫기
+            $('.custom__dropdown').removeClass('active');
+            
+            // 현재 활성화된 데이트픽커 찾기
+            const picker = $('.daterangepicker').data('daterangepicker');
+            if (picker) {
+                console.log("데이트픽커 인스턴스 찾음, 닫기 시도"); // 디버깅용 로그 추가
+                picker.hide();
+            }
+            
+            // 변수에 직접 접근할 수 없으므로, 클래스를 통해 간접적으로 상태를 업데이트
+            document.querySelectorAll('.date-dropdown').forEach(el => {
+                el.classList.remove('active');
+            });
         });
         
 
@@ -1060,14 +1081,27 @@ document.addEventListener('DOMContentLoaded', function() {
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        // Close all dropdowns
+                        console.log("모바일 헤더의 닫기 버튼 클릭됨"); // 디버깅용 로그 추가
+                        
+                        // 드롭다운 닫기
                         $('.custom__dropdown').removeClass('active');
                         
-                        // Hide datepicker
-                        const datePickerInstance = $('.daterangepicker').data('daterangepicker');
-                        if (datePickerInstance) {
-                            datePickerInstance.hide();
+                        // 데이트픽커 명시적으로 숨기기
+                        const picker = $('.daterangepicker').data('daterangepicker');
+                        if (picker) {
+                            console.log("헤더에서 데이트픽커 인스턴스 찾음, 닫기 시도"); // 디버깅용 로그 추가
+                            picker.hide();
+                            
+                            // 외부에서 isDateDropdownActive 변수에 접근
+                            try {
+                                isDateDropdownActive = false;
+                            } catch (e) {
+                                console.log("isDateDropdownActive 변수에 접근 실패");
+                            }
                         }
+                        
+                        // 스크롤 원상복구
+                        $('body').removeClass('no-scroll');
                     });
                 }
             }, 50);
@@ -1286,18 +1320,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 max-height: 100vh !important;
             }
             
-            .daterangepicker td.start-date{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-                margin: 0 auto;
-            }
-                
-            .daterangepicker td.end-date{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+
             .daterangepicker .drp-calendar.left {
             clear: none !important;
             border-right: none;
