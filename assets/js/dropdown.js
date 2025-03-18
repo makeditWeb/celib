@@ -750,13 +750,39 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 시작일과 종료일 스타일
             $('.daterangepicker td.start-date, .daterangepicker td.end-date').css({
+                'position': 'relative',
                 'background-color': '#000',
                 'color': '#fff',
                 'border-radius': '50%',
-                'display': 'flex',              
-                'align-items': 'center',     
-                'justify-content': 'center', 
-                'box-sizing': 'border-box', 
+                'width': '40px',
+                'height': '40px',
+                'padding': '0',
+                'text-align': 'center',
+                'display': 'table-cell',
+                'vertical-align': 'middle',
+                'box-sizing': 'content-box'
+            });
+
+            // 선택된 날짜에 원형 컨테이너 추가
+            $('.daterangepicker td.start-date, .daterangepicker td.end-date').each(function() {
+                const dateText = $(this).text();
+                $(this).html('');
+                $('<div></div>')
+                    .text(dateText)
+                    .css({
+                        'position': 'absolute',
+                        'top': '0',
+                        'left': '0',
+                        'width': '100%',
+                        'height': '100%',
+                        'display': 'flex',
+                        'align-items': 'center',
+                        'justify-content': 'center',
+                        'border-radius': '50%',
+                        'background-color': '#000',
+                        'color': '#fff'
+                    })
+                    .appendTo($(this));
             });
             
             // 범위 내 날짜 스타일
@@ -1077,31 +1103,44 @@ document.addEventListener('DOMContentLoaded', function() {
                     $('.mobile-daterangepicker-header').show();
                     
                     // Add click event for close button
+                    // 닫기 버튼 클릭 이벤트
                     closeBtn.on('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        console.log("모바일 헤더의 닫기 버튼 클릭됨"); // 디버깅용 로그 추가
+                        console.log("모바일 헤더의 닫기 버튼 클릭됨");
                         
-                        // 드롭다운 닫기
+                        // 모든 드롭다운 닫기
                         $('.custom__dropdown').removeClass('active');
                         
-                        // 데이트픽커 명시적으로 숨기기
-                        const picker = $('.daterangepicker').data('daterangepicker');
-                        if (picker) {
-                            console.log("헤더에서 데이트픽커 인스턴스 찾음, 닫기 시도"); // 디버깅용 로그 추가
-                            picker.hide();
-                            
-                            // 외부에서 isDateDropdownActive 변수에 접근
-                            try {
-                                isDateDropdownActive = false;
-                            } catch (e) {
-                                console.log("isDateDropdownActive 변수에 접근 실패");
+                        // 데이트픽커 명시적으로 숨기기 - 더 직접적인 방법 사용
+                        $('.daterangepicker').hide();
+                        
+                        // 데이트픽커 인스턴스를 찾아 닫기 시도
+                        try {
+                            const picker = $('.daterangepicker').data('daterangepicker');
+                            if (picker) {
+                                picker.hide();
                             }
+                        } catch(e) {
+                            console.log("데이트픽커 인스턴스 접근 실패");
+                        }
+                        
+                        // isDateDropdownActive 변수 재설정 시도
+                        try {
+                            window.isDateDropdownActive = false;
+                        } catch(e) {
+                            console.log("isDateDropdownActive 변수 접근 실패");
                         }
                         
                         // 스크롤 원상복구
                         $('body').removeClass('no-scroll');
+                        
+                        // 필요하다면 더 강제로 모든 관련 요소 숨기기
+                        setTimeout(function() {
+                            $('.daterangepicker').hide();
+                            $('.daterangepicker-mobile-header').hide();
+                        }, 100);
                     });
                 }
             }, 50);
@@ -1223,7 +1262,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         .daterangepicker .drp-calendar.right {
-            padding:0 20px!important;
+            padding:0 20px 100px!important;
             box-sizing: border-box;
         }
         
