@@ -98,9 +98,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const locationSwiper = new Swiper('.location-swiper', {
-        slidesPerView: 1.07,
-        spaceBetween: -280,
-        centeredSlides: false,
+        slidesPerView: 1,          // 한 번에 하나의 슬라이드만 표시
+        spaceBetween: 0,           // 슬라이드 간 간격 없음
+        centeredSlides: true,       // 활성 슬라이드 중앙 정렬
+        initialSlide: 0,            // 첫 번째 슬라이드로 시작
+        loop: false,                // 루프 비활성화
         pagination: {
             el: '.location-pagination',
             clickable: true,
@@ -109,8 +111,31 @@ document.addEventListener('DOMContentLoaded', function() {
             nextEl: '.location-button-next',
             prevEl: '.location-button-prev',
         },
-        effect: 'slide',
+        effect: 'cards',            // 카드 효과 사용
+        cardsEffect: {
+            slideShadows: false,    // 그림자 없음
+            rotate: false,          // 회전 없음
+            perSlideOffset: 8,      // 다음 카드의 간격
+        },
         speed: 600,
+        on: {
+            init: function() {
+                // 페이지네이션 수정 - 슬라이드가 2개만 있으면 페이지네이션도 2개만 표시
+                setTimeout(() => {
+                    const paginationBullets = document.querySelectorAll('.location-pagination .swiper-pagination-bullet');
+                    const slidesCount = document.querySelectorAll('.location-swiper .swiper-slide').length;
+                    
+                    // 필요한 경우 과도한 페이지네이션 제거
+                    if (paginationBullets.length > slidesCount) {
+                        for (let i = slidesCount; i < paginationBullets.length; i++) {
+                            if (paginationBullets[i]) {
+                                paginationBullets[i].style.display = 'none';
+                            }
+                        }
+                    }
+                }, 100);
+            }
+        }
     });
 
     

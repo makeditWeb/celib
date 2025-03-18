@@ -728,7 +728,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 .locations .location__mobile-swiper {
   position: relative;
   overflow: hidden;
-  padding: 0 40px;
+  padding: 0 30px;
   margin: 0 auto;
 }
 .locations .location__mobile-swiper .location-swiper {
@@ -741,14 +741,16 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 }
 .locations .location__mobile-swiper .location-swiper .swiper-slide {
   opacity: 0.4;
-  transform: scale(0.9);
+  transform: scale(0.85);
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 1;
+  pointer-events: none;
 }
 .locations .location__mobile-swiper .location-swiper .swiper-slide-active {
   opacity: 1;
   transform: scale(1);
   z-index: 2;
+  pointer-events: auto;
 }
 .locations .location__mobile-swiper .location-swiper .swiper-slide .location__card {
   padding-bottom: 1rem;
@@ -760,6 +762,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 .locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.seoul__location {
   background: url("../images/location.png");
   background-size: cover;
+  background-position: center;
 }
 .locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.seoul__location .location__info {
   height: 100%;
@@ -767,6 +770,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  padding-bottom: 1.5rem;
 }
 .locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.seoul__location .location__info h3 {
   color: #FFF;
@@ -786,8 +790,10 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 }
 .locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.seoul__location .location__info .info__location svg {
   width: 12px;
+  height: 12px;
+  margin-right: 4px;
 }
-.locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.seoul__location .basic-btn {
+.locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.seoul__location .location__info .basic-btn {
   width: 110px;
   height: 25px;
   display: flex;
@@ -804,6 +810,7 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
 .locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.comming--soon {
   background: url("../images/location01.png");
   background-size: cover;
+  background-position: center;
 }
 .locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.comming--soon .location__info {
   height: 100%;
@@ -811,11 +818,13 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  padding-bottom: 1.5rem;
 }
 .locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.comming--soon .location__info .opacity--text {
   font-size: 1rem;
   color: #797979;
   font-weight: 600;
+  margin-bottom: 0.25rem;
 }
 .locations .location__mobile-swiper .location-swiper .swiper-slide .location__card.comming--soon .location__info .comming-text {
   font-size: 1.5rem;
@@ -832,8 +841,8 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   z-index: 10;
 }
 .locations .location__mobile-swiper .location-swiper .location-pagination .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: #ccc;
   opacity: 0.7;
   margin: 0 5px;
@@ -847,20 +856,21 @@ header .header__inner .mobile-menu-icon.active span:nth-child(4) {
   color: #797979;
   width: 40px;
   height: 40px;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
-  margin-top: -20px;
-  position: absolute;
+  border-radius: 50%;
+  z-index: 10;
 }
 .locations .location__mobile-swiper .swiper-button-next:after,
 .locations .location__mobile-swiper .swiper-button-prev:after {
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
 }
 .locations .location__mobile-swiper .swiper-button-prev {
-  left: -10px;
+  left: -14px;
 }
 .locations .location__mobile-swiper .swiper-button-next {
-  right: -10px;
+  right: -14px;
 }
 
 .perks {

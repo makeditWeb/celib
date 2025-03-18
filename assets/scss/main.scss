@@ -696,48 +696,52 @@ header {
     .location__mobile-swiper {
         position: relative;
         overflow: hidden;
-        padding: 0 40px;
+        padding: 0 30px;
         margin: 0 auto;
-
+    
         .location-swiper {
             width: 100%;
             padding-bottom: 3.5rem;
             overflow: visible;
-
+    
             .swiper-wrapper {
                 transform-style: preserve-3d;
             }
-
+    
             .swiper-slide {
-                opacity: 0.4; // Make non-active slides more transparent
-                transform: scale(0.9); // Make non-active slides smaller
+                opacity: 0.4; 
+                transform: scale(0.85); 
                 transition: opacity 0.3s ease, transform 0.3s ease;
                 z-index: 1;
-
+                pointer-events: none; // Disable interactions for inactive slides
+    
                 &-active {
                     opacity: 1;
                     transform: scale(1);
                     z-index: 2;
+                    pointer-events: auto; // Enable interactions for active slide
                 }
-
+    
                 .location__card {
                     padding-bottom: 1rem;
                     width: 100%;
-                    height: 320px; // Slightly smaller height
+                    height: 320px;
                     overflow: hidden;
                     transform-style: preserve-3d;
-
+    
                     &.seoul__location {
                         background: url('../images/location.png');
                         background-size: cover;
-
+                        background-position: center;
+    
                         .location__info {
                             height: 100%;
                             display: flex;
                             flex-direction: column;
                             align-items: center;
                             justify-content: flex-end;
-
+                            padding-bottom: 1.5rem;
+    
                             h3 {
                                 color: #FFF;
                                 text-align: center;
@@ -746,7 +750,7 @@ header {
                                 margin-bottom: 0.25rem;
                                 line-height: 1.2;
                             }
-
+    
                             .info__location {
                                 display: flex;
                                 align-items: center;
@@ -754,46 +758,50 @@ header {
                                 font-size: 0.875rem;
                                 font-weight: 400;
                                 margin-bottom: 0.875rem;
-
+    
                                 svg {
                                     width: 12px;
+                                    height: 12px;
+                                    margin-right: 4px;
                                 }
                             }
-
-                        }
-
-                        .basic-btn {
-                            width: 110px;
-                            height: 25px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            background: #F6E8D6;
-                            backdrop-filter: blur(15px);
-                            color: #0A0A0A;
-                            font-size: 0.875rem;
-                            font-weight: 500;
-                            text-decoration: none;
+    
+                            .basic-btn {
+                                width: 110px;
+                                height: 25px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                background: #F6E8D6;
+                                backdrop-filter: blur(15px);
+                                color: #0A0A0A;
+                                font-size: 0.875rem;
+                                font-weight: 500;
+                                text-decoration: none;
+                            }
                         }
                     }
-
+    
                     &.comming--soon {
                         background: url('../images/location01.png');
                         background-size: cover;
-
+                        background-position: center;
+    
                         .location__info {
                             height: 100%;
                             display: flex;
                             flex-direction: column;
                             align-items: center;
                             justify-content: flex-end;
-
+                            padding-bottom: 1.5rem;
+    
                             .opacity--text {
                                 font-size: 1rem;
                                 color: #797979;
                                 font-weight: 600;
+                                margin-bottom: 0.25rem;
                             }
-
+    
                             .comming-text {
                                 font-size: 1.5rem;
                                 color: #FFF;
@@ -803,9 +811,8 @@ header {
                         }
                     }
                 }
-
             }
-
+    
             // Custom pagination dots
             .location-pagination {
                 position: absolute;
@@ -814,46 +821,45 @@ header {
                 width: 100%;
                 text-align: center;
                 z-index: 10;
-
+    
                 .swiper-pagination-bullet {
-                    width: 10px;
-                    height: 10px;
+                    width: 8px;
+                    height: 8px;
                     background: #ccc;
                     opacity: 0.7;
                     margin: 0 5px;
-
+    
                     &-active {
                         background: #FF8C00;
                         opacity: 1;
                     }
                 }
             }
-
-            // Custom navigation arrows
-
         }
-
+    
+        // Custom navigation arrows
         .swiper-button-next,
         .swiper-button-prev {
             color: #797979;
             width: 40px;
             height: 40px;
-            top: 50%;
+            top: 45%;
             transform: translateY(-50%);
-            margin-top: -20px;
-            position: absolute;
-
+            border-radius: 50%;
+            z-index: 10; // Ensure arrows are above slides
+    
             &:after {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                font-weight: bold;
             }
         }
-
+    
         .swiper-button-prev {
-            left: -10px;
+            left: -14px;
         }
-
+    
         .swiper-button-next {
-            right: -10px;
+            right: -14px;
         }
     }
 }
