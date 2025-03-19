@@ -1,3 +1,27 @@
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  const nav = document.querySelector('nav');
+  nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+});
+
+// Dropdown toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  const dropdownParent = dropdownToggle.parentElement;
+  
+  // Toggle dropdown on click
+  dropdownToggle.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default link behavior
+      dropdownParent.classList.toggle('active');
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+      if (!dropdownParent.contains(e.target)) {
+          dropdownParent.classList.remove('active');
+      }
+  });
+});
+
 // 공통 유틸리티 함수
 function elementExists(selector) {
     return document.querySelector(selector) !== null;
@@ -24,11 +48,11 @@ function elementExists(selector) {
     
     // 메인 페이지 기능
     if (currentPage === 'index.html' || currentPage === '') {
-      // 아코디언 기능 (메인 페이지에만 존재)
+
       initializeAccordion();
-      
-      // 배너 텍스트 플로우 (메인 페이지에만 존재할 수 있음)
       initializeBannerTextFlow();
+    } else if (document.querySelector('.faq__gadi')) {
+      initializeAccordion();
     }
     
     // 마이페이지 기능
@@ -95,14 +119,19 @@ function elementExists(selector) {
       
       // 아코디언 토글 기능
       accordionItems.forEach((el) => {
-        el.addEventListener("click", () => {
-          if (el.classList.contains("active")) {
-            el.classList.remove("active");
-          } else {
-            accordionItems.forEach((el2) => el2.classList.remove("active"));
-            el.classList.add("active");
-          }
-        });
+        const title = el.querySelector(".title");
+        
+        // 제목 요소에만 이벤트 연결
+        if (title) {
+          title.addEventListener("click", () => {
+            if (el.classList.contains("active")) {
+              el.classList.remove("active");
+            } else {
+              accordionItems.forEach((el2) => el2.classList.remove("active"));
+              el.classList.add("active");
+            }
+          });
+        }
       });
       
       // View more 버튼 기능
