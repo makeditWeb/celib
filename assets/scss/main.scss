@@ -6033,11 +6033,10 @@ body.popup-open {
             h2 {
                 font-size: 2.375rem;
                 line-height: 1.2;
-                width: 70%;
 
                 &::after {
                     position: absolute;
-                    right: 14px;
+                    right: -8px;
                     content: "";
                     width: 8px;
                     height: 8px;
@@ -6106,11 +6105,10 @@ body.popup-open {
                 font-size: 2.375rem;
                 line-height: 1.2;
                 text-align: left;
-                width: 73%;
 
                 &::after {
                     position: absolute;
-                    right: 88px;
+                    right: -8px;
                     content: "";
                     width: 8px;
                     height: 8px;
@@ -6264,7 +6262,7 @@ body.popup-open {
 
                 &::after {
                     position: absolute;
-                    right: -11px;
+                    right: -8px;
                     content: "";
                     width: 8px;
                     height: 8px;
@@ -7694,18 +7692,20 @@ body.popup-open {
                     .dropdown_left {
                         display: flex;
                         align-items: center;
-                        gap: 1.25rem;
+                        gap: 12px;
                     }
-    
+                    svg{
+                        width: 24px;
+                    }
                     .selected__option {
                         color: #000;
-                        font-size: 1.5rem;
+                        font-size: 16px;
                         font-weight: 500;
                     }
     
                     .dropdown__arrow {
                         transition: transform 0.3s ease;
-                        width: 16px;
+                        width: 12px;
                     }
                 }
     
@@ -7781,5 +7781,17 @@ body.popup-open {
                 }
             }
         }
+    }
+
+    .gadi__main .gadi__main--inner .set__date .custom__dropdown .dropdown__header .selected__option{
+        font-size: 16px;
+    }
+
+    .gadi__main .gadi__main--inner .set__date .custom__dropdown .dropdown__header  svg{
+        width: 24px;
+    }
+
+    .gadi__main .gadi__main--inner .set__date .custom__dropdown .dropdown__header .dropdown_left{
+        gap: 12px;
     }
 }

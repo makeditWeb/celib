@@ -240,7 +240,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // 기본 텍스트 설정
         const selectedOption = dateDropdown.querySelector('.selected__option');
         if (selectedOption) {
-            selectedOption.textContent = 'Check in / out';
+            // 페이지 URL을 확인하여 서브페이지인지 확인
+            const isSubpage = window.location.pathname.includes('gadi.html') || 
+                             window.location.pathname.includes('subpage') || 
+                             document.querySelector('.gadi__main');
+            
+            // 서브페이지와 메인 페이지에 따라 다른 형식 적용
+            if (isSubpage) {
+                selectedOption.textContent = 'Check in   -   Check out'; // 서브페이지용 포맷 (대시 앞뒤로 더 많은 공백)
+                selectedOption.style.letterSpacing = '0.5px'; // 글자 간격 조정
+            } else {
+                selectedOption.textContent = 'Check in / out'; // 메인 페이지용 포맷
+            }
         }
         
         // 날짜 선택 결과를 저장할 input 요소 생성 (고유 ID 부여)
@@ -395,11 +406,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 font-size: 14px !important;
                 text-align: center !important;
                 line-height: 40px !important;
+                padding: 0 !important;
+                vertical-align: middle !important;
+                position: relative !important;
             }
             
             .daterangepicker td.available:hover {
-                background-color: #f0f0f0 !important;
-                border-radius: 50% !important;
+                background-color: transparent !important;
+                position: relative !important;
+            }
+            
+            .daterangepicker td.available:hover::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background-color: #f0f0f0;
+                z-index: -1;
             }
 
             
@@ -627,16 +654,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     .addClass('date-circle')
                     .text(cellText)
                     .css({
+                        'position': 'absolute',
+                        'top': '50%',
+                        'left': '50%',
+                        'transform': 'translate(-50%, -50%)',
                         'width': '36px',
                         'height': '36px', 
                         'background-color': '#000',
                         'color': '#fff',
                         'border-radius': '50%',
-                        'display': 'inline-block', // 중요: inline-block으로 변경
+                        'display': 'flex',
+                        'justify-content': 'center',
+                        'align-items': 'center',
                         'text-align': 'center',
                         'line-height': '36px',
-                        'margin': 'auto'
+                        'z-index': '1'
                     });
+                
+                // 셀 포지션 설정
+                $(this).css({
+                    'position': 'relative',
+                    'background-color': 'transparent'
+                });
                 
                 // 셀에 원 추가
                 $(this).html($circleDiv);
@@ -650,6 +689,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 styleEl.textContent = `
                     .daterangepicker td {
                         padding: 0 !important;
+                        text-align: center !important;
+                        vertical-align: middle !important;
+                        line-height: 40px !important;
+                        width: 40px !important;
+                        height: 40px !important;
                     }
                     
                     .daterangepicker td.start-date,
@@ -659,6 +703,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     .daterangepicker td.available:hover {
                         border-radius: 50% !important;
+                        background-color: #f0f0f0 !important;
+                        position: relative !important;
+                    }
+                    
+                    .daterangepicker td.available:hover:after {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 36px;
+                        height: 36px;
+                        border-radius: 50%;
+                        background-color: #f0f0f0;
+                        z-index: -1;
+                    }
+                    
+                    .daterangepicker .calendar-table {
+                        padding: 0 !important;
+                        border-spacing: 0 !important;
+                        border-collapse: collapse !important;
+                    }
+                    
+                    .daterangepicker td.active, 
+                    .daterangepicker td.active:hover {
+                        border-radius: 50% !important;
+                        background-color: transparent !important;
                     }
                 `;
                 document.head.appendChild(styleEl);

@@ -4882,11 +4882,10 @@ body.popup-open {
   .perks .inner__title h2 {
     font-size: 2.375rem;
     line-height: 1.2;
-    width: 70%;
   }
   .perks .inner__title h2::after {
     position: absolute;
-    right: 14px;
+    right: -8px;
     content: "";
     width: 8px;
     height: 8px;
@@ -4944,11 +4943,10 @@ body.popup-open {
     font-size: 2.375rem;
     line-height: 1.2;
     text-align: left;
-    width: 73%;
   }
   .stay__slide_wrapp .inner__title h2::after {
     position: absolute;
-    right: 88px;
+    right: -8px;
     content: "";
     width: 8px;
     height: 8px;
@@ -5067,7 +5065,7 @@ body.popup-open {
   }
   .faq .inner__title h2::after {
     position: absolute;
-    right: -11px;
+    right: -8px;
     content: "";
     width: 8px;
     height: 8px;
@@ -6206,16 +6204,19 @@ body.popup-open {
   .sticky-nav .set__date .custom__dropdown .dropdown__header .dropdown_left {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 12px;
+  }
+  .sticky-nav .set__date .custom__dropdown .dropdown__header svg {
+    width: 24px;
   }
   .sticky-nav .set__date .custom__dropdown .dropdown__header .selected__option {
     color: #000;
-    font-size: 1.5rem;
+    font-size: 16px;
     font-weight: 500;
   }
   .sticky-nav .set__date .custom__dropdown .dropdown__header .dropdown__arrow {
     transition: transform 0.3s ease;
-    width: 16px;
+    width: 12px;
   }
   .sticky-nav .set__date .custom__dropdown .dropdown__options {
     position: absolute;
@@ -6269,5 +6270,14 @@ body.popup-open {
   }
   .sticky-nav__menu ul li a {
     font-size: 16px;
+  }
+  .gadi__main .gadi__main--inner .set__date .custom__dropdown .dropdown__header .selected__option {
+    font-size: 16px;
+  }
+  .gadi__main .gadi__main--inner .set__date .custom__dropdown .dropdown__header svg {
+    width: 24px;
+  }
+  .gadi__main .gadi__main--inner .set__date .custom__dropdown .dropdown__header .dropdown_left {
+    gap: 12px;
   }
 }/*# sourceMappingURL=main.css.map */
