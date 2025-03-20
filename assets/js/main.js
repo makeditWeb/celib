@@ -1,7 +1,3 @@
-document.getElementById('mobileMenuToggle').addEventListener('click', function() {
-  const nav = document.querySelector('nav');
-  nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-});
 
 // Dropdown toggle functionality
 document.addEventListener('DOMContentLoaded', function() {

@@ -138,6 +138,99 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // gadi slide
+    const unitASwiper = new Swiper('.unitASwiper', {
+        // Optional parameters
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        
+        // Navigation arrows
+        navigation: {
+          nextEl: '.unitASwiper .swiper-button-next',
+          prevEl: '.unitASwiper .swiper-button-prev',
+        },
+        
+        // Custom pagination format to show "current/total"
+        pagination: {
+          el: '.unitASwiper .swiper-pagination',
+          type: 'fraction',
+          formatFractionCurrent: function(number) {
+            return number;
+          },
+          formatFractionTotal: function(number) {
+            return number;
+          },
+          renderFraction: function(currentClass, totalClass) {
+            return '<span class="' + currentClass + '"></span>' +
+                   '/' +
+                   '<span class="' + totalClass + '"></span>';
+          }
+        },
+        
+        // Enable keyboard control
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+      });
+      
+      // Initialize Swiper for Unit B
+      const unitBSwiper = new Swiper('.unitBSwiper', {
+        // Optional parameters
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        
+        // Navigation arrows
+        navigation: {
+          nextEl: '.unitBSwiper .swiper-button-next',
+          prevEl: '.unitBSwiper .swiper-button-prev',
+        },
+        
+        // Custom pagination format to show "current/total"
+        pagination: {
+          el: '.unitBSwiper .swiper-pagination',
+          type: 'fraction',
+          formatFractionCurrent: function(number) {
+            return number;
+          },
+          formatFractionTotal: function(number) {
+            return number;
+          },
+          renderFraction: function(currentClass, totalClass) {
+            return '<span class="' + currentClass + '"></span>' +
+                   '/' +
+                   '<span class="' + totalClass + '"></span>';
+          }
+        },
+        
+        // Enable keyboard control
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+      });
+      
+      // Additional event listeners can be added here if needed
+      
+      // Example: pause autoplay when hovering over slides
+      const swiperContainers = document.querySelectorAll('.swiper');
+      swiperContainers.forEach(container => {
+        container.addEventListener('mouseenter', function() {
+          const swiperId = this.classList.contains('unitASwiper') ? unitASwiper : unitBSwiper;
+          if (swiperId.autoplay && swiperId.autoplay.running) {
+            swiperId.autoplay.stop();
+          }
+        });
+        
+        container.addEventListener('mouseleave', function() {
+          const swiperId = this.classList.contains('unitASwiper') ? unitASwiper : unitBSwiper;
+          if (swiperId.autoplay && !swiperId.autoplay.running) {
+            swiperId.autoplay.start();
+          }
+        });
+      });
     
 });
 
