@@ -57,3 +57,5 @@ window.addEventListener('load', function() {
         clearFileButton.style.display = 'none';
     }
 });
+
+
