@@ -3775,6 +3775,7 @@ body.popup-open {
 }
 .amenities {
   padding: 11.25rem 0 7.5rem;
+  background: #F9F9F9;
 }
 .amenities .amenities__inner {
   max-width: 1280px;
@@ -3821,6 +3822,7 @@ body.popup-open {
 .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript {
   padding: 1.5625rem 1.25rem;
   box-sizing: border-box;
+  background: #FFF;
 }
 .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__title {
   color: #0A0A0A;
@@ -4058,6 +4060,62 @@ body.popup-open {
 
 .mobile__view {
   display: none !important;
+}
+
+.alert__popup {
+  max-width: 335px;
+  height: auto;
+  padding: 25px;
+  box-sizing: border-box;
+}
+.alert__popup .popup__inner {
+  width: 100%;
+}
+.alert__popup .popup__inner .close__btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.alert__popup .popup__inner .popup__body {
+  padding: 25px 0 0;
+  box-sizing: border-box;
+}
+.alert__popup .popup__inner .popup__body .popup__img {
+  width: 70px;
+  margin: 0 auto 10px;
+}
+.alert__popup .popup__inner .popup__body .popup__img img {
+  width: 100%;
+}
+.alert__popup .popup__inner .popup__body .popup__content {
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #0A0A0A;
+  line-height: 1.2;
+}
+.alert__popup .popup__inner .popup__body .button__area {
+  width: 100%;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.alert__popup .popup__inner .popup__body .button__area.dual__btn button {
+  width: 50%;
+}
+.alert__popup .popup__inner .popup__body .button__area.dual__btn .cancle-btn {
+  cursor: pointer;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0A0A0A;
+  font-size: 16px;
+  font-family: Outfit;
+  background: #fff;
+  border: 1px solid #0A0A0A;
 }
 
 @media (min-width: 769px) and (max-width: 1400px) {

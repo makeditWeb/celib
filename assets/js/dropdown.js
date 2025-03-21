@@ -215,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== 날짜 드롭다운 초기화 =====
     // 모든 date-dropdown 클래스를 가진 요소를 찾아서 각각 초기화
     const dateDropdowns = document.querySelectorAll('.date-dropdown');
+    let datePickerInstances = []; // 모든 데이트픽커 인스턴스 저장
     
     if (dateDropdowns.length > 0) {
         console.log(`${dateDropdowns.length}개의 날짜 드롭다운을 찾음`);
@@ -222,8 +223,160 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`날짜 드롭다운 #${index + 1} 초기화 시작`);
             initDateDropdown(dateDropdown, index);
         });
+        
+        // gadi.html 페이지의 sticky-nav와 gadi__main 내부의 드롭다운 동기화를 추가
+        if (window.location.pathname.includes('gadi.html') || 
+            document.querySelector('.gadi__main')) {
+            
+            // 항상 모든 데이트픽커 인스턴스를 연동
+            syncAllDatepickers();
+            
+            // 추가적으로 DOM 요소로 명확하게 구분하여 동기화
+            const stickyNavDateDropdown = document.querySelector('.sticky-nav .date-dropdown');
+            const mainContentDateDropdown = document.querySelector('.gadi__main .date-dropdown');
+            
+            if (stickyNavDateDropdown && mainContentDateDropdown) {
+                console.log("sticky-nav와 gadi__main의 날짜 드롭다운을 특별히 동기화합니다.");
+                
+                // 각 드롭다운의 인덱스를 찾기
+                const stickyNavIndex = Array.from(dateDropdowns).indexOf(stickyNavDateDropdown);
+                const mainContentIndex = Array.from(dateDropdowns).indexOf(mainContentDateDropdown);
+                
+                if (stickyNavIndex !== -1 && mainContentIndex !== -1) {
+                    console.log(`sticky-nav 드롭다운: 인덱스 ${stickyNavIndex}, gadi__main 드롭다운: 인덱스 ${mainContentIndex}`);
+                    
+                    // 명시적으로 두 드롭다운 간의 동기화 강화
+                    if (datePickerInstances[stickyNavIndex] && datePickerInstances[mainContentIndex]) {
+                        // sticky-nav 날짜 선택 시 gadi__main 업데이트
+                        const stickyNavInput = document.getElementById(`date-picker-input-${stickyNavIndex}`);
+                        if (stickyNavInput) {
+                            $(stickyNavInput).on('apply.daterangepicker', function(ev, picker) {
+                                console.log("sticky-nav에서 날짜 선택됨, gadi__main 업데이트 중");
+                                
+                                // gadi__main 데이트픽커 업데이트
+                                const mainInstance = datePickerInstances[mainContentIndex];
+                                if (mainInstance) {
+                                    mainInstance.setStartDate(picker.startDate);
+                                    mainInstance.setEndDate(picker.endDate);
+                                    
+                                    // gadi__main 드롭다운 헤더 텍스트 업데이트
+                                    const mainSelectedOption = mainContentDateDropdown.querySelector('.selected__option');
+                                    if (mainSelectedOption) {
+                                        const startFormat = picker.startDate.format('MMM D');
+                                        const endFormat = picker.endDate.format('MMM D');
+                                        mainSelectedOption.textContent = `${startFormat}   -   ${endFormat}`;
+                                    }
+                                }
+                            });
+                        }
+                        
+                        // gadi__main 날짜 선택 시 sticky-nav 업데이트
+                        const mainInput = document.getElementById(`date-picker-input-${mainContentIndex}`);
+                        if (mainInput) {
+                            $(mainInput).on('apply.daterangepicker', function(ev, picker) {
+                                console.log("gadi__main에서 날짜 선택됨, sticky-nav 업데이트 중");
+                                
+                                // sticky-nav 데이트픽커 업데이트
+                                const stickyInstance = datePickerInstances[stickyNavIndex];
+                                if (stickyInstance) {
+                                    stickyInstance.setStartDate(picker.startDate);
+                                    stickyInstance.setEndDate(picker.endDate);
+                                    
+                                    // sticky-nav 드롭다운 헤더 텍스트 업데이트
+                                    const stickySelectedOption = stickyNavDateDropdown.querySelector('.selected__option');
+                                    if (stickySelectedOption) {
+                                        const startFormat = picker.startDate.format('MMM D');
+                                        const endFormat = picker.endDate.format('MMM D');
+                                        stickySelectedOption.textContent = `${startFormat}   -   ${endFormat}`;
+                                    }
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        }
     } else {
         console.log("날짜 드롭다운을 찾을 수 없음");
+    }
+    
+    // 모든 데이트픽커 인스턴스를 동기화하는 함수
+    function syncAllDatepickers() {
+        console.log("데이트픽커 동기화 설정");
+        
+        // 각 데이트픽커 인스턴스에 이벤트 핸들러 추가
+        datePickerInstances.forEach((instance, index) => {
+            // 데이트픽커 인풋 참조
+            const datePickerInput = document.getElementById(`date-picker-input-${index}`);
+            
+            // 날짜 선택 이벤트 감지
+            $(datePickerInput).on('apply.daterangepicker', function(ev, picker) {
+                console.log(`데이트픽커 #${index + 1}에서 선택된 날짜:`, picker.startDate.format('YYYY-MM-DD'), picker.endDate.format('YYYY-MM-DD'));
+                
+                // 현재 드롭다운 요소 확인
+                const currentDropdown = dateDropdowns[index];
+                const isInStickyNav = currentDropdown && currentDropdown.closest('.sticky-nav');
+                const isInGadiMain = currentDropdown && currentDropdown.closest('.gadi__main');
+                
+                // 다른 모든 데이트픽커 인스턴스에 같은 날짜 설정
+                datePickerInstances.forEach((otherInstance, otherIndex) => {
+                    if (index !== otherIndex) { // 자기 자신은 제외
+                        const otherDropdown = dateDropdowns[otherIndex];
+                        const otherIsInStickyNav = otherDropdown && otherDropdown.closest('.sticky-nav');
+                        const otherIsInGadiMain = otherDropdown && otherDropdown.closest('.gadi__main');
+                        
+                        // sticky-nav와 gadi__main 사이의 상호 동기화 확인
+                        const shouldSync = (isInStickyNav && otherIsInGadiMain) || 
+                                           (isInGadiMain && otherIsInStickyNav) ||
+                                           window.location.pathname.includes('gadi.html');
+                        
+                        if (shouldSync) {
+                            console.log(`데이트픽커 #${otherIndex + 1} 업데이트 (특별 동기화)`);
+                            
+                            // 다른 인스턴스의 날짜 업데이트
+                            otherInstance.setStartDate(picker.startDate);
+                            otherInstance.setEndDate(picker.endDate);
+                            
+                            // 다른 인스턴스의 헤더 텍스트 업데이트
+                            const otherSelectedOption = otherDropdown.querySelector('.selected__option');
+                            
+                            if (otherSelectedOption) {
+                                const startFormat = picker.startDate.format('MMM D');
+                                const endFormat = picker.endDate.format('MMM D');
+                                
+                                // 서브페이지용 포맷은 대시 주변에 더 많은 공백 포함
+                                otherSelectedOption.textContent = `${startFormat}   -   ${endFormat}`;
+                            }
+                        } else {
+                            console.log(`데이트픽커 #${otherIndex + 1} 업데이트`);
+                            
+                            // 다른 인스턴스의 날짜 업데이트
+                            otherInstance.setStartDate(picker.startDate);
+                            otherInstance.setEndDate(picker.endDate);
+                            
+                            // 다른 인스턴스의 헤더 텍스트 업데이트
+                            const otherSelectedOption = otherDropdown.querySelector('.selected__option');
+                            
+                            if (otherSelectedOption) {
+                                const startFormat = picker.startDate.format('MMM D');
+                                const endFormat = picker.endDate.format('MMM D');
+                                
+                                // 서브페이지인지 메인페이지인지에 따라 다른 포맷 적용
+                                const isSubpage = window.location.pathname.includes('gadi.html') || 
+                                              window.location.pathname.includes('subpage') || 
+                                              document.querySelector('.gadi__main');
+                                
+                                if (isSubpage) {
+                                    otherSelectedOption.textContent = `${startFormat}   -   ${endFormat}`;
+                                } else {
+                                    otherSelectedOption.textContent = `${startFormat} - ${endFormat}`;
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        });
     }
     
     function initDateDropdown(dateDropdown, dropdownIndex) {
@@ -284,6 +437,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let dateSelected = false;
         let isDateDropdownActive = false;
         let datePickerInstance = null;
+        let isDateSelected = false;
+        let selectedStartDate = null;
+        let selectedEndDate = null;
         
         // SVG 아이콘 정의
         const prevSvgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.25 18L8.25 12L14.25 6" stroke="#212322" stroke-width="1.5"></path></svg>`;
@@ -312,6 +468,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 데이트픽커 인스턴스 저장
         datePickerInstance = $(datePickerInput).data('daterangepicker');
+        
+        // 전역 배열에 인스턴스 저장 (동기화를 위해)
+        datePickerInstances[dropdownIndex] = datePickerInstance;
         
         // 원형 날짜 스타일 CSS
         const roundDateStyle = `
@@ -1023,6 +1182,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 날짜가 선택됨
                 dateSelected = true;
                 
+                // 선택된 날짜 저장
+                isDateSelected = true;
+                selectedStartDate = picker.startDate;
+                selectedEndDate = picker.endDate;
+                
                 // 날짜 포맷
                 updateHeaderText(picker);
                 
@@ -1065,6 +1229,12 @@ document.addEventListener('DOMContentLoaded', function() {
         function showDatePicker() {
             try {
                 const dropdownRect = dateDropdown.getBoundingClientRect();
+                
+                // 이전에 저장된 선택 날짜가 있으면 적용
+                if (isDateSelected && datePickerInstance) {
+                    datePickerInstance.setStartDate(selectedStartDate);
+                    datePickerInstance.setEndDate(selectedEndDate);
+                }
                 
                 // 모바일 여부 확인
                 const isMobileView = window.innerWidth < 768;
