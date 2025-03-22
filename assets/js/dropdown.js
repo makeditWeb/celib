@@ -861,6 +861,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // 함수를 호출하여 스타일 추가
         addDaterangepickerCSS();
         
+        // 모든 nights-info 요소 제거하는 함수 추가
+        function removeNightsInfo() {
+            $('.nights-info').remove();
+        }
+
         // 날짜 범위 선택 직접 감시 및 업데이트 (성능 최적화)
         function setupDateRangeMonitoring() {
             // 이벤트를 사용하여 감지
@@ -872,6 +877,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 다른 데이트픽커와 동기화
                     synchronizeDatePickers(picker, dropdownIndex);
                 }
+                
+                // nights-info 제거
+                removeNightsInfo();
                 
                 // 성능 최적화를 위해 타임아웃 사용
                 if (window.applyCircleTimeout) {
@@ -1097,7 +1105,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     
                     // 스크롤 원상복구
-                    $('body').removeClass('no-scroll');
+                    const scrollY = parseInt(document.body.style.top || '0') * -1;
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                    window.scrollTo(0, scrollY);
                 });
                 
                 // 헤더에 요소 추가
@@ -1203,7 +1215,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         targetPicker.hide();
                         
                         // 스크롤 원상복구 (모바일)
-                        $('body').removeClass('no-scroll');
+                        const scrollY = parseInt(document.body.style.top || '0') * -1;
+                        document.body.style.position = '';
+                        document.body.style.top = '';
+                        document.body.style.width = '';
+                        window.scrollTo(0, scrollY);
                     }
                 } finally {
                     // 처리 완료 후 플래그 해제
@@ -1229,25 +1245,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 모든 데이트픽커와 동기화
                 synchronizeDatePickers(picker, dropdownIndex);
                 
-                // 야간 수 계산
-                const nights = picker.endDate.diff(picker.startDate, 'days');
-                
-                // 야간 수 표시
-                let nightsInfo = $('.daterangepicker').find('.nights-info');
-                if (nightsInfo.length === 0) {
-                    nightsInfo = $('<div class="nights-info"></div>');
-                    nightsInfo.css({
-                        'padding': '10px 0 0',
-                        'text-align': 'left',
-                        'font-size': '16px',
-                        'font-weight': 'bold',
-                        'margin-top': '10px',
-                        'border-top': '1px solid #eee'
-                    });
-                    $('.daterangepicker').append(nightsInfo);
-                }
-                
-                nightsInfo.text(`${nights} nights`);
+                // nights-info 표시 코드 삭제 (야간 수 표시 제거)
                 
                 // 데이트픽커를 닫지 않고 표시 상태 유지
                 isDateDropdownActive = true;
@@ -1269,6 +1267,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // 데이트픽커 표시 함수 (최적화)
         function showDatePicker() {
             try {
+                // nights-info 제거
+                removeNightsInfo();
+
                 // 기존 레지스트리에 선택된 날짜가 있으면 적용
                 if (datePickerRegistry.lastSelectedRange) {
                     datePickerInstance.setStartDate(datePickerRegistry.lastSelectedRange.startDate);
@@ -1293,7 +1294,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 모바일에서는 전체 화면으로 표시
                 if (isMobileView) {
-                    $('body').addClass('no-scroll');
+                    // 현재 스크롤 위치 저장
+                    const scrollY = window.scrollY;
+                    document.body.style.top = `-${scrollY}px`;
+                    document.body.style.width = '100%';
+                    document.body.style.position = 'fixed';
                     
                     $('.daterangepicker').css({
                         'position': 'fixed',
@@ -1412,7 +1417,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 데이트픽커 닫힐 때 스크롤 원복
         $(document).on('hide.daterangepicker', function() {
-            $('body').removeClass('no-scroll');
+            // 스크롤 위치 복원
+            const scrollY = parseInt(document.body.style.top || '0') * -1;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, scrollY);
         });
         
         // 드롭다운 토글 함수
@@ -1555,6 +1565,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 50);
         }
 
+        // 데이트픽커가 열릴 때마다 nights-info 제거
+        $(document).on('show.daterangepicker', function() {
+            removeNightsInfo();
+        });
+
+        // 모든 데이트픽커 인스턴스 생성 후 nights-info 제거
+        $(document).ready(function() {
+            setTimeout(removeNightsInfo, 500);
+        });
+
         console.log(`날짜 드롭다운 #${dropdownIndex + 1} 초기화 완료`);
     }
     
@@ -1579,7 +1599,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const datePickerInstance = $(document).find('.daterangepicker').data('daterangepicker');
                 if (datePickerInstance) {
                     datePickerInstance.hide();
-                    $('body').removeClass('no-scroll');
+                    
+                    // 스크롤 위치 복원
+                    const scrollY = parseInt(document.body.style.top || '0') * -1;
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                    if (scrollY) window.scrollTo(0, scrollY);
                 }
             }
         }

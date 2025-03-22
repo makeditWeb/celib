@@ -114,9 +114,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Trigger click on the main dropdown
             const mainDropdownHeader = mainDateDropdown.querySelector('.dropdown__header');
             if (mainDropdownHeader) {
-                // 현재 스크롤 위치 고정
+                // 현재 스크롤 위치 저장
+                const scrollY = window.scrollY;
+                document.body.style.top = `-${scrollY}px`;
+                document.body.style.width = '100%';
                 document.body.style.position = 'fixed';
-                document.body.style.top = `-${window.scrollY}px`;
                 
                 mainDropdownHeader.click();
             }
@@ -149,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const scrollY = parseInt(document.body.style.top || '0') * -1;
             document.body.style.position = '';
             document.body.style.top = '';
+            document.body.style.width = '';
             window.scrollTo(0, scrollY);
         }
         
@@ -157,9 +160,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const scrollY = parseInt(document.body.style.top || '0') * -1;
             document.body.style.position = '';
             document.body.style.top = '';
+            document.body.style.width = '';
             if (scrollY) window.scrollTo(0, scrollY);
         }
     });
+    
+    // 모든 nights-info 요소 제거하는 함수 추가
+    function removeNightsInfo() {
+        if (typeof jQuery !== 'undefined') {
+            $('.nights-info').remove();
+        }
+    }
+
+    // 페이지 로드시 nights-info 제거
+    removeNightsInfo();
+    setTimeout(removeNightsInfo, 500);
     
     // Initial check for active section on page load
     setTimeout(updateActiveSection, 100);
