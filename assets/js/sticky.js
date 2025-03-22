@@ -107,14 +107,18 @@ document.addEventListener('DOMContentLoaded', function() {
         updateDateDisplay();
         
         // Make the sticky date display open the main calendar
-        stickyDateDisplay.addEventListener('click', function() {
+        stickyDateDisplay.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
             // Trigger click on the main dropdown
             const mainDropdownHeader = mainDateDropdown.querySelector('.dropdown__header');
             if (mainDropdownHeader) {
-                mainDropdownHeader.click();
+                // 현재 스크롤 위치 고정
+                document.body.style.position = 'fixed';
+                document.body.style.top = `-${window.scrollY}px`;
                 
-                // Scroll to the date section if needed
-                setDateSection.scrollIntoView({ behavior: 'smooth' });
+                mainDropdownHeader.click();
             }
         });
         
@@ -131,6 +135,31 @@ document.addEventListener('DOMContentLoaded', function() {
             observer.observe(mainDateDropdown, { childList: true, subtree: true });
         }
     }
+    
+    // 캘린더 닫힐 때 스크롤 복원
+    document.addEventListener('click', function(e) {
+        const dateDropdown = e.target.closest('.date-dropdown');
+        const daterangepicker = e.target.closest('.daterangepicker');
+        const closeBtn = e.target.closest('.mobile-close-btn');
+        const confirmBtn = e.target.closest('.daterangepicker-confirm-btn');
+        
+        // 캘린더 닫기 버튼이나 컨펌 버튼 클릭 시
+        if (closeBtn || confirmBtn) {
+            // 스크롤 위치 복원
+            const scrollY = parseInt(document.body.style.top || '0') * -1;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            window.scrollTo(0, scrollY);
+        }
+        
+        // 드롭다운 외부 클릭 시 스크롤 복원
+        if (!dateDropdown && !daterangepicker) {
+            const scrollY = parseInt(document.body.style.top || '0') * -1;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            if (scrollY) window.scrollTo(0, scrollY);
+        }
+    });
     
     // Initial check for active section on page load
     setTimeout(updateActiveSection, 100);
