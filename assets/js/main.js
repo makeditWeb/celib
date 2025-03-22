@@ -154,7 +154,7 @@ function elementExists(selector) {
             });
             
             // 버튼 텍스트 초기화
-            this.textContent = "View more";
+            this.textContent = "View  all";
             
             // 아코디언 섹션으로 스크롤
             const accordionSection = document.querySelector('.accordion');
