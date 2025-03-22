@@ -167,7 +167,7 @@
                 <div id="tab-2" class="tab-content">
 
                     <!-- password 입력 화면 -->
-                    <div class="account__content" style="display: none;">
+                    <div class="account__content"  style="display: none;">
                         <p>Verify your account by
                             <br>entering your password.
                         </p>
@@ -176,16 +176,16 @@
                     </div>
 
                     <!-- 정보 수정 -->
-                    <div class="account__edit" >
+                    <div class="account__edit" style="display: none;" >
                         <h2 class="account--title">Edit Profile</h2>
                         <form>
                             <div class="form-group form__disabled">
-                                <input type="email" placeholder="Email Address" id="email-display" disabled>
+                                <input type="email" placeholder="Email Address" value="celib@celib.kr" id="email-display" disabled>
                             
                             </div>
                             <div class="form-group">
                                 <input type="password" placeholder="Password" id="signup-password">
-                                <p class="help-text">*Password length should be 8–20 characters. Spaces are not allowed.</p>
+                                <p class="help-text">*Password length should be 8–20 characters. <br> Spaces are not allowed.</p>
                             </div>
                             <div class="form-group">
                                 <input type="password" placeholder="Confirm Password" id="confirm-password">
@@ -253,7 +253,7 @@
                                     <label for="passport-upload" class="upload-btn">Upload</label>
                                     <input type="file" id="passport-upload" class="hidden-file-input" accept=".jpg,.jpeg,.png,.pdf">
                                 </div>
-                                <p class="help-text">Please upload your passport for identity verification. Accepted formats: JPG, PNG, PDF. Maximum file size: 5MB.</p>
+                                <p class="help-text__span">Please upload your passport for identity verification. <br> Accepted formats: JPG, PNG, PDF. Maximum file size: 5MB.</p>
                             </div>
                             
                             <button type="button" class="btn submit-btn">Update Profile</button>
@@ -262,7 +262,7 @@
                     </div>
 
                     <!-- 정보 삭제 -->
-                    <div class="account__delete"  style="display: none;">
+                    <div class="account__delete" >
                         <div class="check__img">
                             <img src="../assets/images/check01.png">
                         </div>
@@ -289,8 +289,12 @@
     </section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/10.0.4/swiper-bundle.min.js"></script>
     <script src="../assets/js/subpage.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/dropdown.js"></script>
+    <script src="../assets/js/detail-popup.js"></script>
+
 </body>
 </html>

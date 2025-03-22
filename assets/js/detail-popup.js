@@ -1,13 +1,15 @@
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Get elements that should trigger the booking detail popup
-    const bookingItem = document.querySelector('.booking__items');
+    // Get ALL booking items (using querySelectorAll instead of querySelector)
+    const bookingItems = document.querySelectorAll('.booking__items');
     const viewDetailsBtn = document.querySelector('.submit-btn');
     
-    // Add click event listener to the booking item
-    if (bookingItem) {
-        bookingItem.addEventListener('click', function() {
-            showBookingDetailPopup();
+    // Add click event listener to all booking items
+    if (bookingItems && bookingItems.length > 0) {
+        bookingItems.forEach(item => {
+            item.addEventListener('click', function() {
+                showBookingDetailPopup();
+            });
         });
     }
     
@@ -93,22 +95,18 @@ function showBookingDetailPopup() {
             return response.text();
         })
         .then(html => {
-            // Parse HTML
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
+            // Insert HTML directly into overlay
+            overlay.innerHTML = html;
             
-            // Get popup content
-            const popup = doc.querySelector('.detail-popup');
+            // Find the popup element within the inserted HTML
+            const popup = overlay.querySelector('.detail-popup');
             
             if (popup) {
-                // Add popup to overlay
-                overlay.appendChild(popup);
-                
-                // Add event listeners to close button
-                const closeButton = popup.querySelector('.popup-close');
-                if (closeButton) {
-                    closeButton.addEventListener('click', closeBookingDetailPopup);
-                }
+                // Add event listeners to close buttons
+                const closeButtons = overlay.querySelectorAll('.popup-close, .submit-btn');
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', closeBookingDetailPopup);
+                });
                 
                 // Prevent background scrolling
                 document.body.classList.add('popup-open');
@@ -118,7 +116,6 @@ function showBookingDetailPopup() {
                     popup.classList.add('popup-visible');
                     
                     // Initialize Swiper after popup is added to the DOM
-                    // Important: This delay ensures the DOM is ready for Swiper initialization
                     setTimeout(() => {
                         initializeDetailSwiper();
                     }, 100);

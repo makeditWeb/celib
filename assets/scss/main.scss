@@ -2219,10 +2219,12 @@ body.popup-open {
 
             color: #797979;
             display: inline-block;
-            padding: 0 5rem 0.5rem;
+            padding: 0 0 10px;
             cursor: pointer;
             box-sizing: border-box;
             width: 280px;
+            font-size: 20px;
+            text-align: center;
 
             &.current {
                 position: relative;
@@ -2332,6 +2334,7 @@ body.popup-open {
                             font-size: 1rem;
                             font-weight: 600;
                             line-height: 1.2;
+                            margin-bottom: 5px;
 
                             span {
                                 color: $color-lightgray;
@@ -2350,7 +2353,7 @@ body.popup-open {
                                     left: 0;
                                     top: 50%;
                                     transform: translate(0, -50%);
-                                    background-color: $color-lightgray;
+                                    background-color: #D9D9D9;
                                 }
                             }
                         }
@@ -2477,7 +2480,11 @@ body.popup-open {
             box-sizing: border-box;
             background: #F9F9F9;
             border: none;
-
+            &:disabled{
+                background: #ECECEC;
+                color: $text-lightblack;
+                font-family: Outfit;
+            }
             ::placeholder {
                 color: #797979;
             }
@@ -2720,10 +2727,11 @@ body.popup-open {
         display: none;
     }
 
-    .help-text {
+    .help-text__span {
         margin-top: 8px;
         font-size: 10px;
         color: #797979;
+        line-height: 1.2;
     }
 
     .link__delete {
@@ -2789,6 +2797,7 @@ body.popup-open {
             background: #fff;
             border: 1px solid #0A0A0A;
             margin-top: 10px;
+            font-weight: 500;
         }
     }
 
@@ -4631,9 +4640,13 @@ body.popup-open {
                             color: $text-lightblack;
                             font-weight: 600;
                             margin-bottom: 0.625rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 3px;
 
                             svg {
                                 width: 18px;
+                                height: 18px;
                             }
                         }
 
@@ -5612,6 +5625,20 @@ body.popup-open {
     .sticky-nav__menu{
         padding: 30px 50px;
         box-sizing: border-box;
+    }
+
+    .mypage__inner {
+        max-width: 100%;
+        padding: 2.8125rem 50px;
+    }
+
+    .top__banner{
+        padding: 70px 50px;
+    }
+
+    .booking__detail {
+        max-width: 100%;
+        padding: 4.375rem 50px;
     }
 }
 
@@ -6618,7 +6645,7 @@ body.popup-open {
 
     .section__content {
         max-width: 100%;
-        margin: 50px auto;
+        margin: 25px auto;
 
         .article {
             margin-bottom: 20px;
@@ -6716,6 +6743,7 @@ body.popup-open {
                 padding: 5px 20px;
                 margin-left: 20px;
                 width: auto;
+                font-size: 14px;
 
                 &:nth-child(2) {
                     margin-left: 0;
@@ -7313,7 +7341,7 @@ body.popup-open {
     
                 &::after {
                     position: absolute;
-                    right: -0.875rem;
+                    right: -0.6rem;
                     content: '';
                     width: 8px;
                     height: 8px;
@@ -7462,7 +7490,7 @@ body.popup-open {
     
                     &::after {
                         position: absolute;
-                        right: -0.875rem;
+                        right: -0.6rem;
                         content: '';
                         width: 8px;
                         height: 8px;
@@ -7520,7 +7548,7 @@ body.popup-open {
     
                 &::after {
                     position: absolute;
-                    right: -0.875rem;
+                    right: -0.6rem;
                     content: '';
                     width: 8px;
                     height: 8px;
@@ -7734,7 +7762,7 @@ body.popup-open {
                     height: 8px;
                     background-color: #FF8400;
                     border-radius: 50%;
-                    bottom: 1.2rem;
+                    bottom: 1.5rem;
                 }
             }
         }
