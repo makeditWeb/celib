@@ -2251,6 +2251,27 @@ body.popup-open {
         &.current {
             display: inherit;
         }
+
+        .booking__list{
+            margin-bottom: 50px;
+        }
+
+        .booking__no-list{
+            margin-top: 50px;
+            
+        }
+
+        .account__content{
+            margin-bottom: 50px;
+        }
+
+        .account__edit{
+            margin: 50px auto;
+        }
+
+        .account__delete{
+            margin-top: 50px;
+        }
     }
 
     .booking__list {
@@ -4288,8 +4309,8 @@ body.popup-open {
 
                 .submit-btn {
                     text-decoration: none;
-                    font-weight: 600;
-                    font-size: 1.25rem;
+                    font-weight: 500;
+                    font-size: 20px;
                 }
 
                 .disable__submit {
@@ -4302,8 +4323,8 @@ body.popup-open {
                     height: 46px;
                     color: #fff;
                     text-decoration: none;
-                    font-weight: 600;
-                    font-size: 1.25rem;
+                    font-weight: 500;
+                    font-size: 20px;
                 }
 
                 .stay__furniture-notice {
