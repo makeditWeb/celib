@@ -6017,10 +6017,10 @@ body.popup-open {
   .perfect__stay .perfect__stay--list .stay__list-info--wrap .stay__list-info .submit-btn {
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 16px;
   }
   .perfect__stay .perfect__stay--list .stay__list-info--wrap .stay__list-info .disable__submit {
-    font-size: 1rem;
+    font-size: 16px;
   }
   .perfect__stay .perfect__stay--list .stay__list-info--wrap .stay__list-info .stay__furniture-notice {
     margin-top: 0.625rem;
