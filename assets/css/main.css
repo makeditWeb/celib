@@ -2227,6 +2227,7 @@ body.popup-open {
 }
 .mypage__inner .form-group input ::placeholder {
   color: #797979;
+  font-family: "Outfit", sans-serif;
 }
 .mypage__inner .form-group .forget__password {
   text-align: center;
