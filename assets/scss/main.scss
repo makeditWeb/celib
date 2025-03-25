@@ -6809,6 +6809,11 @@ body.popup-open {
 
         .mypage__inner .form-group {
             margin-bottom: 16px;
+            input {
+                &::placeholder {
+                    font-family: "Outfit", sans-serif;
+                }
+            }
         }
 
         .booking__list {
