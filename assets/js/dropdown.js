@@ -1122,7 +1122,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         
-        // 확인 버튼 추가 함수
+        // 확인 버튼 추가 함수 (수정됨)
         function addConfirmButton() {
             // 이미 있는 확인 버튼 제거
             $('.daterangepicker-confirm-btn').remove();
@@ -1214,12 +1214,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         $('.custom__dropdown').removeClass('active');
                         targetPicker.hide();
                         
-                        // 스크롤 원상복구 (모바일)
-                        const scrollY = parseInt(document.body.style.top || '0') * -1;
-                        document.body.style.position = '';
-                        document.body.style.top = '';
-                        document.body.style.width = '';
-                        window.scrollTo(0, scrollY);
+                        // 모바일과 데스크톱 모두에서 스크롤 위치 유지
+                        if (document.body.style.position === 'fixed') {
+                            // 저장된 스크롤 위치 복원
+                            const scrollY = parseInt(document.body.style.top || '0') * -1;
+                            document.body.style.position = '';
+                            document.body.style.top = '';
+                            document.body.style.width = '';
+                            window.scrollTo(0, scrollY);
+                        }
                     }
                 } finally {
                     // 처리 완료 후 플래그 해제
@@ -1264,7 +1267,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // 데이트픽커 표시 함수 (최적화)
+        // 데이트픽커 표시 함수 (수정됨)
         function showDatePicker() {
             try {
                 // nights-info 제거
@@ -1292,7 +1295,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 모바일 여부 확인
                 const isMobileView = window.innerWidth < 768;
                 
-                // 모바일에서는 전체 화면으로 표시
+                // 모바일에서만 스크롤 위치 저장
                 if (isMobileView) {
                     // 현재 스크롤 위치 저장
                     const scrollY = window.scrollY;
@@ -1578,7 +1581,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`날짜 드롭다운 #${dropdownIndex + 1} 초기화 완료`);
     }
     
-    // ===== 외부 클릭 이벤트 공통 처리 =====
+    // ===== 외부 클릭 이벤트 공통 처리 ===== (수정됨)
     document.addEventListener('click', function(e) {
         // 생년월일 드롭다운 외부 클릭
         if (!e.target.closest('.custom-dropdown')) {
@@ -1600,12 +1603,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (datePickerInstance) {
                     datePickerInstance.hide();
                     
-                    // 스크롤 위치 복원
-                    const scrollY = parseInt(document.body.style.top || '0') * -1;
-                    document.body.style.position = '';
-                    document.body.style.top = '';
-                    document.body.style.width = '';
-                    if (scrollY) window.scrollTo(0, scrollY);
+                    // 모바일에서만 스크롤 위치 복원 (고정된 상태인 경우에만)
+                    if (document.body.style.position === 'fixed') {
+                        const scrollY = parseInt(document.body.style.top || '0') * -1;
+                        document.body.style.position = '';
+                        document.body.style.top = '';
+                        document.body.style.width = '';
+                        if (scrollY) window.scrollTo(0, scrollY);
+                    }
                 }
             }
         }
