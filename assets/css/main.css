@@ -3856,16 +3856,16 @@ body.popup-open {
   flex-direction: column;
   gap: 2rem;
 }
-.facilities .facilities__inner .facilities__right .info__list--items .info__itmes {
+.facilities .facilities__inner .facilities__right .info__list--items .info__items {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
-.facilities .facilities__inner .facilities__right .info__list--items .info__itmes svg {
+.facilities .facilities__inner .facilities__right .info__list--items .info__items svg {
   width: 32px;
   height: 32px;
 }
-.facilities .facilities__inner .facilities__right .info__list--items .info__itmes p {
+.facilities .facilities__inner .facilities__right .info__list--items .info__items p {
   font-size: 16px;
   font-weight: 400;
   color: #0A0A0A;
@@ -3905,31 +3905,31 @@ body.popup-open {
        column-gap: 1.5rem;
   row-gap: 1.875rem;
 }
-.amenities .amenities__inner .amenities__list .amenities__itmes {
+.amenities .amenities__inner .amenities__list .amenities__items {
   width: calc(50% - 1.5rem);
 }
-.amenities .amenities__inner .amenities__list .amenities__itmes .amenities__image {
+.amenities .amenities__inner .amenities__list .amenities__items .amenities__image {
   width: 100%;
 }
-.amenities .amenities__inner .amenities__list .amenities__itmes .amenities__image img {
+.amenities .amenities__inner .amenities__list .amenities__items .amenities__image img {
   width: 100%;
   aspect-ratio: 1.5/1;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript {
+.amenities .amenities__inner .amenities__list .amenities__items .amenities__discript {
   padding: 1.5625rem 1.25rem;
   box-sizing: border-box;
   background: #FFF;
 }
-.amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__title {
+.amenities .amenities__inner .amenities__list .amenities__items .amenities__discript .des__title {
   color: #0A0A0A;
   font-family: Outfit;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
 }
-.amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__info {
+.amenities .amenities__inner .amenities__list .amenities__items .amenities__discript .des__info {
   height: 72px;
   color: #797979;
   font-family: Outfit;
@@ -4567,23 +4567,23 @@ body.popup-open {
     flex-wrap: wrap;
     gap: 1rem;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes {
+  .amenities .amenities__inner .amenities__list .amenities__items {
     width: calc(50% - 1rem);
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__image {
+  .amenities .amenities__inner .amenities__list .amenities__items .amenities__image {
     width: 100%;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__image img {
+  .amenities .amenities__inner .amenities__list .amenities__items .amenities__image img {
     width: 100%;
     aspect-ratio: 1.5/1;
     -o-object-fit: cover;
        object-fit: cover;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__title {
+  .amenities .amenities__inner .amenities__list .amenities__items .amenities__discript .des__title {
     font-size: 1.5rem;
     margin-bottom: 0.375rem;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__info {
+  .amenities .amenities__inner .amenities__list .amenities__items .amenities__discript .des__info {
     font-size: 1rem;
     height: auto;
   }
@@ -4738,10 +4738,10 @@ body.popup-open {
     border-radius: 50%;
     top: 0;
   }
-  .facilities__right .info__list--items .info__itmes svg {
+  .facilities__right .info__list--items .info__items svg {
     width: 18px;
   }
-  .facilities__right .info__list--items .info__itmes p {
+  .facilities__right .info__list--items .info__items p {
     font-size: 0.875rem;
   }
 }
@@ -6156,16 +6156,16 @@ body.popup-open {
          column-gap: 0;
     row-gap: 1.25rem;
   }
-  .facilities .facilities__inner .facilities__right .info__list--items .info__itmes {
+  .facilities .facilities__inner .facilities__right .info__list--items .info__items {
     width: 50%;
     display: flex;
     align-items: center;
     gap: 0.75rem;
   }
-  .facilities .facilities__inner .facilities__right .info__list--items .info__itmes svg {
+  .facilities .facilities__inner .facilities__right .info__list--items .info__items svg {
     width: 24px;
   }
-  .facilities .facilities__inner .facilities__right .info__list--items .info__itmes p {
+  .facilities .facilities__inner .facilities__right .info__list--items .info__items p {
     font-size: 0.875rem;
   }
   .amenities {
@@ -6196,27 +6196,27 @@ body.popup-open {
     flex-direction: column;
     gap: 1.25rem;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes {
+  .amenities .amenities__inner .amenities__list .amenities__items {
     width: 100%;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__image {
+  .amenities .amenities__inner .amenities__list .amenities__items .amenities__image {
     width: 100%;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__image img {
+  .amenities .amenities__inner .amenities__list .amenities__items .amenities__image img {
     width: 100%;
     aspect-ratio: 1.5/1;
     -o-object-fit: cover;
        object-fit: cover;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript {
+  .amenities .amenities__inner .amenities__list .amenities__items .amenities__discript {
     padding: 0.75rem;
     box-sizing: border-box;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__title {
+  .amenities .amenities__inner .amenities__list .amenities__items .amenities__discript .des__title {
     font-size: 1rem;
     margin-bottom: 0.375rem;
   }
-  .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__info {
+  .amenities .amenities__inner .amenities__list .amenities__items .amenities__discript .des__info {
     font-size: 0.875rem;
     height: auto;
   }
