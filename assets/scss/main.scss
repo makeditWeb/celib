@@ -4255,7 +4255,6 @@ body.popup-open {
             .stay__list-info {
                 position: relative;
                 max-width: 380px;
-                overflow: hidden;
 
                 .stay__list--slide {
                     width: 100%;
@@ -4568,6 +4567,7 @@ body.popup-open {
                     }
 
                     .des__info {
+                        height:72px;
                         color: #797979;
                         font-family: Outfit;
                         font-size: 1.25rem;
@@ -5511,6 +5511,7 @@ body.popup-open {
     
                         .des__info {
                             font-size: 1rem;
+                            height:auto;
                         }
                     }
                 }
@@ -7669,6 +7670,7 @@ body.popup-open {
     
                         .des__info {
                             font-size: 0.875rem;
+                            height:auto;
                         }
                     }
                 }

@@ -3660,7 +3660,6 @@ body.popup-open {
 .perfect__stay .perfect__stay--list .stay__list-info--wrap .stay__list-info {
   position: relative;
   max-width: 380px;
-  overflow: hidden;
 }
 .perfect__stay .perfect__stay--list .stay__list-info--wrap .stay__list-info .stay__list--slide {
   width: 100%;
@@ -3931,6 +3930,7 @@ body.popup-open {
   margin-bottom: 1.25rem;
 }
 .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__info {
+  height: 72px;
   color: #797979;
   font-family: Outfit;
   font-size: 1.25rem;
@@ -4585,6 +4585,7 @@ body.popup-open {
   }
   .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__info {
     font-size: 1rem;
+    height: auto;
   }
   .neighborhood .neighborhood__inner {
     max-width: 100%;
@@ -6211,6 +6212,7 @@ body.popup-open {
   }
   .amenities .amenities__inner .amenities__list .amenities__itmes .amenities__discript .des__info {
     font-size: 0.875rem;
+    height: auto;
   }
   .neighborhood {
     background: #F6E8D6;
