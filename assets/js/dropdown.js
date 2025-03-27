@@ -326,9 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 클릭 중복 방지 플래그
         window.isProcessingDateClick = false;
         
-        // SVG 아이콘 정의
-        const prevSvgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.25 18L8.25 12L14.25 6" stroke="#212322" stroke-width="1.5"></path></svg>`;
-        const nextSvgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" style="transform: rotate(180deg);"><path d="M14.25 18L8.25 12L14.25 6" stroke="#212322" stroke-width="1.5"></path></svg>`;
+        // 닫기 아이콘 정의
         const closeSvgIcon = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>`;
 
         // Date Range Picker 초기화 설정
@@ -362,6 +360,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Register this instance globally
         datePickerRegistry.register(datePickerInstance, dateDropdown, dropdownIndex, isSticky, isGadiMain, selectedOption);
+        
+        // 기본 화살표 표시를 위한 CSS 추가
+        if (!document.getElementById('default-arrows-style')) {
+            const styleEl = document.createElement('style');
+            styleEl.id = 'default-arrows-style';
+            styleEl.textContent = `
+                /* 기본 화살표 표시 */
+                .daterangepicker .prev, 
+                .daterangepicker .next {
+                    display: block !important;
+                    visibility: visible !important;
+                }
+                
+                /* SVG 네비게이션 버튼 무효화 */
+                .svg-nav-btn {
+                    display: none !important;
+                }
+            `;
+            document.head.appendChild(styleEl);
+        }
+        
+        // 선택된 날짜가 월 변경 후에도 보이도록 하는 스타일 추가
+        if (!document.getElementById('simple-date-fix')) {
+            const styleEl = document.createElement('style');
+            styleEl.id = 'simple-date-fix';
+            styleEl.textContent = `
+                /* 선택된 날짜가 기본적으로 잘 보이도록 */
+                .daterangepicker td.start-date, 
+                .daterangepicker td.end-date {
+                    background-color: #e0e0e0 !important;
+                    color: #333 !important;
+                }
+            `;
+            document.head.appendChild(styleEl);
+        }
         
         // 원형 날짜 스타일 CSS
         const roundDateStyle = `
@@ -424,7 +457,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                 }
 
-
             .daterangepicker {
                 border: 1px solid #eee !important;
                 border-radius: 5px !important;
@@ -478,8 +510,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 background-color: #f0f0f0;
                 z-index: -1;
             }
-
-            
             
             .daterangepicker td.start-date,
             .daterangepicker td.end-date.in-range {
@@ -506,35 +536,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .daterangepicker .drp-calendar.right {
                 padding:0 20px!important;
                 box-sizing: border-box;
-            }
-            
-            /* 기존 화살표 숨기기 */
-            .daterangepicker .prev, 
-            .daterangepicker .next {
-                display: none !important;
-            }
-            
-            /* SVG 네비게이션 버튼 스타일 */
-            .svg-nav-btn {
-                background: none !important;
-                border: none !important;
-                cursor: pointer !important;
-                position: absolute !important;
-                z-index: 99999 !important;
-                display: block !important;
-                width: 24px !important;
-                height: 24px !important;
-                padding: 0 !important;
-            }
-            
-            .svg-nav-btn.prev-month {
-                left: 10px !important;
-                top: 0px !important;
-            }
-            
-            .svg-nav-btn.next-month {
-                right: 10px !important;
-                top: 0px !important;
             }
             
             /* 모바일 닫기 버튼 스타일 */
@@ -588,8 +589,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 text-decoration: unset;
                 color: #e7e7e7;
             }
-
-            
             
             @media (max-width: 767px) {
                 .daterangepicker {
@@ -601,14 +600,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     max-height: 100vh !important;
                 }
                 
-
                 .daterangepicker .drp-calendar.left {
-                clear: none !important;
-                border-right: none;
-                padding:0 20px !important;
-                margin-bottom: 20px !important;
-                box-sizing: border-box;
-                margin-top: 60px !important;
+                    clear: none !important;
+                    border-right: none;
+                    padding:0 20px !important;
+                    margin-bottom: 20px !important;
+                    box-sizing: border-box;
+                    margin-top: 60px !important;
                 }
 
                 .mobile-close-btn {
@@ -736,30 +734,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // 모든 캘린더에 원형 스타일 적용 (최적화)
-            if (window.applyCircleTimeout) {
-                clearTimeout(window.applyCircleTimeout);
-            }
-            window.applyCircleTimeout = setTimeout(applyCircleToSelectedDates, 50);
+            // 모든 캘린더에 원형 스타일 적용
+            applyCircleToSelectedDates();
         }
         
-        // 선택된 날짜 셀에 둥근 스타일 적용 (최적화)
-        function applyCircleToSelectedDates() {
-            // 이미 처리 중인 경우 중복 실행 방지
-            if (window.isApplyingCircle) return;
-            window.isApplyingCircle = true;
+        // 특정 date picker 인스턴스에 date-circle 적용하는 함수
+        function applyCirclesToInstance(instance) {
+            if (!instance || !instance.container) return;
             
-            try {
-                $('.daterangepicker td.start-date, .daterangepicker td.end-date').each(function() {
-                    // 이미 원이 적용된 경우 건너뛰기
-                    if ($(this).find('.date-circle').length > 0) return;
+            // 해당 인스턴스가 선택한 시작일과 종료일
+            const startDate = instance.startDate;
+            const endDate = instance.endDate;
+            
+            if (!startDate && !endDate) return;
+            
+            const container = instance.container;
+            
+            // start-date에 원형 적용
+            container.find('td.start-date').each(function() {
+                if ($(this).find('.date-circle').length === 0) {
+                    const dayText = $(this).text().trim();
+                    if (!dayText) return;
                     
-                    const cellText = $(this).text().trim();
-                    
-                    // 새로운 원 추가
+                    // 원형 div 생성
                     const $circleDiv = $('<div>')
                         .addClass('date-circle')
-                        .text(cellText)
+                        .text(dayText)
                         .css({
                             'position': 'absolute',
                             'top': '50%',
@@ -784,12 +784,148 @@ document.addEventListener('DOMContentLoaded', function() {
                         'background-color': 'transparent'
                     });
                     
-                    // 셀에 원 추가
+                    // 셀에 원형 div 추가
                     $(this).html($circleDiv);
+                }
+            });
+            
+            // end-date에 원형 적용
+            container.find('td.end-date').each(function() {
+                if ($(this).find('.date-circle').length === 0) {
+                    const dayText = $(this).text().trim();
+                    if (!dayText) return;
+                    
+                    // 원형 div 생성
+                    const $circleDiv = $('<div>')
+                        .addClass('date-circle')
+                        .text(dayText)
+                        .css({
+                            'position': 'absolute',
+                            'top': '50%',
+                            'left': '50%',
+                            'transform': 'translate(-50%, -50%)',
+                            'width': '36px',
+                            'height': '36px', 
+                            'background-color': '#000',
+                            'color': '#fff',
+                            'border-radius': '50%',
+                            'display': 'flex',
+                            'justify-content': 'center',
+                            'align-items': 'center',
+                            'text-align': 'center',
+                            'line-height': '36px',
+                            'z-index': '1'
+                        });
+                    
+                    // 셀 포지션 설정
+                    $(this).css({
+                        'position': 'relative',
+                        'background-color': 'transparent'
+                    });
+                    
+                    // 셀에 원형 div 추가
+                    $(this).html($circleDiv);
+                }
+            });
+            
+            // 추가: 다음/이전 달에 있는 날짜에 대해 data-date 속성을 사용하여 직접 찾기
+            if (startDate || endDate) {
+                // 모든 available 셀 검사
+                container.find('td.available').each(function() {
+                    const dateAttr = $(this).attr('data-date');
+                    if (!dateAttr) return;
+                    
+                    // 시작일과 일치하는지 확인
+                    if (startDate && dateAttr === startDate.format('YYYY-MM-DD') && !$(this).hasClass('start-date')) {
+                        // start-date 클래스 추가
+                        $(this).addClass('start-date');
+                        
+                        // 원형 div 적용
+                        if ($(this).find('.date-circle').length === 0) {
+                            const dayText = $(this).text().trim();
+                            if (dayText) {
+                                const $circleDiv = $('<div>')
+                                    .addClass('date-circle')
+                                    .text(dayText)
+                                    .css({
+                                        'position': 'absolute',
+                                        'top': '50%',
+                                        'left': '50%',
+                                        'transform': 'translate(-50%, -50%)',
+                                        'width': '36px',
+                                        'height': '36px', 
+                                        'background-color': '#000',
+                                        'color': '#fff',
+                                        'border-radius': '50%',
+                                        'display': 'flex',
+                                        'justify-content': 'center',
+                                        'align-items': 'center',
+                                        'text-align': 'center',
+                                        'line-height': '36px',
+                                        'z-index': '1'
+                                    });
+                                
+                                $(this).css({
+                                    'position': 'relative',
+                                    'background-color': 'transparent'
+                                });
+                                
+                                $(this).html($circleDiv);
+                            }
+                        }
+                    }
+                    
+                    // 종료일과 일치하는지 확인
+                    if (endDate && dateAttr === endDate.format('YYYY-MM-DD') && !$(this).hasClass('end-date')) {
+                        // end-date 클래스 추가
+                        $(this).addClass('end-date');
+                        
+                        // 원형 div 적용
+                        if ($(this).find('.date-circle').length === 0) {
+                            const dayText = $(this).text().trim();
+                            if (dayText) {
+                                const $circleDiv = $('<div>')
+                                    .addClass('date-circle')
+                                    .text(dayText)
+                                    .css({
+                                        'position': 'absolute',
+                                        'top': '50%',
+                                        'left': '50%',
+                                        'transform': 'translate(-50%, -50%)',
+                                        'width': '36px',
+                                        'height': '36px', 
+                                        'background-color': '#000',
+                                        'color': '#fff',
+                                        'border-radius': '50%',
+                                        'display': 'flex',
+                                        'justify-content': 'center',
+                                        'align-items': 'center',
+                                        'text-align': 'center',
+                                        'line-height': '36px',
+                                        'z-index': '1'
+                                    });
+                                
+                                $(this).css({
+                                    'position': 'relative',
+                                    'background-color': 'transparent'
+                                });
+                                
+                                $(this).html($circleDiv);
+                            }
+                        }
+                    }
                 });
-            } finally {
-                window.isApplyingCircle = false;
             }
+        }
+        
+        // 선택된 날짜 셀에 둥근 스타일 적용 (개선됨)
+        function applyCircleToSelectedDates() {
+            // 모든 인스턴스에 적용
+            datePickerRegistry.instances.forEach(function(item) {
+                if (item.instance) {
+                    applyCirclesToInstance(item.instance);
+                }
+            });
         }
 
         // DateRangePicker의 updateView 함수 오버라이드 (최적화)
@@ -798,11 +934,61 @@ document.addEventListener('DOMContentLoaded', function() {
             originalUpdateView.apply(this, arguments);
             
             // 성능 최적화를 위해 타임아웃 사용
-            if (window.applyCircleTimeout) {
-                clearTimeout(window.applyCircleTimeout);
-            }
-            window.applyCircleTimeout = setTimeout(applyCircleToSelectedDates, 50);
+            setTimeout(applyCircleToSelectedDates, 50);
         };
+        
+        // 직접 daterangepicker의 메소드를 후킹
+        setTimeout(function() {
+            // 각 인스턴스의 내부 메소드를 오버라이드
+            datePickerRegistry.instances.forEach(function(item) {
+                if (!item.instance) return;
+                
+                // 1. updateCalendars 메소드 오버라이드 (월 변경 시 호출됨)
+                if (item.instance.updateCalendars) {
+                    const originalUpdateCalendars = item.instance.updateCalendars;
+                    item.instance.updateCalendars = function() {
+                        // 원래 함수 호출
+                        originalUpdateCalendars.apply(this, arguments);
+                        
+                        // 캘린더가 업데이트된 후 date-circle 적용
+                        setTimeout(function() {
+                            applyCirclesToInstance(item.instance);
+                        }, 50);
+                    };
+                }
+                
+                // 2. renderCalendar 메소드 오버라이드 (캘린더 렌더링 시 호출됨)
+                if (item.instance.renderCalendar) {
+                    const originalRenderCalendar = item.instance.renderCalendar;
+                    item.instance.renderCalendar = function() {
+                        // 원래 함수 호출
+                        const result = originalRenderCalendar.apply(this, arguments);
+                        
+                        // 캘린더가 렌더링된 후 date-circle 적용
+                        setTimeout(function() {
+                            applyCirclesToInstance(item.instance);
+                        }, 50);
+                        
+                        return result;
+                    };
+                }
+            });
+            
+            // 네비게이션 버튼에 직접 이벤트 핸들러 추가
+            $(document).on('mousedown.navButtons', '.daterangepicker .prev, .daterangepicker .next', function() {
+                const container = $(this).closest('.daterangepicker');
+                const instance = container.data('daterangepicker');
+                
+                if (instance) {
+                    // 버튼 클릭 후 다양한 시점에 시도
+                    setTimeout(function() { applyCirclesToInstance(instance); }, 50);
+                    setTimeout(function() { applyCirclesToInstance(instance); }, 100);
+                    setTimeout(function() { applyCirclesToInstance(instance); }, 200);
+                }
+            });
+            
+            console.log("daterangepicker 내부 메소드 후킹 완료");
+        }, 500);
 
         function addDaterangepickerCSS() {
             if (!document.getElementById('custom-daterangepicker-styles')) {
@@ -866,6 +1052,14 @@ document.addEventListener('DOMContentLoaded', function() {
             $('.nights-info').remove();
         }
 
+        // 날짜 셀 클릭 이벤트에 원형 적용 (시작일 선택 시에도 원형 적용)
+        $(document).on('click', '.daterangepicker td.available', function() {
+            // 50ms 지연 후 적용
+            setTimeout(function() {
+                applyCircleToSelectedDates();
+            }, 50);
+        });
+
         // 날짜 범위 선택 직접 감시 및 업데이트 (성능 최적화)
         function setupDateRangeMonitoring() {
             // 이벤트를 사용하여 감지
@@ -881,11 +1075,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // nights-info 제거
                 removeNightsInfo();
                 
-                // 성능 최적화를 위해 타임아웃 사용
-                if (window.applyCircleTimeout) {
-                    clearTimeout(window.applyCircleTimeout);
-                }
-                window.applyCircleTimeout = setTimeout(applyCircleToSelectedDates, 50);
+                // 원형 스타일 적용
+                setTimeout(applyCircleToSelectedDates, 50);
             });
             
             // 날짜 셀 클릭 이벤트 처리 (성능 최적화)
@@ -942,6 +1133,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // 선택된 부분 시각적으로 표시
                     targetPicker.updateView();
+                    
+                    // date-circle 적용
+                    setTimeout(applyCircleToSelectedDates, 50);
                 } finally {
                     // 처리 완료 후 플래그 해제 (지연 적용)
                     setTimeout(function() {
@@ -961,105 +1155,9 @@ document.addEventListener('DOMContentLoaded', function() {
             $('.daterangepicker td.in-range').removeClass('in-range');
         }
         
-        // 네비게이션 버튼 추가 함수
+        // SVG 네비게이션 버튼 함수 (빈 함수로 대체)
         function addSvgNavButtons() {
-            // 기존 버튼 제거
-            $('.svg-nav-btn').remove();
-            
-            // 모든 캘린더에 대해
-            $('.daterangepicker .drp-calendar').each(function() {
-                const calendar = $(this);
-                
-                // 왼쪽 화살표 버튼 생성
-                const leftBtn = $(`<button type="button" class="svg-nav-btn prev-month">${prevSvgIcon}</button>`);
-                
-                // 오른쪽 화살표 버튼 생성
-                const rightBtn = $(`<button type="button" class="svg-nav-btn next-month">${nextSvgIcon}</button>`);
-                
-                // 캘린더에 버튼 삽입
-                calendar.css('position', 'relative');
-                calendar.prepend(leftBtn);
-                calendar.prepend(rightBtn);
-                
-                // 버튼 클릭 이벤트 (좌우 공통 로직)
-                function handleNavButtonClick(e, direction) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // 현재 클릭된 캘린더의 daterangepicker 컨테이너 찾기
-                    const container = calendar.closest('.daterangepicker');
-                    let targetPicker = null;
-                    
-                    // 해당 daterangepicker의 인스턴스 찾기
-                    for (const item of datePickerRegistry.instances) {
-                        if (item.instance && item.instance.container && 
-                            item.instance.container.get(0) === container.get(0)) {
-                            targetPicker = item.instance;
-                            break;
-                        }
-                    }
-                    
-                    if (!targetPicker) return;
-                    
-                    // 월 정보
-                    const monthHeader = calendar.find('.month');
-                    const monthText = monthHeader.text();
-                    const [monthName, yearStr] = monthText.split(' ');
-                    const year = parseInt(yearStr);
-                    
-                    // 월 인덱스 계산
-                    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                    let monthIndex = months.indexOf(monthName);
-                    
-                    // 방향에 따라 월 변경
-                    if (direction === 'prev') {
-                        monthIndex--;
-                        if (monthIndex < 0) {
-                            monthIndex = 11;
-                            year--;
-                        }
-                    } else {
-                        monthIndex++;
-                        if (monthIndex > 11) {
-                            monthIndex = 0;
-                            year++;
-                        }
-                    }
-                    
-                    // 새 날짜 생성
-                    const newDate = moment([year, monthIndex, 1]);
-                    
-                    // 캘린더 업데이트
-                    if (calendar.hasClass('left')) {
-                        targetPicker.leftCalendar.month = newDate;
-                    } else {
-                        targetPicker.rightCalendar.month = newDate;
-                    }
-                    
-                    targetPicker.updateCalendars();
-                    
-                    // 지연 후 버튼 다시 추가 및 스타일 적용 (최적화)
-                    if (window.navButtonTimeout) {
-                        clearTimeout(window.navButtonTimeout);
-                    }
-                    window.navButtonTimeout = setTimeout(function() {
-                        addSvgNavButtons();
-                        addMobileHeader();
-                        addConfirmButton();
-                        applyCircleToSelectedDates();
-                    }, 50);
-                }
-                
-                // 왼쪽 버튼 클릭 이벤트
-                leftBtn.on('click', function(e) {
-                    handleNavButtonClick(e, 'prev');
-                });
-                
-                // 오른쪽 버튼 클릭 이벤트
-                rightBtn.on('click', function(e) {
-                    handleNavButtonClick(e, 'next');
-                });
-            });
+            // 아무 작업도 하지 않음 - SVG 버튼을 추가하지 않음
         }
         
         // 모바일 헤더 추가 함수
@@ -1122,7 +1220,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         
-        // 확인 버튼 추가 함수 (수정됨)
+        // 확인 버튼 추가 함수 
         function addConfirmButton() {
             // 이미 있는 확인 버튼 제거
             $('.daterangepicker-confirm-btn').remove();
@@ -1248,26 +1346,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 모든 데이트픽커와 동기화
                 synchronizeDatePickers(picker, dropdownIndex);
                 
-                // nights-info 표시 코드 삭제 (야간 수 표시 제거)
-                
                 // 데이트픽커를 닫지 않고 표시 상태 유지
                 isDateDropdownActive = true;
                 dateDropdown.classList.add('active');
                 
-                // 스타일 재적용 및 SVG 버튼 다시 추가 (최적화)
-                if (window.applyStylesTimeout) {
-                    clearTimeout(window.applyStylesTimeout);
-                }
-                window.applyStylesTimeout = setTimeout(function() {
-                    addSvgNavButtons();
-                    addMobileHeader();
-                    addConfirmButton();
-                    applyCircleToSelectedDates();
-                }, 50);
+                // 원형 스타일 적용
+                setTimeout(applyCircleToSelectedDates, 50);
             }
         });
         
-        // 데이트픽커 표시 함수 (수정됨)
+        // 데이트픽커 표시 함수 (SVG 관련 코드 제거)
         function showDatePicker() {
             try {
                 // nights-info 제거
@@ -1389,16 +1477,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 버튼 영역 숨기기
                 $('.daterangepicker .drp-buttons').hide();
                 
-                // 기존 화살표 숨기기
-                $('.daterangepicker .prev, .daterangepicker .next').hide();
-                
                 // 날짜가 선택되지 않은 경우 스타일 초기화
                 if (!dateSelected) {
                     clearDateRangeStyles();
                 }
-                
-                // SVG 네비게이션 버튼 추가
-                addSvgNavButtons();
                 
                 // 모바일에서는 헤더와 확인 버튼 추가
                 if (isMobileView) {
@@ -1408,11 +1490,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 확인 버튼 추가
                 addConfirmButton();
                 
-                // 원형 스타일 적용 (최적화)
-                if (window.applyCircleTimeout) {
-                    clearTimeout(window.applyCircleTimeout);
-                }
-                window.applyCircleTimeout = setTimeout(applyCircleToSelectedDates, 50);
+                // 원형 스타일 적용
+                setTimeout(applyCircleToSelectedDates, 50);
             } catch (error) {
                 console.error('Error showing daterangepicker:', error);
             }
@@ -1541,12 +1620,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                     }
                     
-                    // 스타일 재적용 및 버튼 추가 (최적화)
+                    // 스타일 재적용
                     if (window.applyStylesTimeout) {
                         clearTimeout(window.applyStylesTimeout);
                     }
                     window.applyStylesTimeout = setTimeout(function() {
-                        addSvgNavButtons();
                         addMobileHeader();
                         addConfirmButton();
                         applyCircleToSelectedDates();
@@ -1554,28 +1632,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }, 100); // 100ms 디바운스
         });
-        
-        // 원형 스타일 적용 함수 (최적화)
-        function applyDatePickerStyles() {
-            if (window.applyStylesTimeout) {
-                clearTimeout(window.applyStylesTimeout);
-            }
-            window.applyStylesTimeout = setTimeout(function() {
-                addSvgNavButtons();
-                addMobileHeader();
-                addConfirmButton();
-                applyCircleToSelectedDates();
-            }, 50);
-        }
 
-        // 데이트픽커가 열릴 때마다 nights-info 제거
+        // 데이트픽커가 열릴 때마다 nights-info 제거 및 원형 스타일 적용
         $(document).on('show.daterangepicker', function() {
             removeNightsInfo();
+            setTimeout(applyCircleToSelectedDates, 50);
         });
 
-        // 모든 데이트픽커 인스턴스 생성 후 nights-info 제거
+        // 페이지 로드시 SVG 버튼 제거하고 기본 화살표 표시
         $(document).ready(function() {
-            setTimeout(removeNightsInfo, 500);
+            setTimeout(function() {
+                // SVG 버튼 제거
+                $('.svg-nav-btn').remove();
+                // 원형 스타일 적용
+                applyCircleToSelectedDates();
+            }, 500);
         });
 
         console.log(`날짜 드롭다운 #${dropdownIndex + 1} 초기화 완료`);
@@ -1614,6 +1685,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
+    });
+    
+    // 페이지 로드 시 SVG 버튼 제거
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('.svg-nav-btn').remove();
+            console.log("SVG 버튼 제거 완료 - 기본 달력 버튼 사용");
+        }, 500);
     });
     
     console.log("모든 드롭다운 초기화 완료");
