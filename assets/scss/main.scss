@@ -7275,6 +7275,11 @@ body.popup-open {
                 p {
                     font-size: 0.95rem;
                     line-height: 1.5;
+
+                    br{display: none;}
+                    .mo-br{
+                        display: block;
+                    }
                 }
             }
     

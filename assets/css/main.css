@@ -5897,6 +5897,12 @@ body.popup-open {
     font-size: 0.95rem;
     line-height: 1.5;
   }
+  .gadi__main .gadi__main--inner .gadi__main--text p br {
+    display: none;
+  }
+  .gadi__main .gadi__main--inner .gadi__main--text p .mo-br {
+    display: block;
+  }
   .gadi__main .gadi__main--inner .set__date {
     padding: 0.625rem 0.875rem;
   }
