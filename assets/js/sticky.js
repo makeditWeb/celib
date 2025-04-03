@@ -6,6 +6,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const stickyDateDisplay = document.querySelector('.sticky-date-display');
     const mainDateDropdown = document.querySelector('.gadi__main .date-dropdown');
     
+    // Define explicit section boundaries
+    const sectionMapping = [
+        { id: 'perfect__stay', label: 'Rooms', target: 'perfect__stay' },
+        { id: 'amenities', label: 'Amenities', target: 'amenities' },
+        { id: 'neighborhood', label: 'Location', target: 'neighborhood' },
+        { id: 'faq__gadi', label: 'FAQ', target: 'faq__gadi' }
+    ];
+    
+    // Track last clicked section to maintain activation
+    let lastClickedSection = null;
+    let isManualScroll = false;
+    let scrollTimeout = null;
+    
     // Handle sticky navigation on scroll
     window.addEventListener('scroll', function() {
         if (setDateSection) {
@@ -18,8 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 stickyNav.classList.remove('visible');
             }
             
-            // Update active section in navigation based on scroll position
-            updateActiveSection();
+            // Only update active section if not manually scrolling
+            if (!isManualScroll) {
+                // Debounce scroll events for better performance
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateActiveSection, 50);
+            }
         }
     });
     
@@ -33,58 +50,97 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.querySelector(`.${targetId}`);
             
             if (targetSection) {
-                // Remove active class from all links
-                navLinks.forEach(link => link.classList.remove('active'));
+                // Mark as manually scrolling
+                isManualScroll = true;
+                lastClickedSection = targetId;
+                window._lastClickTime = new Date().getTime();
                 
-                // Add active class to clicked link
+                // Update active link immediately
+                navLinks.forEach(link => link.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Scroll to the target section
-                const offsetTop = targetSection.offsetTop;
+                // Calculate offset for scrolling
+                const stickyNavHeight = stickyNav ? stickyNav.offsetHeight : 0;
+                const scrollOffset = stickyNavHeight;
                 
+                // Scroll to target section
                 window.scrollTo({
-                    top: offsetTop - 80, // Account for sticky header height
+                    top: targetSection.offsetTop - scrollOffset,
                     behavior: 'smooth'
                 });
+                
+                // Reset scroll tracking after animation completes
+                setTimeout(() => {
+                    isManualScroll = false;
+                }, 1000);
             }
         });
     });
     
     // Update active nav link based on scroll position
     function updateActiveSection() {
-        // Define sections to track
-        const sections = [
-            { id: 'perfect__stay', nav: 'rooms' },
-            { id: 'amenities', nav: 'amenities' },
-            { id: 'neighborhood', nav: 'location' },
-            { id: 'faq__gadi', nav: 'faq' }
-        ];
+        // Maintain clicked section for a period to prevent flicker
+        if (lastClickedSection) {
+            const timeSinceClick = new Date().getTime() - (window._lastClickTime || 0);
+            if (timeSinceClick < 2000) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-target') === lastClickedSection) {
+                        link.classList.add('active');
+                    }
+                });
+                return;
+            }
+        }
         
-        // Get current scroll position (slightly ahead to activate earlier)
-        const scrollPosition = window.scrollY + 150;
+        // Get exact positions of each section
+        const sectionPositions = sectionMapping.map(section => {
+            const element = document.querySelector(`.${section.id}`);
+            return {
+                id: section.id,
+                target: section.target,
+                top: element ? element.offsetTop : Infinity,
+                bottom: element ? element.offsetTop + element.offsetHeight : Infinity
+            };
+        }).filter(section => section.top !== Infinity);
+        
+        // Get current scroll position plus offset for header
+        const scrollPosition = window.scrollY;
         
         // Find the current section
         let currentSection = null;
         
-        sections.forEach(section => {
-            const element = document.querySelector(`.${section.id}`);
-            if (element) {
-                const sectionTop = element.offsetTop;
-                const sectionHeight = element.offsetHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    currentSection = section.nav.toLowerCase();
+        // First, try to find exact section match
+        for (let i = 0; i < sectionPositions.length; i++) {
+            const section = sectionPositions[i];
+            if (scrollPosition >= section.top && scrollPosition < section.bottom) {
+                currentSection = section.target;
+                break;
+            }
+        }
+        
+        // If no exact match, use the section we're approaching
+        if (!currentSection && sectionPositions.length > 0) {
+            // Find the first section that's below our current position
+            for (let i = 0; i < sectionPositions.length; i++) {
+                if (scrollPosition < sectionPositions[i].top) {
+                    // We're approaching this section, use the previous one if available
+                    currentSection = i > 0 ? sectionPositions[i-1].target : sectionPositions[0].target;
+                    break;
                 }
             }
-        });
+            
+            // If we're past all sections, use the last one
+            if (!currentSection) {
+                currentSection = sectionPositions[sectionPositions.length - 1].target;
+            }
+        }
         
         // Update active class in navigation
         if (currentSection) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                
-                const linkTarget = link.getAttribute('data-target').toLowerCase();
-                if (sections.find(section => section.id.toLowerCase() === linkTarget && section.nav.toLowerCase() === currentSection)) {
+                if (link.getAttribute('data-target') === currentSection) {
                     link.classList.add('active');
                 }
             });
